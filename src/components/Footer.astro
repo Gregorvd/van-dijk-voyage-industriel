@@ -1,0 +1,32 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-primary text-white">
+  <div class="max-w-7xl mx-auto px-6 py-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
+        <a href="mailto:gregor@example.com" class="py-2 text-gray-300 hover:text-white focus-visible:text-white transition-colors duration-150">
+          Email
+        </a>
+        <a href="https://wa.me/33600000000" class="py-2 text-gray-300 hover:text-white focus-visible:text-white transition-colors duration-150"
+           target="_blank" rel="noopener noreferrer">
+          WhatsApp <span class="sr-only">(nouvelle fenêtre)</span>
+        </a>
+        <a href="https://linkedin.com/in/gregor-vandijk" class="py-2 text-gray-300 hover:text-white focus-visible:text-white transition-colors duration-150"
+           target="_blank" rel="noopener noreferrer">
+          LinkedIn <span class="sr-only">(nouvelle fenêtre)</span>
+        </a>
+      </div>
+      <p class="text-sm text-gray-300">
+        © {currentYear} Grégor Van Dijk
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer :focus-visible {
+    outline-color: white;
+  }
+</style>

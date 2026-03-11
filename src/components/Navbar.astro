@@ -1,0 +1,86 @@
+---
+import BoutonCTA from './BoutonCTA.astro';
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Études de cas', href: '/etudes-de-cas/' },
+  { label: 'Pays & Culture', href: '/pays-et-culture/' },
+  { label: 'Bilan', href: '/bilan/' },
+  { label: 'À propos', href: '/a-propos/' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-50 bg-surface border-b border-border">
+  <nav aria-label="Navigation principale" class="flex items-center justify-between h-16 px-6 max-w-7xl mx-auto">
+    <!-- Logo -->
+    <a href="/" class="font-semibold text-primary hover:text-accent transition-colors duration-150">
+      Voyage industriel
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={[
+            'text-[0.9375rem] font-medium transition-colors duration-150',
+            isActive(link.href)
+              ? 'text-accent underline underline-offset-4 decoration-2'
+              : 'text-primary hover:text-accent'
+          ]}
+          {...(isActive(link.href) ? { 'aria-current': 'page' } : {})}
+        >
+          {link.label}
+        </a>
+      ))}
+      <BoutonCTA label="Télécharger CV" href="/cv-gregor-vandijk.pdf" variant="primary" />
+    </div>
+
+    <!-- Mobile hamburger menu -->
+    <details class="md:hidden group">
+      <summary class="list-none cursor-pointer p-2 -mr-2">
+        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+        <span class="sr-only">Menu</span>
+      </summary>
+      <div class="absolute left-0 right-0 top-16 z-40 bg-surface border-t border-border shadow-sm">
+        <div class="flex flex-col px-6 py-4 gap-1">
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class:list={[
+                'py-3 text-[0.9375rem] font-medium transition-colors duration-150',
+                isActive(link.href)
+                  ? 'text-accent'
+                  : 'text-primary hover:text-accent'
+              ]}
+              {...(isActive(link.href) ? { 'aria-current': 'page' } : {})}
+            >
+              {link.label}
+            </a>
+          ))}
+          <div class="pt-2">
+            <BoutonCTA label="Télécharger CV" href="/cv-gregor-vandijk.pdf" variant="primary" />
+          </div>
+        </div>
+      </div>
+    </details>
+  </nav>
+</header>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  details summary::marker {
+    display: none;
+  }
+</style>

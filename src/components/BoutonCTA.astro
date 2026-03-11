@@ -1,0 +1,25 @@
+---
+interface Props {
+  label: string;
+  href: string;
+  variant?: 'primary' | 'secondary';
+  isExternal?: boolean;
+}
+
+const { label, href, variant = 'primary', isExternal = false } = Astro.props;
+const isPDF = href.endsWith('.pdf');
+---
+
+<a
+  href={href}
+  class:list={[
+    'inline-flex items-center font-semibold text-sm rounded-md px-6 py-3 transition-colors duration-200',
+    variant === 'primary'
+      ? 'bg-accent text-white hover:bg-accent-hover'
+      : 'border border-accent text-accent hover:bg-surface-dark'
+  ]}
+  {...(isPDF ? { download: '' } : {})}
+  {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+>
+  {label}
+</a>
