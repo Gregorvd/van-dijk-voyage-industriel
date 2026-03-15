@@ -3,13 +3,122 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Bilan — Voyage industriel"
-  description="Bilan des compétences transversales acquises au cours du voyage industriel."
+  title="Compétences & Apprentissages | Grégor Van Dijk"
+  description="Compétences développées sur le terrain pendant 8 mois de voyage industriel. 6 domaines : amélioration continue, industrialisation, gestion de production, coordination, innovation, transversal."
 >
-  <div class="max-w-4xl mx-auto px-6 py-12">
-    <h1 class="text-primary">Bilan</h1>
+  <div class="max-w-[1320px] mx-auto px-6 py-12">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide">6 domaines · Terrain & analyse</p>
+    <h1 class="text-primary mt-2">Compétences & Apprentissages</h1>
     <p class="text-secondary mt-4">
-      Contenu à venir — cette page sera développée dans un prochain sprint.
+      Compétences développées et confirmées sur le terrain pendant 8 mois de voyage industriel. Organisées par domaine.
     </p>
+
+    <!-- Domain A -->
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">A. Amélioration continue</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Identification terrain des 7 muda (surproduction, attente, transport inutile, sur-traitement, stocks, mouvements, défauts) dans les ateliers visités</li>
+        <li>Lecture de flux de valeur (VSM) sans outils formels : identification intuitive des goulots et des activités sans valeur ajoutée</li>
+        <li>Observation des pratiques 5S : comparaison des niveaux d'organisation, d'étiquetage et de standardisation entre ateliers</li>
+        <li>Détection d'opportunités Kaizen simples : gabarits réglables, pochettes kanban, gestion visuelle des ordres de fabrication</li>
+        <li>Compréhension des limites de l'amélioration continue dans des structures à très forte dépendance individuelle</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Synthèse :</strong> L'amélioration continue ne s'apprend pas en salle de cours : elle se lit sur le terrain, dans la disposition des machines, dans la gestion des files d'attente et dans la façon dont les équipes organisent leur espace de travail.
+      </blockquote>
+    </section>
+
+    <!-- Domain B -->
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">B. Industrialisation</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Compréhension des process CNC : tournage, fraisage multi-axes, réduction des temps de setup (multi-étaux), chargement automatique</li>
+        <li>Lecture des process de soudure TIG : gestion thermique, pointage, passes progressives, gabarits de maintien</li>
+        <li>Observation des techniques de finition : anodisation, peinture époxy, poudre électrostatique, gravure laser, finition céramique</li>
+        <li>Compréhension de la logique des gabarits (JIG) : fixe vs. réglable vs. paramétrique</li>
+        <li>Validation 3D (impression FDM) avant lancement série : réduction des risques de non-conformité</li>
+        <li>Observation du design-to-cost : intégration du prix de revient dès la phase de conception</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Synthèse :</strong> L'industrialisation n'est pas binaire : elle se déploie le long d'un spectre, de l'atelier artisanal (outil principal = intuition) à l'usine semi-industrielle (<a href="/etudes-de-cas/co-motion" class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a>, CNC + TIG + peinture). Comprendre où se situe une structure sur ce spectre est le point de départ de tout plan d'amélioration.
+      </blockquote>
+    </section>
+
+    <!-- Domain C -->
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">C. Gestion de production</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Flux tiré pur : toutes les structures visitées produisent à la commande, zéro stock de produits finis (exception <a href="/etudes-de-cas/paragon" class="text-accent hover:text-accent-hover underline underline-offset-2">Paragon</a> : stock de pièces standardisées)</li>
+        <li>Kanban visuel : système de pochettes chez <a href="/etudes-de-cas/bike-friday" class="text-accent hover:text-accent-hover underline underline-offset-2">Bike Friday</a>, plans accrochés aux machines chez <a href="/etudes-de-cas/paragon" class="text-accent hover:text-accent-hover underline underline-offset-2">Paragon</a>, ordres de fabrication réglables chez <a href="/etudes-de-cas/co-motion" class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a></li>
+        <li>Gestion des ordres de fabrication (OF) et suivi physique à travers l'atelier</li>
+        <li>Ordonnancement en petites séries : priorités, délais, gestion des aléas dans des structures de tailles différentes</li>
+        <li>Contrôle qualité intégré : boucles de vérification en cours de production (chef d'atelier <a href="/etudes-de-cas/co-motion" class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a>, contrôle fréquentiel <a href="/etudes-de-cas/white-industries" class="text-accent hover:text-accent-hover underline underline-offset-2">White Industries</a>)</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Synthèse :</strong> Le modèle de gestion de production le plus efficace observé n'est pas nécessairement le plus informatisé. La pochette suspendue de Bike Friday illustre qu'un système physique simple peut surpasser un ERP mal utilisé.
+      </blockquote>
+    </section>
+
+    <!-- Domain D -->
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">D. Coordination technique</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Cartographie des interfaces de sous-traitance : anodisation, peinture, usinage complexe, tests laboratoire. Chaque structure externalise différemment</li>
+        <li>Compréhension des risques de l'externalisation : délais, qualité de finition, dépendance géographique (ex. anodisation Sacramento pour <a href="/etudes-de-cas/white-industries" class="text-accent hover:text-accent-hover underline underline-offset-2">White Industries</a>)</li>
+        <li>Lecture des chaînes d'approvisionnement composants : réseaux de fournisseurs premium (Paul Component), matières premières (titane russe/chinois, rayons belges)</li>
+        <li>Interface bureau–atelier : observation des transferts d'information entre conception (Fusion 360, plans papier) et production</li>
+        <li>Coordination en contexte multilingue : visites techniques et échanges en anglais dans tous les ateliers</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Synthèse :</strong> Coordonner techniquement, c'est savoir qui détient chaque décision et s'assurer que l'information circule correctement entre les parties prenantes. J'ai observé que le manque de coordination formelle est la cause principale des retards et erreurs dans les PME artisanales.
+      </blockquote>
+    </section>
+
+    <!-- Domain E -->
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">E. Innovation produit</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Innovation frugale : balles de ping-pong pour amortir les pièces (White Industries), pochettes kanban (Bike Friday), solutions simples à fort impact</li>
+        <li>Prototypage rapide : impression 3D FDM pour validation pré-série (Paragon, White Industries)</li>
+        <li>Design-to-cost : conception produit avec calcul simultané du prix de revient (White Industries / Fusion 360)</li>
+        <li>Leçons d'échecs entrepreneuriaux : Papillon (titane taïwanais) et Cylo (géométrie différenciante). Enseignements sur les barrières à l'adoption</li>
+        <li>Diversité technologique intégrée dans un même produit (Co-Motion) : courroie, boîte de vitesses, électronique. L'intégration comme vecteur de valeur</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Synthèse :</strong> L'innovation la plus marquante n'est pas toujours la plus coûteuse. Les meilleures solutions observées sur le terrain étaient simples, pragmatiques et directement nées de contraintes opérationnelles.
+      </blockquote>
+    </section>
+
+    <!-- Domain F -->
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">F. Compétences transversales</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Conduite d'entretiens techniques en anglais avec des professionnels (fondateurs, DG, ingénieurs, techniciens) en contexte informel</li>
+        <li>Adaptation culturelle rapide : USA, Colombie, Afrique du Sud, Asie du Sud-Est. Codes de communication et postures professionnelles différents</li>
+        <li>Curiosité technique active : poser les bonnes questions, comprendre un process sans être spécialiste, reformuler et synthétiser</li>
+        <li>Résilience et autonomie en voyage longue durée : organisation, gestion de l'incertitude, initiative personnelle sur 8 mois</li>
+        <li>Synthèse et structuration : transformer des observations terrain en analyses documentées et partageables</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Synthèse :</strong> Ces 8 mois ont confirmé que les compétences les plus utiles en ingénierie industrielle sont souvent relationnelles : écoute active, curiosité non-défensive, capacité à comprendre et reformuler rapidement ce qu'on observe. Ce sont ces compétences qui permettent d'être opérationnel dans un nouvel environnement.
+      </blockquote>
+    </section>
+
+    <hr class="border-border mt-12" />
+
+    <div class="flex justify-between mt-8">
+      <a
+        href="/pays-et-culture/"
+        class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
+      >
+        ← Pays & Culture
+      </a>
+      <a
+        href="/vision/"
+        class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
+      >
+        Vision →
+      </a>
+    </div>
   </div>
 </BaseLayout>

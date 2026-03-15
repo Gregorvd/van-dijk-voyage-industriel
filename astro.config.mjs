@@ -7,6 +7,13 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://voyage-industriel.com',
   integrations: [sitemap()],
+  i18n: {
+    defaultLocale: 'fr',
+    locales: ['fr', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

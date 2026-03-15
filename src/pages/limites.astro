@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Limites & Opportunités | Grégor Van Dijk"
+  description="Analyse des contraintes structurelles et des leviers de développement observés dans les ateliers et usines visités."
+>
+  <div class="max-w-[1320px] mx-auto px-6 py-12">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide">Analyse macro · Secteur vélo artisanal</p>
+    <h1 class="text-primary mt-2">Limites & Opportunités</h1>
+    <p class="text-secondary mt-4">
+      Analyse des contraintes structurelles et des leviers de développement observés dans les ateliers et usines visités.
+    </p>
+
+    <!-- Constats -->
+    <section class="mt-12">
+      <h2 class="text-primary">Constats</h2>
+
+      <div class="mt-6 grid grid-cols-1 gap-4">
+        <div class="p-5 rounded-lg border border-border bg-white">
+          <h3 class="text-primary font-semibold">1. Dépendance fournisseurs</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            Carbone taïwanais (Rolf Prima), titane russe et chinois (Paragon), rayons belges (Rolf Prima), anodisation externalisée (White Industries, Paragon)… La quasi-totalité des structures visitées dépendent de fournisseurs éloignés pour des composants critiques. Cette fragilité géopolitique est souvent sous-estimée.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-lg border border-border bg-white">
+          <h3 class="text-primary font-semibold">2. Scalabilité limitée</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            Le modèle artisanal (4-5 vélos/jour chez Co-Motion, Bike Friday) est très difficile à scaler sans investissement lourd en automatisation ou délocalisation partielle. La personnalisation totale et la faible cadence forment un plafond de verre commercial.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-lg border border-border bg-white">
+          <h3 class="text-primary font-semibold">3. Arbitrages coût / qualité</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            La sous-traitance partielle (anodisation, peinture, tests labo) génère des coûts supplémentaires, des délais non maîtrisés et une perte partielle du contrôle qualité. Trouver le bon équilibre entre ce qui doit être internalisé et ce qui peut être externalisé est un enjeu stratégique permanent.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-lg border border-border bg-white">
+          <h3 class="text-primary font-semibold">4. Standardisation faible</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            Absence généralisée de gabarits paramétrables, de standards internes écrits et de documentation process. Cette faiblesse crée une dépendance forte aux individus clés : si un opérateur part, son savoir-faire part avec lui. C'est le principal risque opérationnel des structures visitées.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-lg border border-border bg-white">
+          <h3 class="text-primary font-semibold">5. Certification allégée (contexte US)</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            L'absence de certification obligatoire aux USA favorise l'innovation et réduit les coûts, mais représente un risque réel à l'export vers l'Europe ou le Japon (normes EN, JIS). Cette liberté est un avantage compétitif local qui peut ralentir le développement à l'internationalisation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="border-border mt-12" />
+
+    <!-- Opportunités -->
+    <section class="mt-12">
+      <h2 class="text-primary">Opportunités</h2>
+
+      <div class="mt-6 grid grid-cols-1 gap-4">
+        <div class="p-5 rounded-lg border border-accent/20 bg-accent/[0.03]">
+          <h3 class="text-primary font-semibold">1. Automatisation partielle</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            L'automatisation du chargement des tours CNC (White Industries) démontre qu'une automatisation partielle et ciblée permet d'augmenter significativement la productivité sans dénaturer le caractère artisanal. Les robots collaboratifs (cobots) représentent une opportunité accessible pour certaines PME.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-lg border border-accent/20 bg-accent/[0.03]">
+          <h3 class="text-primary font-semibold">2. Relocalisation partielle</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            Après les chocs COVID et les tensions géopolitiques, l'appétit pour le "made local" est croissant. Les structures qui maîtrisent une chaîne de valeur courte bénéficieront d'un avantage de résilience et d'image. La relocalisation partielle des composants critiques (carbone, titane) est une piste stratégique à investiguer.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-lg border border-accent/20 bg-accent/[0.03]">
+          <h3 class="text-primary font-semibold">3. Optimisation flux petite série</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            Les outils Lean adaptés à la petite série (kanban visuel, gabarits paramétrables, standardisation partielle des composants) permettent de réduire les délais et les erreurs sans investissement lourd. L'exemple de Bike Friday (pochettes suspendues) montre que la simplicité des outils est une vertu.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-lg border border-accent/20 bg-accent/[0.03]">
+          <h3 class="text-primary font-semibold">4. Supply chain régionale</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            Développer des réseaux de fournisseurs locaux ou régionaux pour les matières premières et les sous-traitances critiques permettrait de réduire les délais, les coûts logistiques et les risques géopolitiques. Les clusters industriels (Portland, Eugene) montrent que la proximité géographique crée des synergies naturelles.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-lg border border-accent/20 bg-accent/[0.03]">
+          <h3 class="text-primary font-semibold">5. Traçabilité & data qualité</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            Le passage du contrôle qualité sur feuille papier (White Industries) à un système numérique simple permet, très facilement, une meilleure traçabilité, une détection précoce des dérives et une communication facilitée avec les clients. Des outils légers (tablette + Google Sheets) peuvent suffire pour commencer.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <blockquote class="mt-12 p-6 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+      Ces limites ne sont pas des fatalités. Elles représentent des opportunités concrètes pour un ingénieur industriel capable de lire les flux, de structurer les process et de coordonner les acteurs. C'est précisément le rôle que je cherche à exercer.
+    </blockquote>
+
+    <hr class="border-border mt-12" />
+
+    <div class="flex justify-between mt-8">
+      <a
+        href="/etudes-de-cas/"
+        class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
+      >
+        ← Études de cas
+      </a>
+      <a
+        href="/vision/"
+        class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
+      >
+        Vision →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

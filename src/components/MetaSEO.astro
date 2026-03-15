@@ -1,4 +1,6 @@
 ---
+import { getLocaleFromPath, getAlternatePath } from '../i18n/utils';
+
 interface Props {
   title: string;
   description: string;
@@ -9,6 +11,16 @@ const { title, description, ogImage = '/og-image.jpg' } = Astro.props;
 const canonicalURL = Astro.url;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') || '';
 const ogImageURL = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const ogLocale = locale === 'en' ? 'en_US' : 'fr_FR';
+const siteName = locale === 'en' ? 'Industrial Journey' : 'Voyage industriel';
+
+// Hreflang alternate URLs
+const currentPath = Astro.url.pathname;
+const alternatePath = getAlternatePath(currentPath);
+const frUrl = `${siteUrl}${locale === 'fr' ? currentPath : alternatePath}`;
+const enUrl = `${siteUrl}${locale === 'en' ? currentPath : alternatePath}`;
 ---
 
 <title>{title}</title>
@@ -20,7 +32,8 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 <meta property="og:image" content={ogImageURL} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:site_name" content="Voyage industriel" />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content={ogLocale} />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -30,3 +43,8 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 
 <!-- Canonical -->
 <link rel="canonical" href={canonicalURL} />
+
+<!-- Hreflang alternates -->
+<link rel="alternate" hreflang="fr" href={frUrl} />
+<link rel="alternate" hreflang="en" href={enUrl} />
+<link rel="alternate" hreflang="x-default" href={frUrl} />

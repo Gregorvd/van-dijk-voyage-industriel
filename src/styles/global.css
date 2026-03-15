@@ -75,6 +75,29 @@ h3 {
   h3 { font-size: 1.125rem; }
 }
 
+/* Justification des textes — aspect professionnel (desktop uniquement) */
+@media (min-width: 768px) {
+  p, li, blockquote {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+}
+
+/* Exceptions — ne pas justifier les éléments courts ou centrés */
+.text-center p,
+p.text-center,
+nav p,
+footer p,
+[role="list"] p,
+figcaption {
+  text-align: center;
+}
+
+/* Contenir les z-index Leaflet à l'intérieur de la carte */
+.leaflet-container {
+  isolation: isolate;
+}
+
 /* Focus states — Accessibilité */
 *:focus-visible {
   outline: 2px solid var(--color-accent);

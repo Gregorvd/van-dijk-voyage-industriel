@@ -1,0 +1,58 @@
+---
+import TagCompetence from './TagCompetence.astro';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  titre: string;
+  pays: string;
+  ville: string;
+  taille: string;
+  duree: string;
+  image: string;
+  imageAlt: string;
+  resume: string;
+  tags: string[];
+  slug: string;
+  contact?: string;
+  locale?: Locale;
+}
+
+const { titre, pays, ville, taille, duree, image, imageAlt, resume, tags, slug, contact, locale = 'fr' } = Astro.props;
+const basePath = locale === 'en' ? '/en/etudes-de-cas' : '/etudes-de-cas';
+---
+
+<a
+  href={`${basePath}/${slug}`}
+  class="block rounded-lg overflow-hidden border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
+>
+  <article>
+    <div class="aspect-[2/1] bg-white flex items-center justify-center p-8 border-b border-border">
+      <img
+        src={image}
+        alt={imageAlt}
+        class="max-w-[70%] max-h-[80%] object-contain"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="p-4">
+      <h3 class="text-primary font-semibold leading-snug">
+        {titre}
+      </h3>
+
+      <p class="text-sm text-secondary mt-2 line-clamp-2">
+        {resume}
+      </p>
+
+      <p class="text-xs font-medium text-accent mt-3 truncate border-t border-border pt-3">
+        {ville}, {pays}{contact ? ` · ${contact}` : ''}
+      </p>
+
+      <div role="list" class="flex flex-wrap gap-1.5 mt-3">
+        {tags.map((tag) => (
+          <TagCompetence tag={tag} variant="small" />
+        ))}
+      </div>
+    </div>
+  </article>
+</a>

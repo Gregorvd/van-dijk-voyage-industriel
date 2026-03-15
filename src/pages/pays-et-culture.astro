@@ -1,15 +1,571 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TagCompetence from '../components/TagCompetence.astro';
+import { getCollection } from 'astro:content';
+import { connexions, clusters } from '../data/connexions';
+
+const etudes = await getCollection('etudes-de-cas', ({ data }) => data.publie === true);
+const etudesTriees = etudes.sort((a, b) => a.data.ordre - b.data.ordre);
+
+// Données carte pour les zones visitées
+const zones = [
+  { lat: 45.52, lng: -122.68, nom: 'États-Unis', detail: 'Oregon, Washington, Californie', anchor: 'etats-unis' },
+  { lat: 49.28, lng: -123.12, nom: 'Canada', detail: 'Vancouver', anchor: 'canada' },
+  { lat: 4.71, lng: -74.07, nom: 'Colombie', detail: '', anchor: 'colombie' },
+  { lat: -23.55, lng: -46.63, nom: 'Brésil', detail: 'São Paulo', anchor: 'bresil' },
+  { lat: -33.93, lng: 18.42, nom: 'Afrique du Sud', detail: 'Cape Town, Paarl', anchor: 'afrique-du-sud' },
+  { lat: -22.33, lng: 24.68, nom: 'Botswana', detail: '', anchor: 'botswana' },
+  { lat: 9.93, lng: -84.08, nom: 'Costa Rica', detail: '', anchor: 'costa-rica' },
+  { lat: 8.98, lng: -79.52, nom: 'Panama', detail: '', anchor: 'panama' },
+  { lat: 15.87, lng: 100.99, nom: 'Thaïlande', detail: '', anchor: 'thailande' },
+  { lat: 17.97, lng: 102.63, nom: 'Laos', detail: 'Vientiane, Luang Prabang', anchor: 'laos' },
+];
+
+// Helper to find study by slug
+function findStudy(slug: string) {
+  return etudesTriees.find(e => e.id === slug);
+}
 ---
 
 <BaseLayout
-  title="Pays & Culture — Voyage industriel"
-  description="Exploration géographique et culturelle des pays visités durant le voyage industriel."
+  title="Pays & Écosystèmes | Grégor Van Dijk"
+  description="Analyse comparative des cultures vélo, infrastructures cyclables et écosystèmes industriels observés dans 12 pays."
 >
-  <div class="max-w-4xl mx-auto px-6 py-12">
-    <h1 class="text-primary">Pays & Culture</h1>
+  <div class="max-w-[1320px] mx-auto px-6 py-12">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide">12 pays</p>
+    <h1 class="text-primary mt-2">Pays & Écosystèmes</h1>
     <p class="text-secondary mt-4">
-      Contenu à venir — cette page sera développée dans un prochain sprint.
+      Analyse comparative des cultures vélo, des infrastructures cyclables et des écosystèmes industriels observés.
     </p>
+
+    <!-- Carte interactive -->
+    <div class="mt-10 rounded-lg overflow-hidden border border-border" style="height: 400px;" id="carte" aria-label="Carte des structures industrielles visitées">
+    </div>
+
+    <!-- Countries breakdown -->
+    <hr class="border-border mt-16" />
+
+    <div class="mt-12 space-y-8">
+      <!-- États-Unis -->
+      <section id="etats-unis" class="p-6 rounded-xl border border-border bg-white scroll-mt-24">
+        <h2 class="text-primary"><span aria-hidden="true">🇺🇸</span> États-Unis</h2>
+        <p class="text-secondary mt-2">Oregon, Washington, Californie</p>
+
+        <div class="mt-6 space-y-6">
+          <div>
+            <h3 class="text-primary font-semibold">Culture vélo</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Portland est la capitale cycliste américaine, avec une grande diversité de vélos où le haut de gamme domine. La personnalisation est omniprésente (lumières, stickers, accessoires) et la communauté, très engagée, organise de nombreux événements. Les vélos électriques restent peu présents en usage quotidien, réservés principalement aux seniors. Le vol est un problème majeur : très peu de vélos sont laissés dehors. Côté marques locales, Shower Pass (vêtements imperméables conçus à Portland) est incontournable. Dans la villes et en banlieue, on retrouve de nombreux ateliers et usines comme Chris king par exemple.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-primary font-semibold">Infrastructures</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Les automobilistes sont globalement très respectueux des cyclistes. L'intégration bus (rack avant) et tram est facile avec un vélo. La situation varie fortement d'une ville à l'autre.
+            </p>
+            <ul class="mt-2 space-y-1 text-secondary list-disc pl-5 text-sm">
+              <li>Portland : réseau cyclable très développé, pistes dédiées, rues à priorité vélo, trails spécialement réservés pour les vélo</li>
+              <li>Eugene : ville à taille humaine, bien adaptée au vélo quotidien</li>
+              <li>Seattle : le relief et la taille rendent la ville moins cyclable, mais les pistes sont bien délimitées (couleurs et ralentisseurs)</li>
+              <li>San Francisco : libre service 100% électrique, piste côtière excellente</li>
+              <li>Los Angeles : trop étendue pour le vélo quotidien, bon réseau de pistes cyclable et de vélo en libre service le long des plages</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-primary font-semibold">Industrie locale</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Portland et Eugene concentrent des clusters industriels de fabricants de cadres et de composants. Le "Made in USA" est un argument commercial fort face à la concurrence asiatique. La production fonctionne à 100% sur commande, avec des stocks quasi inexistants. Les professionnels rencontrés ont fait preuve d'une grande ouverture pour partager leurs process et leur savoir-faire.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-primary font-semibold">Analyse comparative</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Le vélo aux États-Unis est bien plus développé que l'image qu'on en a depuis la France. La variabilité entre villes est forte : Portland, Los Angeles et Seattle offrent des réalités radicalement différentes. L'absence de certification obligatoire donne aux fabricants une liberté d'innovation que l'on ne retrouve moins en Europe et la vitesse de sortie d'un nouveau produit y est donc beaucoup plus rapide.
+            </p>
+          </div>
+
+          <blockquote class="p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic text-sm">
+            <strong class="not-italic text-primary">Enseignement clé :</strong> L'Oregon, et Portland en particulier, démontre qu'une culture cycliste forte se construit par l'infrastructure, la communauté et l'usage pratique, pas seulement par les politiques publiques. Les fabricants artisanaux prospèrent dans cet écosystème.
+          </blockquote>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+            <figure class="m-0 min-w-0 flex flex-col items-center">
+              <img src="/images/pays/usa-piste-cyclable-seattle.webp" alt="Piste cyclable dédiée avec marquage au sol et bandes podotactiles à Seattle" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
+              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Piste cyclable dédiée avec marquage au sol, Seattle</figcaption>
+            </figure>
+            <figure class="m-0 min-w-0 flex flex-col items-center">
+              <img src="/images/photos/portland-breakfast-bridges.webp" alt="Événement communautaire Breakfast on the Bridges à Portland" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
+              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Événement mensuel « Breakfast on the Bridges » : café et viennoiseries offerts aux cyclistes sur les ponts de la ville, Portland</figcaption>
+            </figure>
+            <figure class="m-0 min-w-0 flex flex-col items-center">
+              <img src="/images/pays/usa-rack-velo-bus.webp" alt="Rack à vélos de bus fixé au mur dans la gare pour s'exercer au chargement, Seattle" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
+              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Rack à vélos de bus fixé au mur dans la gare pour s'exercer au chargement: Seattle mais visible dans toute la côte ouest</figcaption>
+            </figure>
+            <figure class="m-0 min-w-0 flex flex-col items-center">
+              <img src="/images/pays/usa-velo-train.webp" alt="Wagon entier spécialement réservé aux vélos dans le train de banlieue à San Francisco" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
+              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Wagon entier spécialement réservé aux vélos dans le train de banlieue, San Fransisco</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Écosystème industriel & connexions -->
+        <div class="mt-8 pt-6 border-t border-border">
+          <h3 class="text-primary font-semibold">Écosystème industriel & connexions</h3>
+          <p class="text-secondary text-sm mt-2">
+            Les structures visitées aux États-Unis ne sont pas isolées. Certaines partagent des liens fournisseur–client ou un écosystème industriel commun.
+          </p>
+
+          {clusters.map((cluster) => {
+            const clusterStudies = cluster.etudes.map(findStudy).filter(Boolean);
+            const clusterConnexions = connexions.filter(c =>
+              cluster.etudes.includes(c.source) && cluster.etudes.includes(c.cible)
+            );
+
+            return (
+              <div class="mt-6">
+                <p class="text-sm font-semibold text-accent">{cluster.nom}</p>
+                <p class="text-xs text-secondary mt-1">{cluster.description}</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+                  {clusterStudies.map((etude) => etude && (
+                    <a
+                      href={`/etudes-de-cas/${etude.id}`}
+                      class="p-3 rounded-lg border border-border bg-surface-dark hover:shadow hover:-translate-y-px transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none text-center"
+                    >
+                      <p class="font-semibold text-primary text-sm">{etude.data.entreprise}</p>
+                    </a>
+                  ))}
+                </div>
+
+                <div class="mt-4 space-y-2">
+                  {clusterConnexions.map((conn) => {
+                    const sourceStudy = findStudy(conn.source);
+                    const cibleStudy = findStudy(conn.cible);
+                    if (!sourceStudy || !cibleStudy) return null;
+
+                    const isSupplier = conn.type === 'fournisseur';
+                    return (
+                      <div class="flex items-center gap-3 p-3 rounded-lg bg-surface-dark">
+                        <div class="flex-1 min-w-0">
+                          <div class="flex items-center gap-2 text-sm">
+                            <span class="font-medium text-primary">{sourceStudy.data.entreprise}</span>
+                            <span class="text-accent flex-shrink-0" aria-hidden="true">
+                              {isSupplier ? '→' : '↔'}
+                            </span>
+                            <span class="font-medium text-primary">{cibleStudy.data.entreprise}</span>
+                          </div>
+                          <p class="text-xs text-secondary mt-1">{conn.description}</p>
+                        </div>
+                        <span class:list={[
+                          'text-[10px] font-medium uppercase tracking-wide px-2 py-0.5 rounded-full flex-shrink-0',
+                          isSupplier
+                            ? 'bg-accent/10 text-accent'
+                            : 'bg-border text-secondary'
+                        ]}>
+                          {isSupplier ? 'Fournisseur' : 'Partenaire'}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+
+          {/* CIRCA Cycles */}
+          {(() => {
+            const circa = findStudy('circa');
+            if (!circa) return null;
+            return (
+              <div class="mt-6">
+                <p class="text-sm font-semibold text-accent">Autres structures visitées</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+                  <a
+                    href={`/etudes-de-cas/${circa.id}`}
+                    class="p-3 rounded-lg border border-border bg-surface-dark hover:shadow hover:-translate-y-px transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none text-center"
+                  >
+                    <p class="font-semibold text-primary text-sm">{circa.data.entreprise}</p>
+                  </a>
+                </div>
+                <div class="mt-4 space-y-2">
+                  {connexions.filter(c => c.source === 'paragon' && c.cible === 'circa').map((conn) => {
+                    const sourceStudy = findStudy(conn.source);
+                    if (!sourceStudy) return null;
+                    return (
+                      <div class="flex items-center gap-3 p-3 rounded-lg bg-surface-dark">
+                        <div class="flex-1 min-w-0">
+                          <div class="flex items-center gap-2 text-sm">
+                            <span class="font-medium text-primary">{sourceStudy.data.entreprise}</span>
+                            <span class="text-accent flex-shrink-0" aria-hidden="true">→</span>
+                            <span class="font-medium text-primary">{circa.data.entreprise}</span>
+                          </div>
+                          <p class="text-xs text-secondary mt-1">{conn.description}</p>
+                        </div>
+                        <span class="text-[10px] font-medium uppercase tracking-wide px-2 py-0.5 rounded-full flex-shrink-0 bg-accent/10 text-accent">
+                          Fournisseur
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+      </section>
+
+      <!-- Canada -->
+      <section id="canada" class="p-6 rounded-xl border border-border bg-white scroll-mt-24">
+        <h2 class="text-primary"><span aria-hidden="true">🇨🇦</span> Canada</h2>
+        <p class="text-secondary mt-2">Vancouver (C.-B.)</p>
+
+        <div class="mt-6 space-y-6">
+          <div>
+            <h3 class="text-primary font-semibold">Culture vélo</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Vancouver affiche une bonne présence de vélos électriques, gravel et route. Comme à Portland, peu de vélos sont garés dans la rue. Le libre service est limité au centre-ville et l'état des vélos est souvent dégradé.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-primary font-semibold">Infrastructures</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Des pistes cyclables sont présentes mais parfois unidirectionnelles. La ville dispose de rues à priorité vélo et l'intégration du vélo dans les transports en commun est facilitée.
+            </p>
+          </div>
+
+          <blockquote class="p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic text-sm">
+            <strong class="not-italic text-primary">Enseignement clé :</strong> Vancouver offre une bonne infrastructure de base mais l'entretien du libre service laisse à désirer. Le système bike-share nécessite une gestion opérationnelle rigoureuse pour rester attractif.
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- Colombie -->
+      <section id="colombie" class="p-6 rounded-xl border border-border bg-white scroll-mt-24">
+        <h2 class="text-primary"><span aria-hidden="true">🇨🇴</span> Colombie</h2>
+
+        <div class="mt-6 space-y-6">
+          <div>
+            <h3 class="text-primary font-semibold">Culture vélo</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Le vélo est un sport historiquement national en Colombie, porté par des champions internationaux. Les disciplines dominantes sont la route (montagnes) et le VTT, avec un gravel en émergence. Dans les petites villes, le vélo est un transport courant. Dans les grandes villes, l'usage se partage entre sport et déplacement. Côté matériel, les vélos sport sont haut de gamme tandis que les vélos du quotidien sont souvent des single speed improvisés ou des petits vélos pour la livraison de marchandise lourde.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-primary font-semibold">Infrastructures</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Les grandes villes disposent de pistes cyclables au milieu des rues (modèle Bogotá/São Paulo). La Ciclovía de Bogotá, avec ses fermetures de routes dominicales, a eu un impact mondial sur le cyclisme urbain. On trouve des petits réparateurs sur le bord de la route dans les villes, ainsi que des activités touristiques à vélo (visites de villes, descentes de montagne).
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-primary font-semibold">Industrie locale</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Le pays compte de nombreuses usines locales de vélos, d'équipements et de vêtements. Parmi les marques observées : Poseidon, On Trail, Urban, GW et Merida. Les boutiques proposent majoritairement des produits d'origine USA, dans un format similaire à l'Europe. Scarab Cycles, basé en Antioquia, fait l'objet d'une étude de cas dédiée.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-primary font-semibold">Analyse comparative</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Le contraste entre villes (infrastructure développée) et campagnes (vélo naturellement intégré) est frappant. La culture de la réparation locale, avec des ateliers en bord de route, constitue un modèle de proximité efficace. Le vélo sport haut de gamme et le vélo utilitaire cohabitent sans vraiment se parler.
+            </p>
+          </div>
+
+          <blockquote class="p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic text-sm">
+            <strong class="not-italic text-primary">Enseignement clé :</strong> La Colombie illustre comment une tradition cycliste profonde (ex-sport national) peut coexister avec un usage très pragmatique du vélo (transport de proximité). La Ciclovía de Bogotá et de Medellín reste l'un des exemples mondiaux les plus cités d'urbanisme favorable au vélo.
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- Brésil -->
+      <section id="bresil" class="p-6 rounded-xl border border-border bg-white scroll-mt-24">
+        <h2 class="text-primary"><span aria-hidden="true">🇧🇷</span> Brésil</h2>
+        <p class="text-secondary mt-2">São Paulo</p>
+
+        <div class="mt-6 space-y-6">
+          <div>
+            <h3 class="text-primary font-semibold">Observations</h3>
+            <p class="mt-2 text-secondary text-sm">
+              São Paulo adopte un modèle de pistes cyclables au milieu des rues, inversé par rapport à l'Europe. Certaines routes sont fermées le dimanche, inspiré de la Ciclovía de Bogotá. La ville dispose d'un parc d'apprentissage vélo pour adultes et enfants, équipé de signalisation routière. Peu de vélos sont visibles dans la rue : ils sont garés chez soi le soir pour des raisons de sécurité. Les marques d'Amérique du Sud et des USA dominent le marché.
+            </p>
+          </div>
+
+          <blockquote class="p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic text-sm">
+            <strong class="not-italic text-primary">Enseignement clé :</strong> Le modèle de piste centrale (au milieu de la rue) est une réponse aux contraintes foncières des métropoles denses. Il soulève des questions de sécurité différentes des modèles latéraux européens.
+          </blockquote>
+
+          <figure class="mt-4 m-0 flex flex-col items-center">
+            <img src="/images/pays/bresil-piste-cyclable.webp" alt="Piste cyclable au centre de la chaussée à São Paulo, modèle inversé par rapport à l'Europe" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
+            <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Piste cyclable au centre de la chaussée, modèle inversé par rapport à l'Europe, São Paulo</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Costa Rica -->
+      <section id="costa-rica" class="p-6 rounded-xl border border-border bg-white scroll-mt-24">
+        <h2 class="text-primary"><span aria-hidden="true">🇨🇷</span> Costa Rica</h2>
+
+        <div class="mt-6 space-y-6">
+          <div>
+            <h3 class="text-primary font-semibold">Observations</h3>
+            <p class="mt-2 text-secondary text-sm">
+              L'utilisation du vélo reste très limitée dans la majorité du pays. Les déplacements se font principalement en voiture et en scooter. Le vélo est plus présent sur la côte caraïbe, où l'environnement naturel favorise des modes de déplacement plus doux. Cependant, plusieurs facteurs freinent l'usage : très peu de pistes cyclables, routes souvent très fréquentées, topographie très montagneuse dans le centre du pays et climat chaud et humide. Des cyclistes roulent à contresens sur le bord d'autoroutes, ce qui illustre le manque d'infrastructures adaptées. La culture automobile reste dominante.
+            </p>
+          </div>
+
+          <blockquote class="p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic text-sm">
+            <strong class="not-italic text-primary">Enseignement clé :</strong> L'absence d'infrastructures cyclables combinée à une topographie montagneuse et un climat chaud crée un cercle vicieux : sans infrastructure, pas d'usage, et sans usage, pas de demande d'infrastructure.
+          </blockquote>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+            <figure class="m-0 min-w-0 flex flex-col items-center">
+              <img src="/images/pays/costa-rica-velos-plage.webp" alt="Vélos garés sur la plage de la côte caraïbe du Costa Rica, principal mode de déplacement local" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
+              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Vélos garés sur la plage : principal mode de déplacement sur la côte caribéenne</figcaption>
+            </figure>
+            <figure class="m-0 min-w-0 flex flex-col items-center">
+              <img src="/images/photos/costa-rica-velos-plage-2.webp" alt="Vélos garés le long de la plage sur la côte caraïbe du Costa Rica" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
+              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Autre vue des vélos garés sur la côte caribéenne : usage quotidien sans infrastructure dédiée</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panama -->
+      <section id="panama" class="p-6 rounded-xl border border-border bg-white scroll-mt-24">
+        <h2 class="text-primary"><span aria-hidden="true">🇵🇦</span> Panama</h2>
+
+        <div class="mt-6 space-y-6">
+          <div>
+            <h3 class="text-primary font-semibold">Observations</h3>
+            <p class="mt-2 text-secondary text-sm">
+              La situation est assez similaire au Costa Rica. Les infrastructures cyclables sont peu développées, sauf sur certaines îles et sur la côte caraïbe, où les déplacements se font essentiellement à pied ou à vélo dans les zones sans voiture. À Panama City, l'influence des États-Unis est très visible : grandes avenues, distances importantes et forte dépendance à la voiture. Quelques pistes cyclables existent mais restent insuffisantes pour développer une vraie culture du vélo.
+            </p>
+          </div>
+
+          <blockquote class="p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic text-sm">
+            <strong class="not-italic text-primary">Enseignement clé :</strong> Le modèle urbain américain exporté à Panama City (grandes avenues, étalement) reproduit les mêmes barrières au vélo que dans les villes US. Les îles et côtes sans voiture montrent qu'en supprimant l'automobile, le vélo s'impose naturellement.
+          </blockquote>
+
+          <figure class="mt-4 m-0 flex flex-col items-center">
+            <img src="/images/pays/panama-velo-commerce.webp" alt="Vélo utilisé comme outil de commerce ambulant dans les rues de Panama City" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
+            <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Vélo utilisé comme outil de commerce ambulant dans les rues, Panama City</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Botswana -->
+      <section id="botswana" class="p-6 rounded-xl border border-border bg-white scroll-mt-24">
+        <h2 class="text-primary"><span aria-hidden="true">🇧🇼</span> Botswana</h2>
+
+        <div class="mt-6 space-y-6">
+          <div>
+            <h3 class="text-primary font-semibold">Observations</h3>
+            <p class="mt-2 text-secondary text-sm">
+              La zone visitée se caractérise par des pistes non goudronnées et des commerces situés à plus de 2h en voiture. Le terrain très accidenté et la chaleur intense rendent les conditions défavorables au vélo. Un voyage à vélo annuel est organisé (léger, avec véhicule d'accompagnement), mais dans les usages quotidiens, aucun vélo n'a été observé.
+            </p>
+          </div>
+
+          <blockquote class="p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic text-sm">
+            <strong class="not-italic text-primary">Enseignement clé :</strong> Le vélo n'est pas universel : la géographie, la chaleur et la densité de services conditionnent fondamentalement son usage. La mobilité durable doit s'adapter aux réalités locales.
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- Afrique du Sud -->
+      <section id="afrique-du-sud" class="p-6 rounded-xl border border-border bg-white scroll-mt-24">
+        <h2 class="text-primary"><span aria-hidden="true">🇿🇦</span> Afrique du Sud</h2>
+        <p class="text-secondary mt-2">Cape Town · Région vignobles</p>
+
+        <div class="mt-6 space-y-6">
+          <div>
+            <h3 class="text-primary font-semibold">Observations</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Cape Town est une ville très étendue, inspirée du modèle américain où la voiture domine. Des pistes cyclables existent mais l'usage quotidien reste limité. Le vélo se résume essentiellement à des sorties sportives (vélos de route). La chaleur et les préoccupations de sécurité freinent l'adoption au quotidien. Exception notable : la région de Paarl (vignobles) propose le vélo pour les visites de caves.
+            </p>
+          </div>
+
+          <blockquote class="p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic text-sm">
+            <strong class="not-italic text-primary">Enseignement clé :</strong> Le modèle urbain américain (étalement, dépendance automobile) exporté hors des USA reproduit les mêmes barrières au vélo quotidien. La sécurité perçue est aussi déterminante que l'infrastructure.
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- Thaïlande -->
+      <section id="thailande" class="p-6 rounded-xl border border-border bg-white scroll-mt-24">
+        <h2 class="text-primary"><span aria-hidden="true">🇹🇭</span> Thaïlande</h2>
+
+        <div class="mt-6 space-y-6">
+          <div>
+            <h3 class="text-primary font-semibold">Observations</h3>
+            <p class="mt-2 text-secondary text-sm">
+              La culture du vélo sportif est bien présente en Thaïlande, avec de nombreux cyclistes pratiquant le vélo de route, notamment sur le circuit de Lat Krabang très connu des cyclistes locaux. Dans la vie quotidienne, les déplacements se font surtout en scooter et en voiture, mais on trouve quelques pistes cyclables et des vélos en libre-service. Le vélo est souvent utilisé pour le tourisme, avec de nombreuses locations permettant de visiter les sites historiques. Plusieurs cafés dédiés au vélo organisent des événements pour rassembler les cyclistes et vendent des pièces de marques américaines comme White Industries. Les ateliers de réparation sont souvent situés dans les mêmes quartiers et gérés en famille. Le climat chaud et humide constitue un frein à l'utilisation quotidienne.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-primary font-semibold">Industrie</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Malgré de nombreuses démarches et des visites dans environ cinquante magasins de vélos, il n'a pas été possible d'obtenir de contacts permettant de visiter une usine de fabrication. Une grande partie de l'industrie mondiale du cycle est pourtant présente en Asie, mais ces adresses sont très difficiles à trouver sur internet. L'accès aux usines reste fermé aux visiteurs extérieurs.
+            </p>
+          </div>
+
+          <blockquote class="p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic text-sm">
+            <strong class="not-italic text-primary">Enseignement clé :</strong> La Thaïlande illustre un paradoxe : le pays est un acteur majeur de la production mondiale de vélos, mais l'accès aux usines est quasi impossible pour un observateur extérieur. La culture cycliste sportive existe, portée par des cafés vélo et des circuits dédiés, mais le vélo quotidien reste marginal face au scooter.
+          </blockquote>
+
+          <div class="grid grid-cols-3 gap-3 mt-4">
+            <figure class="m-0 min-w-0 flex flex-col items-center">
+              <img src="/images/pays/thailande-cafe-velo.webp" alt="Vélo de piste haut de gamme exposé dans un café vélo spécialisé à Bangkok" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
+              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Café vélo spécialisé, Bangkok</figcaption>
+            </figure>
+            <figure class="m-0 min-w-0 flex flex-col items-center">
+              <img src="/images/photos/thailande-cafe-velo-piste.webp" alt="Vélo de piste haut de gamme exposé dans un café vélo à Bangkok" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
+              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Vélo de piste haut de gamme, composants US en vitrine d'atelier visité en Oregon et en Californie</figcaption>
+            </figure>
+            <figure class="m-0 min-w-0 flex flex-col items-center">
+              <img src="/images/pays/thailande-libre-service.webp" alt="Station de vélos en libre-service en état dégradé à Bangkok" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
+              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Station de vélos en libre-service, Bangkok</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Laos -->
+      <section id="laos" class="p-6 rounded-xl border border-border bg-white scroll-mt-24">
+        <h2 class="text-primary"><span aria-hidden="true">🇱🇦</span> Laos</h2>
+
+        <div class="mt-6 space-y-6">
+          <div>
+            <h3 class="text-primary font-semibold">Observations</h3>
+            <p class="mt-2 text-secondary text-sm">
+              Une différence importante de niveau de vie par rapport à la Thaïlande voisine est immédiatement perceptible. Les déplacements se font principalement à pied et en scooter ou tuk-tuk partagé. Le vélo est très peu présent dans le pays. Quelques touristes traversent le Laos ou les 4000 iles à vélo en bikepacking, mais cela reste marginal. Le pays est moins développé économiquement, ce qui limite l'accès au vélo pour la population. Les infrastructures cyclables sont quasiment inexistantes et l'état des routes est souvent mauvais, sauf autour de la capitale et sur certaines autoroutes récentes.
+            </p>
+          </div>
+
+          <blockquote class="p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic text-sm">
+            <strong class="not-italic text-primary">Enseignement clé :</strong> Le vélo n'est ni accessible économiquement ni ancré dans la culture locale. Le niveau de développement économique est un facteur déterminant : sans pouvoir d'achat et sans infrastructure, le vélo reste un objet de tourisme, pas un mode de transport.
+          </blockquote>
+        </div>
+      </section>
+    </div>
+
+    <hr class="border-border mt-12" />
+    <div class="flex justify-between mt-8">
+      <a
+        href="/etudes-de-cas/"
+        class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
+      >
+        ← Études de cas
+      </a>
+      <a
+        href="/bilan/"
+        class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
+      >
+        Apprentissages →
+      </a>
+    </div>
   </div>
 </BaseLayout>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script is:inline src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script is:inline define:vars={{ zones }}>
+  document.addEventListener('DOMContentLoaded', async () => {
+    var el = document.getElementById('carte');
+    if (!el || !window.L) return;
+
+    var map = L.map(el, { scrollWheelZoom: false }).setView([20, 0], 2);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OSM</a> · © <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 18,
+    }).addTo(map);
+
+    var baseStyle = { fillColor: '#2C5282', fillOpacity: 0.15, color: '#2C5282', weight: 1.5 };
+    var hoverStyle = { fillOpacity: 0.35, weight: 2.5 };
+
+    // Mapping: ID → section info
+    var countryMap = {
+      170: { nom: '🇨🇴 Colombie', detail: '', anchor: 'colombie' },
+      188: { nom: '🇨🇷 Costa Rica', detail: '', anchor: 'costa-rica' },
+      591: { nom: '🇵🇦 Panama', detail: '', anchor: 'panama' },
+      72:  { nom: '🇧🇼 Botswana', detail: '', anchor: 'botswana' },
+      764: { nom: '🇹🇭 Thaïlande', detail: '', anchor: 'thailande' },
+      418: { nom: '🇱🇦 Laos', detail: 'Vientiane, Luang Prabang', anchor: 'laos' },
+    };
+    var stateMap = {
+      '41': { nom: '🇺🇸 États-Unis', detail: 'Oregon', anchor: 'etats-unis' },
+      '53': { nom: '🇺🇸 États-Unis', detail: 'Washington', anchor: 'etats-unis' },
+      '06': { nom: '🇺🇸 États-Unis', detail: 'Californie', anchor: 'etats-unis' },
+    };
+
+    function makePopup(info) {
+      var html = '<strong>' + info.nom + '</strong>';
+      if (info.detail) html += '<br><span style="font-size:12px;color:#64748B">' + info.detail + '</span>';
+      html += '<br><a href="#' + info.anchor + '" style="color:#2C5282;font-size:12px">Voir la section →</a>';
+      return html;
+    }
+
+    function addInteraction(layer, info) {
+      layer.bindPopup(makePopup(info));
+      layer.on('mouseover', function() { layer.setStyle(hoverStyle); });
+      layer.on('mouseout', function() { layer.setStyle(baseStyle); });
+    }
+
+    try {
+      // Countries
+      var fullIds = [170, 188, 591, 72, 764, 418];
+      var res = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+      var topo = await res.json();
+      var countries = topojson.feature(topo, topo.objects.countries);
+      L.geoJSON(countries, {
+        filter: function(f) { return fullIds.indexOf(Number(f.id)) !== -1; },
+        style: baseStyle,
+        onEachFeature: function(f, layer) {
+          var info = countryMap[Number(f.id)];
+          if (info) addInteraction(layer, info);
+        }
+      }).addTo(map);
+
+      // US states
+      var stRes = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
+      var stTopo = await stRes.json();
+      var states = topojson.feature(stTopo, stTopo.objects.states);
+      L.geoJSON(states, {
+        filter: function(f) { return ['41','53','06'].indexOf(f.id) !== -1; },
+        style: baseStyle,
+        onEachFeature: function(f, layer) {
+          var info = stateMap[f.id];
+          if (info) addInteraction(layer, info);
+        }
+      }).addTo(map);
+
+      // Approximate regions
+      var regions = { type: 'FeatureCollection', features: [
+        { type: 'Feature', properties: { nom: '🇨🇦 Canada', detail: 'Vancouver (C.-B.)', anchor: 'canada' }, geometry: { type: 'Polygon', coordinates: [[[-139,60],[-114,60],[-114,49],[-122,49],[-123.2,48.7],[-125.5,48.5],[-127.5,50],[-129.5,51.5],[-131.5,53.5],[-134,55.5],[-137,58],[-139,60]]] }},
+        { type: 'Feature', properties: { nom: '🇿🇦 Afrique du Sud', detail: 'Cape Town, Paarl', anchor: 'afrique-du-sud' }, geometry: { type: 'Polygon', coordinates: [[[17.5,-34.8],[18.5,-34.2],[19.3,-33.6],[20.0,-33.0],[20.7,-32.0],[20.7,-31.2],[19.5,-31.2],[18.3,-32.0],[17.5,-33.2],[17.5,-34.8]]] }},
+        { type: 'Feature', properties: { nom: '🇧🇷 Brésil', detail: 'São Paulo', anchor: 'bresil' }, geometry: { type: 'Polygon', coordinates: [[[-53.1,-22.7],[-51.0,-20.8],[-49.0,-20.0],[-46.5,-20.0],[-44.2,-22.5],[-45.0,-24.7],[-47.5,-25.3],[-50.0,-25.3],[-52.0,-24.5],[-53.1,-22.7]]] }}
+      ]};
+      L.geoJSON(regions, {
+        style: baseStyle,
+        onEachFeature: function(f, layer) {
+          addInteraction(layer, f.properties);
+        }
+      }).addTo(map);
+    } catch(e) {
+      console.warn('Boundaries not loaded:', e);
+    }
+
+    // Fit bounds from zone coordinates
+    var bounds = zones.map(function(z) { return [z.lat, z.lng]; });
+    if (bounds.length > 0) {
+      map.fitBounds(bounds, { padding: [30, 30], maxZoom: 3 });
+    }
+  });
+</script>

@@ -1,0 +1,419 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TagCompetence from '../../../components/TagCompetence.astro';
+import { getCollection, render } from 'astro:content';
+import { getConnexionsForStudy } from '../../../data/connexions';
+
+export async function getStaticPaths() {
+  const etudes = await getCollection('etudes-de-cas', ({ data }) => data.publie === true);
+  const etudesTriees = etudes.sort((a, b) => a.data.ordre - b.data.ordre);
+
+  return etudesTriees.map((etude, index) => ({
+    params: { slug: etude.id },
+    props: {
+      etude,
+      etudeSuivante: etudesTriees[index + 1] ?? null,
+      allEtudes: etudesTriees,
+    },
+  }));
+}
+
+const { etude, etudeSuivante, allEtudes } = Astro.props;
+const { Content } = await render(etude);
+const { titre, entreprise, pays, ville, taille, domaine, duree, tags, image, imageAlt, dateVisite, contact } = etude.data;
+
+// Supply chain connections
+const studyConnexions = getConnexionsForStudy(etude.id);
+const connexionCards = studyConnexions.map(conn => {
+  const otherId = conn.direction === 'outgoing' ? conn.cible : conn.source;
+  const otherStudy = allEtudes.find((e: any) => e.id === otherId);
+  return otherStudy ? { ...conn, otherStudy } : null;
+}).filter(Boolean);
+---
+
+<BaseLayout
+  title={`${titre} | Industrial Journey`}
+  description={etude.data.resume}
+>
+  <article class="py-12" aria-labelledby="etude-titre">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="max-w-[1040px] mx-auto px-6 mb-8">
+      <ol class="flex items-center gap-1.5 text-xs text-secondary">
+        <li>
+          <a href="/en/etudes-de-cas/" class="hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
+            Case Studies
+          </a>
+        </li>
+        <li aria-hidden="true" class="select-none">›</li>
+        <li class="text-primary truncate" aria-current="page">{titre}</li>
+      </ol>
+    </nav>
+
+    <!-- Header metadata + logo -->
+    <header class="max-w-[1040px] mx-auto px-6 mb-12">
+      <div class="flex items-start gap-6">
+        <!-- Title & metadata -->
+        <div class="flex-1 min-w-0">
+          <h1 id="etude-titre" class="text-primary">{titre}</h1>
+
+          <p class="text-sm text-secondary mt-3">
+            {ville}, {pays} · {taille} · {domaine}
+          </p>
+          {(dateVisite || contact) && (
+            <p class="text-sm text-secondary mt-1">
+              {dateVisite && <span>Visit: {dateVisite}</span>}
+              {dateVisite && contact && <span> · </span>}
+              {contact && <span>Contact: {contact}</span>}
+            </p>
+          )}
+
+          <div role="list" class="flex flex-wrap gap-2 mt-4">
+            {tags.map((tag) => (
+              <TagCompetence tag={tag} variant="default" />
+            ))}
+          </div>
+        </div>
+
+        <!-- Company logo -->
+        <div class="hidden sm:flex flex-shrink-0 w-20 h-20 items-center justify-center rounded-lg border border-border bg-white p-2">
+          <img
+            src={image}
+            alt={imageAlt}
+            class="max-w-full max-h-full object-contain"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+
+      <hr class="border-border mt-8" />
+    </header>
+
+    <!-- Format 4 Temps content -->
+    <div class="etude-content max-w-[1040px] mx-auto px-6">
+      <Content />
+    </div>
+
+    <!-- Supply chain connections -->
+    {connexionCards.length > 0 && (
+      <aside class="max-w-[1040px] mx-auto px-6 mt-12">
+        <h2 class="text-lg font-semibold text-primary">Supply chain connections</h2>
+        <div class="mt-4 space-y-3">
+          {connexionCards.map((card: any) => {
+            const isOutgoing = card.direction === 'outgoing';
+            const label = card.type === 'fournisseur'
+              ? (isOutgoing ? 'Supplier to' : 'Customer of')
+              : 'Partner';
+            return (
+              <a
+                href={`/en/etudes-de-cas/${card.otherStudy.id}`}
+                class="flex items-center gap-3 p-3 rounded-lg border border-border bg-white hover:shadow hover:-translate-y-px transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
+              >
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 text-sm">
+                    <span class="font-medium text-primary">{card.otherStudy.data.entreprise}</span>
+                    <span class="text-[10px] font-medium uppercase tracking-wide px-2 py-0.5 rounded-full bg-accent/10 text-accent flex-shrink-0">
+                      {label}
+                    </span>
+                  </div>
+                  <p class="text-xs text-secondary mt-1">{card.descriptionEn}</p>
+                </div>
+                <span class="text-accent text-sm flex-shrink-0">→</span>
+              </a>
+            );
+          })}
+        </div>
+      </aside>
+    )}
+
+    <!-- Bottom navigation -->
+    <footer class="max-w-[1040px] mx-auto px-6 mt-16">
+      <hr class="border-border mb-8" />
+
+      <a
+        href="/en/etudes-de-cas/"
+        class="inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
+      >
+        &larr; Back to case studies
+      </a>
+
+      {etudeSuivante && (
+        <a
+          href={`/en/etudes-de-cas/${etudeSuivante.id}`}
+          class="block mt-8 p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
+        >
+          <p class="text-xs text-secondary uppercase tracking-wide font-medium">Next study</p>
+          <p class="text-primary font-semibold mt-2">{etudeSuivante.data.titre}</p>
+          <p class="text-sm text-secondary mt-1 line-clamp-2">{etudeSuivante.data.resume}</p>
+        </a>
+      )}
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  /* Format 4 Temps — McKinsey numbers */
+  .etude-content {
+    counter-reset: section;
+  }
+
+  .etude-content :global(h2) {
+    counter-increment: section;
+    position: relative;
+    margin-top: 3rem;
+  }
+
+  .etude-content :global(h2)::before {
+    content: "0" counter(section);
+    display: block;
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--color-border);
+    margin-bottom: 0.5rem;
+  }
+
+  .etude-content :global(h2:first-of-type) {
+    margin-top: 0;
+  }
+
+  /* Paragraph spacing */
+  .etude-content :global(p) {
+    margin-top: 1rem;
+  }
+
+  .etude-content :global(h2 + p) {
+    margin-top: 0.75rem;
+  }
+
+  /* Bold = SemiBold for lean terms */
+  .etude-content :global(strong) {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  /* Lists — spacing & style */
+  .etude-content :global(ul) {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+    list-style-type: disc;
+  }
+
+  .etude-content :global(li) {
+    margin-top: 0.35rem;
+    color: var(--color-secondary);
+  }
+
+  /* Frise flux de production — style Méthode, contenue dans la largeur */
+  .etude-content :global(blockquote) {
+    background: none;
+    border-left: none;
+    border-radius: 0;
+    padding: 0;
+    margin-top: 0.25rem;
+    overflow: visible;
+  }
+
+  .etude-content :global(blockquote p) {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    font-size: 0;
+    line-height: 0;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 7rem;
+    text-align: center;
+  }
+
+  /* Ligne horizontale — style Méthode */
+  .etude-content :global(blockquote p)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    background-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
+    z-index: 0;
+    transform: translateY(-50%);
+  }
+
+  /* Pointe de flèche — alignée sur la ligne */
+  .etude-content :global(blockquote p)::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 7px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
+    z-index: 1;
+  }
+
+  /* Étapes — texte avec retour à la ligne */
+  .etude-content :global(blockquote strong) {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--color-primary);
+    font-weight: 600;
+    padding: 0 0.25rem;
+    border: none;
+    white-space: normal;
+    flex: 1 1 0;
+    min-width: 0;
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Point sur la ligne — cercle accent, toujours centré sur l'axe */
+  .etude-content :global(blockquote strong)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  /* Connecteur vertical fin */
+  .etude-content :global(blockquote strong)::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+    transform: translateX(-50%);
+    z-index: 0;
+  }
+
+  /* Étapes impaires : au-dessus, texte aligné près de l'axe */
+  .etude-content :global(blockquote strong:nth-of-type(odd)) {
+    justify-content: flex-end;
+    padding-bottom: 4.25rem;
+  }
+  .etude-content :global(blockquote strong:nth-of-type(odd))::after {
+    top: calc(50% - 0.5rem);
+    height: 0.5rem;
+  }
+
+  /* Étapes paires : en dessous, texte aligné près de l'axe */
+  .etude-content :global(blockquote strong:nth-of-type(even)) {
+    justify-content: flex-start;
+    padding-top: 4.25rem;
+  }
+  .etude-content :global(blockquote strong:nth-of-type(even))::after {
+    top: 50%;
+    height: 0.5rem;
+  }
+
+  /* Callout Enseignement — texte seul dans le bloc bleu */
+  .etude-content :global(h2:last-of-type ~ *) {
+    background-color: color-mix(in srgb, var(--color-accent) 5%, transparent);
+    border-left: 4px solid var(--color-accent);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .etude-content :global(h2:last-of-type + p) {
+    margin-top: 0;
+    padding-top: 0.75rem;
+  }
+
+  .etude-content :global(h2:last-of-type ~ p) {
+    margin-top: 0;
+    padding-top: 0.75rem;
+  }
+
+  .etude-content :global(h2:last-of-type ~ *:last-child) {
+    padding-bottom: 1.5rem;
+  }
+
+  /* Images dans le contenu — centrées, pas de rognage */
+  .etude-content :global(img) {
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    margin-top: 1.25rem;
+  }
+
+  .etude-content :global(img + em),
+  .etude-content :global(p:has(> img) + p > em:first-child) {
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--color-secondary);
+    margin-top: 0.5rem;
+  }
+
+  /* Grille photos côte à côte (2 colonnes par défaut) */
+  .etude-content :global(.photos-row) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .etude-content :global(.photos-row-3) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .etude-content :global(.photos-row figure) {
+    margin: 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .etude-content :global(.photos-row img) {
+    margin-top: 0;
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+  }
+
+  .etude-content :global(.photos-row figcaption) {
+    text-align: center;
+    font-size: 0.6875rem;
+    color: var(--color-secondary);
+    margin-top: 0.375rem;
+    line-height: 1.625;
+  }
+
+  /* Responsive — smaller numbers on mobile */
+  @media (max-width: 767px) {
+    .etude-content :global(h2)::before {
+      font-size: 2rem;
+    }
+
+    .etude-content :global(.photos-row) {
+      grid-template-columns: 1fr;
+    }
+
+    .etude-content :global(.photos-row-3) {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

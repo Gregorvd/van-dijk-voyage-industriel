@@ -1,0 +1,26 @@
+---
+interface Props {
+  tag: string;
+  variant?: 'small' | 'default';
+}
+
+const { tag, variant = 'small' } = Astro.props;
+---
+
+<span
+  role="listitem"
+  class:list={[
+    'inline-block font-medium rounded text-accent',
+    variant === 'small'
+      ? 'text-[11px] px-2 py-0.5'
+      : 'text-xs px-2 py-1',
+  ]}
+>
+  {tag}
+</span>
+
+<style>
+  span {
+    background-color: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
+</style>

@@ -1,36 +1,54 @@
 ---
 import BoutonCTA from './BoutonCTA.astro';
+import { getLocaleFromPath, getAlternatePath } from '../i18n/utils';
 
 const currentPath = Astro.url.pathname;
+const locale = getLocaleFromPath(currentPath);
+const alternatePath = getAlternatePath(currentPath);
 
-const navLinks = [
+const navLinksFr = [
   { label: 'Accueil', href: '/' },
   { label: 'Études de cas', href: '/etudes-de-cas/' },
   { label: 'Pays & Culture', href: '/pays-et-culture/' },
-  { label: 'Bilan', href: '/bilan/' },
+  { label: 'Apprentissages', href: '/bilan/' },
+  { label: 'Vision', href: '/vision/' },
   { label: 'À propos', href: '/a-propos/' },
 ];
 
+const navLinksEn = [
+  { label: 'Home', href: '/en/' },
+  { label: 'Case Studies', href: '/en/etudes-de-cas/' },
+  { label: 'Countries', href: '/en/pays-et-culture/' },
+  { label: 'Skills', href: '/en/bilan/' },
+  { label: 'Vision', href: '/en/vision/' },
+  { label: 'About', href: '/en/a-propos/' },
+];
+
+const navLinks = locale === 'en' ? navLinksEn : navLinksFr;
+const ctaLabel = locale === 'en' ? 'Download CV' : 'Télécharger CV';
+const siteName = 'Grégor Van Dijk';
+const homeHref = locale === 'en' ? '/en/' : '/';
+
 function isActive(href: string): boolean {
-  if (href === '/') return currentPath === '/';
+  if (href === '/' || href === '/en/') return currentPath === href;
   return currentPath.startsWith(href);
 }
 ---
 
-<header class="sticky top-0 z-50 bg-surface border-b border-border">
-  <nav aria-label="Navigation principale" class="flex items-center justify-between h-16 px-6 max-w-7xl mx-auto">
+<header class="sticky top-0 z-[1000] bg-surface border-b border-border">
+  <nav aria-label={locale === 'en' ? 'Main navigation' : 'Navigation principale'} class="flex items-center justify-between h-16 px-6 max-w-[1320px] mx-auto">
     <!-- Logo -->
-    <a href="/" class="font-semibold text-primary hover:text-accent transition-colors duration-150">
-      Voyage industriel
+    <a href={homeHref} class="font-semibold text-primary hover:text-accent transition-colors duration-150">
+      {siteName}
     </a>
 
     <!-- Desktop links -->
-    <div class="hidden md:flex items-center gap-8">
+    <div class="hidden lg:flex items-center gap-6">
       {navLinks.map(link => (
         <a
           href={link.href}
           class:list={[
-            'text-[0.9375rem] font-medium transition-colors duration-150',
+            'text-[0.8125rem] font-medium transition-colors duration-150',
             isActive(link.href)
               ? 'text-accent underline underline-offset-4 decoration-2'
               : 'text-primary hover:text-accent'
@@ -40,11 +58,18 @@ function isActive(href: string): boolean {
           {link.label}
         </a>
       ))}
-      <BoutonCTA label="Télécharger CV" href="/cv-gregor-vandijk.pdf" variant="primary" />
+      <BoutonCTA label={ctaLabel} href="/cv-gregor-vandijk.pdf" variant="primary" />
+      <a
+        href={alternatePath}
+        class="text-xs font-semibold uppercase px-2.5 py-1 rounded border border-border text-secondary hover:text-accent hover:border-accent transition-colors duration-150"
+        aria-label={locale === 'en' ? 'Switch to French' : 'Passer en anglais'}
+      >
+        {locale === 'en' ? 'FR' : 'EN'}
+      </a>
     </div>
 
     <!-- Mobile hamburger menu -->
-    <details class="md:hidden group">
+    <details class="lg:hidden group">
       <summary class="list-none cursor-pointer p-2 -mr-2">
         <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18M3 12h18M3 18h18" />
@@ -67,8 +92,15 @@ function isActive(href: string): boolean {
               {link.label}
             </a>
           ))}
-          <div class="pt-2">
-            <BoutonCTA label="Télécharger CV" href="/cv-gregor-vandijk.pdf" variant="primary" />
+          <div class="flex items-center gap-3 pt-2">
+            <BoutonCTA label={ctaLabel} href="/cv-gregor-vandijk.pdf" variant="primary" />
+            <a
+              href={alternatePath}
+              class="text-xs font-semibold uppercase px-2.5 py-1 rounded border border-border text-secondary hover:text-accent hover:border-accent transition-colors duration-150"
+              aria-label={locale === 'en' ? 'Switch to French' : 'Passer en anglais'}
+            >
+              {locale === 'en' ? 'FR' : 'EN'}
+            </a>
           </div>
         </div>
       </div>

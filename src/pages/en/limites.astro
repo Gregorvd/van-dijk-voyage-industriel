@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Limits & Opportunities | Grégor Van Dijk"
+  description="Analysis of structural constraints and development levers observed in visited workshops and factories."
+>
+  <div class="max-w-[1320px] mx-auto px-6 py-12">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide">Macro analysis · Artisan bicycle sector</p>
+    <h1 class="text-primary mt-2">Limits & Opportunities</h1>
+    <p class="text-secondary mt-4">
+      Analysis of structural constraints and development levers observed in visited workshops and factories.
+    </p>
+
+    <section class="mt-12">
+      <h2 class="text-primary">Findings</h2>
+
+      <div class="mt-6 grid grid-cols-1 gap-4">
+        <div class="p-5 rounded-lg border border-border bg-white">
+          <h3 class="text-primary font-semibold">1. Supplier dependency</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">Taiwanese carbon (Rolf Prima), Russian and Chinese titanium (Paragon), Belgian spokes (Rolf Prima), outsourced anodizing (White Industries, Paragon)… Nearly all visited structures depend on distant suppliers for critical components. This geopolitical fragility is underestimated.</p>
+        </div>
+        <div class="p-5 rounded-lg border border-border bg-white">
+          <h3 class="text-primary font-semibold">2. Limited scalability</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">The artisan model (4-5 bikes/day at Co-Motion, Bike Friday) is very difficult to scale without heavy investment in automation or partial offshoring. Full customization and low throughput form a commercial glass ceiling.</p>
+        </div>
+        <div class="p-5 rounded-lg border border-border bg-white">
+          <h3 class="text-primary font-semibold">3. Cost/quality trade-offs</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">Partial subcontracting (anodizing, painting, lab testing) generates additional costs, uncontrolled lead times and partial loss of quality control. Finding the right balance between what should be internalized and externalized is a permanent strategic challenge.</p>
+        </div>
+        <div class="p-5 rounded-lg border border-border bg-white">
+          <h3 class="text-primary font-semibold">4. Weak standardization</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">Generalized absence of parametric jigs, written internal standards and process documentation. This weakness creates strong dependency on key individuals: if an operator leaves, their know-how leaves with them. This is the main operational risk of visited structures.</p>
+        </div>
+        <div class="p-5 rounded-lg border border-border bg-white">
+          <h3 class="text-primary font-semibold">5. Light certification (US context)</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">The absence of mandatory certification in the US fosters innovation and reduces costs, but poses a real risk for export to Europe or Japan (EN, JIS standards). This freedom is a local competitive advantage that can become a barrier to internationalization.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="border-border mt-12" />
+
+    <section class="mt-12">
+      <h2 class="text-primary">Opportunities</h2>
+
+      <div class="mt-6 grid grid-cols-1 gap-4">
+        <div class="p-5 rounded-lg border border-accent/20 bg-accent/[0.03]">
+          <h3 class="text-primary font-semibold">1. Partial automation</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">The automatic loading of CNC lathes (White Industries) demonstrates that targeted partial automation can significantly increase productivity without altering the artisan character. Collaborative robots (cobots) represent an accessible opportunity for SMEs.</p>
+        </div>
+        <div class="p-5 rounded-lg border border-accent/20 bg-accent/[0.03]">
+          <h3 class="text-primary font-semibold">2. Partial reshoring</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">After COVID shocks and geopolitical tensions, appetite for "made local" is growing. Structures that control a short value chain will benefit from resilience and image advantages. Partial reshoring of critical components (carbon, titanium) is a strategic avenue to investigate.</p>
+        </div>
+        <div class="p-5 rounded-lg border border-accent/20 bg-accent/[0.03]">
+          <h3 class="text-primary font-semibold">3. Small batch flow optimization</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">Lean tools adapted for small batches (visual kanban, parametric jigs, partial component standardization) reduce lead times and errors without heavy investment. Bike Friday's example (hanging pouches) shows that tool simplicity is a virtue, not a limitation.</p>
+        </div>
+        <div class="p-5 rounded-lg border border-accent/20 bg-accent/[0.03]">
+          <h3 class="text-primary font-semibold">4. Regional supply chain</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">Developing local or regional supplier networks for raw materials and critical subcontracting would reduce lead times, logistics costs and geopolitical risks. Industrial clusters (Portland, Eugene) show that geographic proximity creates natural synergies.</p>
+        </div>
+        <div class="p-5 rounded-lg border border-accent/20 bg-accent/[0.03]">
+          <h3 class="text-primary font-semibold">5. Traceability & quality data</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">Moving from paper-based quality control (White Industries) to a simple digital system would enable better traceability, early drift detection and easier client communication. Lightweight tools (tablet + Google Sheets) can suffice to start.</p>
+        </div>
+      </div>
+    </section>
+
+    <blockquote class="mt-12 p-6 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+      These limits are not fatalities. They represent concrete opportunities for an industrial engineer able to read flows, structure processes and coordinate stakeholders. This is precisely the role I seek to fulfill.
+    </blockquote>
+
+    <hr class="border-border mt-12" />
+    <div class="flex justify-between mt-8">
+      <a href="/en/etudes-de-cas/" class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">← Case Studies</a>
+      <a href="/en/vision/" class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">Vision →</a>
+    </div>
+  </div>
+</BaseLayout>

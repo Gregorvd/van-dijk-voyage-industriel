@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const parcours = [
+  {
+    periode: 'April 2025 – Present',
+    titre: 'Synitier / Repair and Run, Paris',
+    description: 'Bicycle services and development manager. Design and deployment of technical training programs, website creation, bicycle repair and sales. Development of brand partnerships.',
+    chiffre: '→',
+    chiffreLabel: 'current position',
+    actif: true,
+  },
+  {
+    periode: 'Sept. 2024 – April 2025',
+    titre: 'Industrial exploration journey',
+    description: '8 months · 12 countries · USA, Colombia, Brazil, South Africa, Botswana, Southeast Asia. 30+ facilities visited.',
+    chiffre: '30+',
+    chiffreLabel: 'facilities visited',
+    actif: false,
+  },
+  {
+    periode: '2021 – 2024',
+    titre: 'Toyota TMMF, Onnaing',
+    description: 'Stamping production management. Flow management, continuous improvement and team coordination following the Toyota Production System (TPS). Plant of 5,000 employees.',
+    chiffre: '3 yrs',
+    chiffreLabel: 'automotive industry',
+    actif: false,
+  },
+  {
+    periode: 'Jul. – Sept. 2023',
+    titre: 'Decathlon Deutschland, Dortmund',
+    description: 'Warehouse improvement internship. Optimization of logistics flows and inventory management.',
+    chiffre: '',
+    chiffreLabel: '',
+    actif: false,
+  },
+  {
+    periode: '2021 – 2024',
+    titre: 'IMT Nord Europe (formerly Mines de Douai)',
+    description: 'Engineering degree, Industrial Engineering. Specialization in production management, continuous improvement and industrial logistics.',
+    chiffre: '🎓',
+    chiffreLabel: 'engineer',
+    actif: false,
+  },
+  {
+    periode: 'April – Jul. 2021',
+    titre: 'S.A.M.R, Pont-Sainte-Marie',
+    description: 'Production engineering internship. Programming and setting up machine tools (milling, turning). Hands-on discovery of workshop management.',
+    chiffre: 'CNC',
+    chiffreLabel: 'CNC machining',
+    actif: false,
+  },
+  {
+    periode: '2019 – 2021',
+    titre: 'IUT de Troyes',
+    description: 'DUT in Mechanical and Production Engineering. Strong foundations in mechanical design, manufacturing and metrology.',
+    chiffre: '🎓',
+    chiffreLabel: 'DUT GMP',
+    actif: false,
+  },
+  {
+    periode: '2017 – 2020',
+    titre: 'PCMA Tennis, Instructor',
+    description: 'Tennis instruction. Pedagogy, group management, technical skills transmission — abilities directly transferable to team coordination in industrial environments.',
+    chiffre: '3 yrs',
+    chiffreLabel: 'teaching',
+    actif: false,
+  },
+];
+---
+
+<BaseLayout
+  title="About | Grégor Van Dijk"
+  description="Industrial engineer graduated from IMT Nord Europe. Background: Toyota, Decathlon, industrial exploration journey (12 countries). Based in Bienne, Switzerland."
+>
+  <div class="max-w-[1320px] mx-auto px-6 py-12">
+    <div class="flex items-start gap-6">
+      <div class="flex-1 min-w-0">
+        <p class="text-xs text-accent font-semibold uppercase tracking-wide">Industrial engineer · 25 years old</p>
+        <h1 class="text-primary mt-2">About</h1>
+        <p class="text-secondary mt-4">
+          Technical project manager actively seeking · French-speaking Switzerland
+        </p>
+      </div>
+      <div class="hidden sm:block flex-shrink-0">
+        <img
+          src="/images/photo-gregor.webp"
+          alt="Grégor Van Dijk"
+          width="120"
+          height="120"
+          class="w-[120px] h-[120px] rounded-xl object-cover border border-border shadow-sm bg-surface"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+
+    <!-- Background -->
+    <section class="mt-12">
+      <p class="text-xs text-accent font-semibold uppercase tracking-wide">Who am I</p>
+      <h2 class="text-primary mt-2">Background</h2>
+
+      <div class="mt-6">
+        <div class="flex-1 min-w-0">
+          <p class="text-secondary">
+            Industrial engineer graduated from IMT Nord Europe (formerly Mines de Douai), specializing in industrial engineering. After 3 years at Toyota (stamping production management) and experiences at Decathlon and in an industrial SME, I dedicated 8 months to an industrial observation journey across 12 countries (USA, Colombia, Brazil, South Africa, Botswana, Southeast Asia), with over 30 facilities visited.
+          </p>
+          <p class="text-secondary mt-4">
+            This journey was not a simple world tour. It was a methodical approach: visiting artisan workshops and precision factories, analyzing their production flows, identifying their strengths and limitations, and drawing lessons applicable to other industrial contexts. A lifelong cycling enthusiast, I naturally oriented my observation journey around this industry.
+          </p>
+          <p class="text-secondary mt-4">
+            Based in Bienne, I am currently working as a development manager focusing solely on the training side at Synitier (website development, establishment of a new certification, creation of educational content), while remaining open to opportunities in precision industry, microtechnology, watchmaking, mobility or medical in French-speaking Switzerland.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="mt-12">
+      <p class="text-xs text-accent font-semibold uppercase tracking-wide">Timeline</p>
+      <h2 class="text-primary mt-2">Key experiences</h2>
+
+      <ol class="mt-8 space-y-0">
+        {parcours.map((etape, i) => (
+          <li class:list={[
+            'relative pl-10 pb-10',
+            i < parcours.length - 1 ? 'border-l-2 border-border' : 'border-l-2 border-transparent',
+            'ml-3'
+          ]}>
+            {/* Node */}
+            <div class:list={[
+              'absolute left-[-7px] top-0 w-3 h-3 rounded-full border-2',
+              etape.actif
+                ? 'bg-accent border-accent ring-4 ring-accent/20'
+                : 'bg-white border-accent'
+            ]} />
+
+            <div>
+              <p class="text-xs text-secondary font-medium uppercase tracking-wide">{etape.periode}</p>
+              <h3 class="text-primary font-semibold mt-1">{etape.titre}</h3>
+              <p class="text-secondary mt-2">{etape.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Contact -->
+    <section class="mt-16">
+      <h2 class="text-primary">Contact</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+        <a
+          href="mailto:vdijk.gregor@gmail.com"
+          class="flex flex-col items-center gap-2 p-4 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
+        >
+          <span class="text-sm font-medium text-primary">Email</span>
+          <span class="text-xs text-secondary">vdijk.gregor@gmail.com</span>
+        </a>
+        <a
+          href="https://wa.me/33768232063"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col items-center gap-2 p-4 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
+        >
+          <span class="text-sm font-medium text-primary">WhatsApp</span>
+          <span class="text-xs text-secondary">+33 7 68 23 20 63</span>
+        </a>
+        <a
+          href="https://linkedin.com/in/gregor-vandijk"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col items-center gap-2 p-4 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
+        >
+          <span class="text-sm font-medium text-primary">LinkedIn</span>
+          <span class="text-xs text-secondary">linkedin.com/in/gregor-vandijk</span>
+        </a>
+      </div>
+
+      <div class="mt-6 p-4 rounded-lg bg-surface-dark">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+          <div>
+            <p class="text-sm font-semibold text-primary">Location</p>
+            <p class="text-xs text-secondary mt-1">Bienne, Switzerland · available now</p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-primary">Languages</p>
+            <p class="text-xs text-secondary mt-1">French (native) · Professional English (TOEIC 790) · German (basic)</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-xs text-secondary mt-4 italic">References available upon request.</p>
+    </section>
+
+    <hr class="border-border mt-12" />
+    <div class="flex justify-between mt-8">
+      <a href="/en/vision/" class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
+        ← Vision
+      </a>
+      <a href="/en/annexes/" class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
+        Appendices →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

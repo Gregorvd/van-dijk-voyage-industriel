@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Skills & Learnings | Grégor Van Dijk"
+  description="Skills developed in the field during 8 months of industrial travel. 6 domains: continuous improvement, industrialization, production management, coordination, innovation, cross-functional."
+>
+  <div class="max-w-[1320px] mx-auto px-6 py-12">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide">6 domains · Field & analysis</p>
+    <h1 class="text-primary mt-2">Skills & Learnings</h1>
+    <p class="text-secondary mt-4">
+      Skills developed and confirmed in the field during 8 months of industrial travel. Organized by domain.
+    </p>
+
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">A. Continuous improvement</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Field identification of the 7 wastes (overproduction, waiting, unnecessary transport, over-processing, inventory, motion, defects) in visited workshops</li>
+        <li>Value stream reading (VSM) without formal tools: intuitive identification of bottlenecks and non-value-added activities</li>
+        <li>Observation of 5S practices: comparing levels of organization, labeling and standardization between workshops</li>
+        <li>Detection of simple Kaizen opportunities: adjustable jigs, kanban pouches, visual production order management</li>
+        <li>Understanding the limits of continuous improvement in structures with very high individual dependency</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Summary:</strong> Continuous improvement is not learned in a classroom: it is read in the field, in the layout of machines, in queue management and in how teams organize their workspace.
+      </blockquote>
+    </section>
+
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">B. Industrialization</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Understanding CNC processes: turning, multi-axis milling, setup time reduction (multi-vises), automatic loading</li>
+        <li>Reading TIG welding processes: thermal management, tacking, progressive passes, holding jigs</li>
+        <li>Observation of finishing techniques: anodizing, epoxy painting, electrostatic powder coating, laser engraving, ceramic finishes</li>
+        <li>Understanding jig (JIG) logic: fixed vs. adjustable vs. parametric</li>
+        <li>3D validation (FDM printing) before series launch: reducing non-conformity risks</li>
+        <li>Observation of design-to-cost: integrating cost price from the design phase</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Summary:</strong> Industrialization is not binary: it deploys along a spectrum, from the artisan workshop (main tool = intuition) to the semi-industrial factory (<a href="/en/etudes-de-cas/co-motion" class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a>, CNC + TIG + painting). Understanding where a structure sits on this spectrum is the starting point for any improvement plan.
+      </blockquote>
+    </section>
+
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">C. Production management</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Pure pull flow: all visited structures produce to order, zero finished goods inventory (except <a href="/en/etudes-de-cas/paragon" class="text-accent hover:text-accent-hover underline underline-offset-2">Paragon</a>: standardized parts inventory)</li>
+        <li>Visual kanban: pouch system at <a href="/en/etudes-de-cas/bike-friday" class="text-accent hover:text-accent-hover underline underline-offset-2">Bike Friday</a>, plans attached to machines at <a href="/en/etudes-de-cas/paragon" class="text-accent hover:text-accent-hover underline underline-offset-2">Paragon</a>, adjustable production orders at <a href="/en/etudes-de-cas/co-motion" class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a></li>
+        <li>Production order (PO) management and physical tracking through the workshop</li>
+        <li>Small batch scheduling: priorities, lead times, managing contingencies in structures of 3 to 40 people</li>
+        <li>Integrated quality control: in-process verification loops (<a href="/en/etudes-de-cas/co-motion" class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a> shop supervisor, <a href="/en/etudes-de-cas/white-industries" class="text-accent hover:text-accent-hover underline underline-offset-2">White Industries</a> frequency-based control)</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Summary:</strong> The most effective production management model observed is not necessarily the most IT-sophisticated. Bike Friday's hanging pouch illustrates that a simple physical system can outperform a poorly used ERP.
+      </blockquote>
+    </section>
+
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">D. Technical coordination</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Mapping subcontracting interfaces: anodizing, painting, complex machining, lab testing. Each structure outsources differently</li>
+        <li>Understanding outsourcing risks: delays, finishing quality, geographic dependency (e.g., Sacramento anodizing for <a href="/en/etudes-de-cas/white-industries" class="text-accent hover:text-accent-hover underline underline-offset-2">White Industries</a>)</li>
+        <li>Reading component supply chains: premium supplier networks (Paul Component), raw materials (Russian/Chinese titanium, Belgian spokes)</li>
+        <li>Office-workshop interface: observing information transfers between design (Fusion 360, paper plans) and production</li>
+        <li>Coordination in a multilingual context: technical visits and exchanges in English in all workshops</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Summary:</strong> Technical coordination means knowing who owns each decision and ensuring information flows correctly between stakeholders. I observed that the lack of formal coordination is the main cause of delays and errors in artisan SMEs.
+      </blockquote>
+    </section>
+
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">E. Product innovation</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Frugal innovation: ping-pong balls (White Industries), kanban pouches (Bike Friday), simple solutions with high impact</li>
+        <li>Rapid prototyping: FDM 3D printing for pre-series validation (Paragon, White Industries)</li>
+        <li>Design-to-cost: product design with simultaneous cost price calculation (White Industries / Fusion 360)</li>
+        <li>Entrepreneurial failure lessons: Papillon (Taiwanese titanium) and Cylo (differentiating geometry). Insights on barriers to adoption</li>
+        <li>Technological diversity integrated in a single product (Co-Motion): belt drive, gearbox, electronics. Integration as a value driver</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Summary:</strong> The most memorable innovation is not always the most expensive. The best solutions observed in the field were simple, pragmatic and directly born from operational constraints. That is the essence of field engineering.
+      </blockquote>
+    </section>
+
+    <section class="mt-8 p-6 rounded-xl border border-border bg-white">
+      <h2 class="text-primary">F. Cross-functional skills</h2>
+      <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
+        <li>Conducting technical interviews in English with high-level professionals (founders, GMs, engineers) in informal settings</li>
+        <li>Rapid cultural adaptation: USA, Colombia, South Africa, Southeast Asia. Different communication styles and professional postures</li>
+        <li>Active technical curiosity: asking the right questions, understanding a process without being a specialist, reformulating and synthesizing</li>
+        <li>Resilience and autonomy in long-term travel: organization, uncertainty management, personal initiative over 8 months</li>
+        <li>Synthesis and structuring: transforming field observations into documented and shareable analyses</li>
+      </ul>
+      <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
+        <strong class="not-italic text-primary">Summary:</strong> These 8 months confirmed that the most useful skills in industrial engineering are often relational: active listening, non-defensive curiosity, ability to quickly understand and reformulate what one observes. These are the skills that enable being operational in a new environment.
+      </blockquote>
+    </section>
+
+    <hr class="border-border mt-12" />
+
+    <div class="flex justify-between mt-8">
+      <a href="/en/pays-et-culture/" class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
+        ← Countries
+      </a>
+      <a href="/en/vision/" class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
+        Vision →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

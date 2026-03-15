@@ -1,11 +1,344 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CardEtude from '../components/CardEtude.astro';
+import { getCollection } from 'astro:content';
+
+const etudes = await getCollection('etudes-de-cas', ({ data }) => data.publie === true);
+const etudesVedettes = etudes.sort((a, b) => a.data.ordre - b.data.ordre).slice(0, 3);
+
+// Données carte pour les zones visitées
+const zones = [
+  { lat: 45.52, lng: -122.68, nom: 'États-Unis', detail: 'Oregon, Washington, Californie', anchor: 'etats-unis' },
+  { lat: 49.28, lng: -123.12, nom: 'Canada', detail: 'Vancouver', anchor: 'canada' },
+  { lat: 4.71, lng: -74.07, nom: 'Colombie', detail: '', anchor: 'colombie' },
+  { lat: -23.55, lng: -46.63, nom: 'Brésil', detail: 'São Paulo', anchor: 'bresil' },
+  { lat: -33.93, lng: 18.42, nom: 'Afrique du Sud', detail: 'Cape Town, Paarl', anchor: 'afrique-du-sud' },
+  { lat: -22.33, lng: 24.68, nom: 'Botswana', detail: '', anchor: 'botswana' },
+  { lat: 9.93, lng: -84.08, nom: 'Costa Rica', detail: '', anchor: 'costa-rica' },
+  { lat: 8.98, lng: -79.52, nom: 'Panama', detail: '', anchor: 'panama' },
+  { lat: 15.87, lng: 100.99, nom: 'Thaïlande', detail: '', anchor: 'thailande' },
+  { lat: 17.97, lng: 102.63, nom: 'Laos', detail: 'Vientiane, Luang Prabang', anchor: 'laos' },
+];
 ---
 
 <BaseLayout
-  title="Voyage industriel — Portfolio d'ingénieur industriel"
-  description="Portfolio analytique de Grégor Van Dijk : 8 mois d'observations industrielles dans 30+ structures, 12 pays, 3 continents. Regard Toyota Production System."
+  title="Grégor Van Dijk | Exploration industrielle & vélo"
+  description="Ingénieur industriel, 25 ans. 8 mois, 12 pays, 30+ structures visitées. Chef de projet technique, Suisse romande."
 >
-  <h1 class="text-accent">Voyage industriel</h1>
-  <p class="text-secondary">Fondation du site — design system initialisé.</p>
+  <!-- Hero section -->
+  <section class="max-w-[1040px] mx-auto text-center px-6 pt-20 pb-12">
+    <p class="text-sm text-secondary font-medium uppercase tracking-wide">
+      Ingénieur industriel · 25 ans
+    </p>
+
+    <h1 class="text-primary mt-4">Grégor Van Dijk</h1>
+
+    <p class="text-secondary mt-6 text-lg leading-relaxed">
+      8 mois, 12 pays, 30+ structures visitées : ateliers artisanaux, usines de composants et villes cyclistes. Ce site documente une démarche d'observation industrielle menée en Amérique du Nord, en Amérique du Sud et en Asie.
+    </p>
+
+    <p class="text-accent/80 mt-4 italic">
+      Toyota m'a appris les principes. Le voyage m'a prouvé qu'ils sont universels.
+    </p>
+
+    <!-- Bandeau recherche -->
+    <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium">
+      <span aria-hidden="true">→</span>
+      Recherche : Chef de projet technique · Suisse romande
+    </div>
+
+    <!-- Statistiques -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+      <div aria-label="8 mois de voyage">
+        <p class="text-2xl font-semibold text-primary">8</p>
+        <p class="text-sm text-secondary">mois de voyage</p>
+      </div>
+      <div aria-label="12 pays visités">
+        <p class="text-2xl font-semibold text-primary">12</p>
+        <p class="text-sm text-secondary">pays visités</p>
+      </div>
+      <div aria-label="Plus de 30 structures observées">
+        <p class="text-2xl font-semibold text-primary">30+</p>
+        <p class="text-sm text-secondary">structures observées</p>
+      </div>
+      <div aria-label="8 études de cas">
+        <p class="text-2xl font-semibold text-primary">8</p>
+        <p class="text-sm text-secondary">études de cas</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personas -->
+  <section class="max-w-[1320px] mx-auto px-6 py-12 border-t border-border">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide text-center">Ce site s'adresse à</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+      <a href="/etudes-de-cas/" class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
+        <p class="text-accent font-semibold text-sm">Recruteur industriel</p>
+        <p class="text-primary font-semibold mt-2">Vous cherchez un profil terrain ?</p>
+        <p class="text-secondary text-sm mt-2 leading-relaxed">Découvrez 8 études de cas qui illustrent ma capacité à lire un système de production, identifier des leviers d'amélioration et structurer des observations exploitables.</p>
+        <span class="inline-flex items-center gap-1 text-accent text-sm font-medium mt-4 group-hover:gap-2 transition-all">Voir les études →</span>
+      </a>
+      <a href="/bilan/" class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
+        <p class="text-accent font-semibold text-sm">Responsable technique</p>
+        <p class="text-primary font-semibold mt-2">Quelles compétences concrètes ?</p>
+        <p class="text-secondary text-sm mt-2 leading-relaxed">6 domaines de compétences développés sur le terrain : amélioration continue, industrialisation, gestion de production, coordination, innovation et transversal.</p>
+        <span class="inline-flex items-center gap-1 text-accent text-sm font-medium mt-4 group-hover:gap-2 transition-all">Voir les compétences →</span>
+      </a>
+      <a href="/vision/" class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
+        <p class="text-accent font-semibold text-sm">Ingénieur / curieux</p>
+        <p class="text-primary font-semibold mt-2">Quelle vision industrielle ?</p>
+        <p class="text-secondary text-sm mt-2 leading-relaxed">Ce que ce voyage m'a appris sur le rôle de l'ingénieur industriel, les limites des structures artisanales et les opportunités d'amélioration qu'elles recèlent.</p>
+        <span class="inline-flex items-center gap-1 text-accent text-sm font-medium mt-4 group-hover:gap-2 transition-all">Lire ma vision →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section La démarche -->
+  <section class="max-w-[1320px] mx-auto px-6 py-16">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide">Méthode</p>
+    <h2 class="text-primary mt-2">Une observation industrielle structurée, pas un simple carnet de voyage.</h2>
+
+    <!-- Frise desktop (horizontale avec ligne) -->
+    <div class="hidden md:block mt-12">
+      <div class="relative">
+        <!-- Ligne de connexion horizontale -->
+        <div class="absolute top-5 left-[calc(16.67%-0px)] right-[calc(16.67%-0px)] h-0.5 bg-accent/20" aria-hidden="true"></div>
+
+        <div class="grid grid-cols-3 gap-8 relative">
+          <!-- Étape 01 -->
+          <div class="flex flex-col items-center text-center">
+            <div class="relative z-10 w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-semibold text-sm shadow-sm">01</div>
+            <h3 class="text-primary font-semibold mt-4">Observer</h3>
+            <p class="text-secondary mt-2 text-sm leading-relaxed max-w-xs">
+              Visites directes en atelier, discussions avec les fondateurs et les techniciens, observation des flux de production et des postes de travail.
+            </p>
+          </div>
+
+          <!-- Étape 02 -->
+          <div class="flex flex-col items-center text-center">
+            <div class="relative z-10 w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-semibold text-sm shadow-sm">02</div>
+            <h3 class="text-primary font-semibold mt-4">Analyser</h3>
+            <p class="text-secondary mt-2 text-sm leading-relaxed max-w-xs">
+              Lecture des process de fabrication, identification des forces et axes d'amélioration, détection des gaspillages et des pratiques Lean présentes ou absentes.
+            </p>
+          </div>
+
+          <!-- Étape 03 -->
+          <div class="flex flex-col items-center text-center">
+            <div class="relative z-10 w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-semibold text-sm shadow-sm">03</div>
+            <h3 class="text-primary font-semibold mt-4">Comparer</h3>
+            <p class="text-secondary mt-2 text-sm leading-relaxed max-w-xs">
+              Mise en perspective entre pays, modèles industriels et cultures de la mobilité. Recherche de patterns transversaux et d'enseignements applicables à d'autres contextes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Frise mobile (verticale avec ligne) -->
+    <div class="md:hidden mt-10">
+      <ol class="relative ml-5">
+        <!-- Ligne verticale -->
+        <div class="absolute left-0 top-5 bottom-5 w-0.5 bg-accent/20" aria-hidden="true"></div>
+
+        <li class="relative pl-8 pb-8">
+          <div class="absolute left-[-8px] top-0 z-10 w-4 h-4 rounded-full bg-accent border-2 border-white shadow-sm"></div>
+          <p class="text-xs text-accent font-semibold uppercase tracking-wide">01</p>
+          <h3 class="text-primary font-semibold mt-1">Observer</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            Visites directes en atelier, discussions avec les fondateurs et les techniciens, observation des flux de production et des postes de travail.
+          </p>
+        </li>
+
+        <li class="relative pl-8 pb-8">
+          <div class="absolute left-[-8px] top-0 z-10 w-4 h-4 rounded-full bg-accent border-2 border-white shadow-sm"></div>
+          <p class="text-xs text-accent font-semibold uppercase tracking-wide">02</p>
+          <h3 class="text-primary font-semibold mt-1">Analyser</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            Lecture des process de fabrication, identification des forces et axes d'amélioration, détection des gaspillages et des pratiques Lean présentes ou absentes.
+          </p>
+        </li>
+
+        <li class="relative pl-8">
+          <div class="absolute left-[-8px] top-0 z-10 w-4 h-4 rounded-full bg-accent border-2 border-white shadow-sm"></div>
+          <p class="text-xs text-accent font-semibold uppercase tracking-wide">03</p>
+          <h3 class="text-primary font-semibold mt-1">Comparer</h3>
+          <p class="text-secondary mt-2 text-sm leading-relaxed">
+            Mise en perspective entre pays, modèles industriels et cultures de la mobilité. Recherche de patterns transversaux et d'enseignements applicables à d'autres contextes.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Section « Compétences illustrées » -->
+  <section class="max-w-[1320px] mx-auto px-6 py-16 border-t border-border">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide">Compétences illustrées</p>
+    <h2 class="text-primary mt-2">Ce que cette démarche démontre</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
+      <div class="p-6 rounded-lg border border-border bg-white">
+        <h3 class="text-primary font-semibold">Lecture système industriel</h3>
+        <p class="text-secondary mt-2 text-sm leading-relaxed">
+          Capacité à identifier rapidement les flux, goulots et leviers d'optimisation dans une structure industrielle inconnue, sans documentation préalable.
+        </p>
+      </div>
+      <div class="p-6 rounded-lg border border-border bg-white">
+        <h3 class="text-primary font-semibold">Analyse Lean</h3>
+        <p class="text-secondary mt-2 text-sm leading-relaxed">
+          Détection terrain des gaspillages, des pratiques de flux, de gestion visuelle et des opportunités d'amélioration.
+        </p>
+      </div>
+      <div class="p-6 rounded-lg border border-border bg-white">
+        <h3 class="text-primary font-semibold">Vision internationale</h3>
+        <p class="text-secondary mt-2 text-sm leading-relaxed">
+          Compréhension des dynamiques industrielles et culturelles dans les villes visitées. Adaptation rapide à des environnements nouveaux, en anglais comme en contexte multiculturel.
+        </p>
+      </div>
+      <div class="p-6 rounded-lg border border-border bg-white">
+        <h3 class="text-primary font-semibold">Coordination technique</h3>
+        <p class="text-secondary mt-2 text-sm leading-relaxed">
+          Compréhension des interfaces bureau–atelier–fournisseurs et des contraintes de chaque acteur. Base solide pour coordonner des projets techniques en environnement industriel.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Carte -->
+  <section class="max-w-[1320px] mx-auto px-6 py-16 border-t border-border">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide">Géographie</p>
+    <h2 class="text-primary mt-2">Pays visités</h2>
+    <p class="text-secondary mt-2">
+      Amérique du Nord · Amérique Centrale · Amérique du Sud · Afrique · Asie
+    </p>
+
+    <div class="mt-8 rounded-lg overflow-hidden border border-border" style="height: 400px;" id="carte-accueil" aria-label="Carte des structures industrielles visitées">
+    </div>
+  </section>
+
+  <!-- Section études de cas -->
+  <section class="max-w-[1320px] mx-auto px-6 py-16 border-t border-border">
+    <h2 class="text-primary text-center">Études de cas</h2>
+    <p class="text-secondary text-center mt-2">Analyse détaillée des ateliers visités : flux de production, organisation, points forts, axes d'amélioration et enseignement principal.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+      {etudesVedettes.map((etude) => (
+        <CardEtude
+          titre={etude.data.titre}
+          pays={etude.data.pays}
+          ville={etude.data.ville}
+          taille={etude.data.taille}
+          duree={etude.data.duree}
+          image={etude.data.image}
+          imageAlt={etude.data.imageAlt}
+          resume={etude.data.resume}
+          tags={etude.data.tags}
+          slug={etude.id}
+          contact={etude.data.contact}
+        />
+      ))}
+    </div>
+
+    <div class="text-center mt-8">
+      <a
+        href="/etudes-de-cas/"
+        class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
+      >
+        Voir les 8 études de cas →
+      </a>
+    </div>
+  </section>
 </BaseLayout>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script is:inline src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script is:inline define:vars={{ zones }}>
+  document.addEventListener('DOMContentLoaded', async () => {
+    var el = document.getElementById('carte-accueil');
+    if (!el || !window.L) return;
+
+    var map = L.map(el, { scrollWheelZoom: false }).setView([20, 0], 2);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OSM</a> · © <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 18,
+    }).addTo(map);
+
+    var baseStyle = { fillColor: '#2C5282', fillOpacity: 0.15, color: '#2C5282', weight: 1.5 };
+    var hoverStyle = { fillOpacity: 0.35, weight: 2.5 };
+
+    var countryMap = {
+      170: { nom: '🇨🇴 Colombie', detail: '', anchor: 'colombie' },
+      188: { nom: '🇨🇷 Costa Rica', detail: '', anchor: 'costa-rica' },
+      591: { nom: '🇵🇦 Panama', detail: '', anchor: 'panama' },
+      72:  { nom: '🇧🇼 Botswana', detail: '', anchor: 'botswana' },
+      764: { nom: '🇹🇭 Thaïlande', detail: '', anchor: 'thailande' },
+      418: { nom: '🇱🇦 Laos', detail: 'Vientiane, Luang Prabang', anchor: 'laos' },
+    };
+    var stateMap = {
+      '41': { nom: '🇺🇸 États-Unis', detail: 'Oregon', anchor: 'etats-unis' },
+      '53': { nom: '🇺🇸 États-Unis', detail: 'Washington', anchor: 'etats-unis' },
+      '06': { nom: '🇺🇸 États-Unis', detail: 'Californie', anchor: 'etats-unis' },
+    };
+
+    function makePopup(info) {
+      var html = '<strong>' + info.nom + '</strong>';
+      if (info.detail) html += '<br><span style="font-size:12px;color:#64748B">' + info.detail + '</span>';
+      html += '<br><a href="/pays-et-culture/#' + info.anchor + '" style="color:#2C5282;font-size:12px">Voir la section →</a>';
+      return html;
+    }
+
+    function addInteraction(layer, info) {
+      layer.bindPopup(makePopup(info));
+      layer.on('mouseover', function() { layer.setStyle(hoverStyle); });
+      layer.on('mouseout', function() { layer.setStyle(baseStyle); });
+    }
+
+    try {
+      var fullIds = [170, 188, 591, 72, 764, 418];
+      var res = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+      var topo = await res.json();
+      var countries = topojson.feature(topo, topo.objects.countries);
+      L.geoJSON(countries, {
+        filter: function(f) { return fullIds.indexOf(Number(f.id)) !== -1; },
+        style: baseStyle,
+        onEachFeature: function(f, layer) {
+          var info = countryMap[Number(f.id)];
+          if (info) addInteraction(layer, info);
+        }
+      }).addTo(map);
+
+      var stRes = await fetch('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
+      var stTopo = await stRes.json();
+      var states = topojson.feature(stTopo, stTopo.objects.states);
+      L.geoJSON(states, {
+        filter: function(f) { return ['41','53','06'].indexOf(f.id) !== -1; },
+        style: baseStyle,
+        onEachFeature: function(f, layer) {
+          var info = stateMap[f.id];
+          if (info) addInteraction(layer, info);
+        }
+      }).addTo(map);
+
+      var regions = { type: 'FeatureCollection', features: [
+        { type: 'Feature', properties: { nom: '🇨🇦 Canada', detail: 'Vancouver (C.-B.)', anchor: 'canada' }, geometry: { type: 'Polygon', coordinates: [[[-139,60],[-114,60],[-114,49],[-122,49],[-123.2,48.7],[-125.5,48.5],[-127.5,50],[-129.5,51.5],[-131.5,53.5],[-134,55.5],[-137,58],[-139,60]]] }},
+        { type: 'Feature', properties: { nom: '🇿🇦 Afrique du Sud', detail: 'Cape Town, Paarl', anchor: 'afrique-du-sud' }, geometry: { type: 'Polygon', coordinates: [[[17.5,-34.8],[18.5,-34.2],[19.3,-33.6],[20.0,-33.0],[20.7,-32.0],[20.7,-31.2],[19.5,-31.2],[18.3,-32.0],[17.5,-33.2],[17.5,-34.8]]] }},
+        { type: 'Feature', properties: { nom: '🇧🇷 Brésil', detail: 'São Paulo', anchor: 'bresil' }, geometry: { type: 'Polygon', coordinates: [[[-53.1,-22.7],[-51.0,-20.8],[-49.0,-20.0],[-46.5,-20.0],[-44.2,-22.5],[-45.0,-24.7],[-47.5,-25.3],[-50.0,-25.3],[-52.0,-24.5],[-53.1,-22.7]]] }}
+      ]};
+      L.geoJSON(regions, {
+        style: baseStyle,
+        onEachFeature: function(f, layer) {
+          addInteraction(layer, f.properties);
+        }
+      }).addTo(map);
+    } catch(e) {
+      console.warn('Boundaries not loaded:', e);
+    }
+
+    var bounds = zones.map(function(z) { return [z.lat, z.lng]; });
+    if (bounds.length > 0) {
+      map.fitBounds(bounds, { padding: [30, 30], maxZoom: 3 });
+    }
+  });
+</script>

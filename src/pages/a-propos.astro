@@ -1,15 +1,211 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const parcours = [
+  {
+    periode: 'Avril 2025 – Aujourd\'hui',
+    titre: 'Synitier / Repair and Run, Paris',
+    description: 'Chargé de développement services et vélo. Conception et déploiement de formations techniques, création du site internet, réparation et vente de vélos. Développement de partenariats auprès des marques.',
+    chiffre: '→',
+    chiffreLabel: 'poste actuel',
+    actif: true,
+  },
+  {
+    periode: 'Sept. 2024 – Avril 2025',
+    titre: 'Voyage d\'exploration industrielle',
+    description: '8 mois · 12 pays · USA, Colombie, Brésil, Afrique du Sud, Botswana, Asie du Sud-Est. 30+ structures visitées.',
+    chiffre: '30+',
+    chiffreLabel: 'structures visitées',
+    actif: false,
+  },
+  {
+    periode: '2021 – 2024',
+    titre: 'Toyota TMMF, Onnaing',
+    description: 'Gestion de production emboutissage. Pilotage des flux, amélioration continue et coordination des équipes en suivant le Toyota Production System (TPS). Usine de 5 000 collaborateurs.',
+    chiffre: '3 ans',
+    chiffreLabel: 'industrie auto',
+    actif: false,
+  },
+  {
+    periode: 'Juil. – Sept. 2023',
+    titre: 'Decathlon Deutschland, Dortmund',
+    description: 'Stage amélioration entrepôt. Optimisation des flux logistiques et de la gestion de stock.',
+    chiffre: '',
+    chiffreLabel: '',
+    actif: false,
+  },
+  {
+    periode: '2021 – 2024',
+    titre: 'IMT Nord Europe (ex-Mines de Douai)',
+    description: 'Diplôme d\'ingénieur, Génie Industriel. Spécialisation en gestion de production, amélioration continue et logistique industrielle.',
+    chiffre: '🎓',
+    chiffreLabel: 'ingénieur',
+    actif: false,
+  },
+  {
+    periode: 'Avril – Juil. 2021',
+    titre: 'S.A.M.R, Pont-Sainte-Marie',
+    description: 'Stage technicien productique. Programmation et réglage de machines-outils (fraisage, tournage). Découverte terrain de la gestion d\'atelier.',
+    chiffre: 'CNC',
+    chiffreLabel: 'usinage CNC',
+    actif: false,
+  },
+  {
+    periode: '2019 – 2021',
+    titre: 'IUT de Troyes',
+    description: 'DUT Génie Mécanique et Productique. Bases solides en conception mécanique, fabrication et métrologie.',
+    chiffre: '🎓',
+    chiffreLabel: 'DUT GMP',
+    actif: false,
+  },
+  {
+    periode: '2017 – 2020',
+    titre: 'PCMA Tennis, Enseignant',
+    description: 'Enseignement du tennis. Pédagogie, gestion de groupes, transmission de compétences techniques — des aptitudes directement transposables à la coordination d\'équipes en environnement industriel.',
+    chiffre: '3 ans',
+    chiffreLabel: 'enseignement',
+    actif: false,
+  },
+];
 ---
 
 <BaseLayout
-  title="À propos — Voyage industriel"
-  description="Parcours, vision et contact de Grégor Van Dijk, ingénieur industriel."
+  title="À propos | Grégor Van Dijk"
+  description="Ingénieur industriel diplômé IMT Nord Europe. Parcours : Toyota, Decathlon, voyage d'exploration industrielle (12 pays). Basé à Bienne, Suisse."
 >
-  <div class="max-w-4xl mx-auto px-6 py-12">
-    <h1 class="text-primary">À propos</h1>
-    <p class="text-secondary mt-4">
-      Contenu à venir — cette page sera développée dans un prochain sprint.
-    </p>
+  <div class="max-w-[1320px] mx-auto px-6 py-12">
+    <div class="flex items-start gap-6">
+      <div class="flex-1 min-w-0">
+        <p class="text-xs text-accent font-semibold uppercase tracking-wide">Ingénieur industriel · 25 ans</p>
+        <h1 class="text-primary mt-2">À propos</h1>
+        <p class="text-secondary mt-4">
+          Chef de projet technique en recherche active · Suisse romande
+        </p>
+      </div>
+      <div class="hidden sm:block flex-shrink-0">
+        <img
+          src="/images/photo-gregor.webp"
+          alt="Grégor Van Dijk"
+          width="120"
+          height="120"
+          class="w-[120px] h-[120px] rounded-xl object-cover border border-border shadow-sm bg-surface"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+
+    <!-- Parcours -->
+    <section class="mt-12">
+      <p class="text-xs text-accent font-semibold uppercase tracking-wide">Qui suis-je</p>
+      <h2 class="text-primary mt-2">Parcours</h2>
+
+      <div class="mt-6">
+        <div class="flex-1 min-w-0">
+          <p class="text-secondary">
+            Ingénieur industriel diplômé de l'IMT Nord Europe (ex-Mines de Douai), spécialisé en génie industriel. Après 3 ans chez Toyota (gestion de production emboutissage) et des expériences chez Decathlon et en PME industrielle, j'ai consacré 8 mois à un voyage d'observation industrielle à travers 12 pays (USA, Colombie, Brésil, Afrique du Sud, Botswana, Asie du Sud-Est), avec plus de 30 structures visitées.
+          </p>
+          <p class="text-secondary mt-4">
+            Ce voyage n'était pas un simple tour du monde. C'était une démarche méthodique : visiter des ateliers artisanaux et des usines de précision, analyser leurs flux de production, identifier leurs forces et leurs limites, et en tirer des enseignements applicables à d'autres contextes industriels. Passionné de vélo depuis toujours, c'est naturellement dans cette industrie que j'ai orienté mon voyage d'observation.
+          </p>
+          <p class="text-secondary mt-4">
+            Basé à Bienne, j'occupe actuellement un poste de chargé de développement chez Synitier, centré uniquement sur la partie formation (développement de site internet, établissement d'une nouvelle certification, création de contenu pédagogique), tout en restant ouvert aux opportunités en industrie de précision, microtechnique, horlogerie, mobilité ou médical en Suisse romande.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chronologie  -->
+    <section class="mt-12">
+      <p class="text-xs text-accent font-semibold uppercase tracking-wide">Chronologie</p>
+      <h2 class="text-primary mt-2">Expériences clés</h2>
+
+      <ol class="mt-8 space-y-0">
+        {parcours.map((etape, i) => (
+          <li class:list={[
+            'relative pl-10 pb-10',
+            i < parcours.length - 1 ? 'border-l-2 border-border' : 'border-l-2 border-transparent',
+            'ml-3'
+          ]}>
+            {/* Node */}
+            <div class:list={[
+              'absolute left-[-7px] top-0 w-3 h-3 rounded-full border-2',
+              etape.actif
+                ? 'bg-accent border-accent ring-4 ring-accent/20'
+                : 'bg-white border-accent'
+            ]} />
+
+            <div>
+              <p class="text-xs text-secondary font-medium uppercase tracking-wide">{etape.periode}</p>
+              <h3 class="text-primary font-semibold mt-1">{etape.titre}</h3>
+              <p class="text-secondary mt-2">{etape.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Contact -->
+    <section class="mt-16">
+      <h2 class="text-primary">Contact</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+        <a
+          href="mailto:vdijk.gregor@gmail.com"
+          class="flex flex-col items-center gap-2 p-4 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
+        >
+          <span class="text-sm font-medium text-primary">Email</span>
+          <span class="text-xs text-secondary">vdijk.gregor@gmail.com</span>
+        </a>
+        <a
+          href="https://wa.me/33768232063"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col items-center gap-2 p-4 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
+        >
+          <span class="text-sm font-medium text-primary">WhatsApp</span>
+          <span class="text-xs text-secondary">+33 7 68 23 20 63</span>
+        </a>
+        <a
+          href="https://linkedin.com/in/gregor-vandijk"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col items-center gap-2 p-4 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
+        >
+          <span class="text-sm font-medium text-primary">LinkedIn</span>
+          <span class="text-xs text-secondary">linkedin.com/in/gregor-vandijk</span>
+        </a>
+      </div>
+
+      <div class="mt-6 p-4 rounded-lg bg-surface-dark">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+          <div>
+            <p class="text-sm font-semibold text-primary">Localisation</p>
+            <p class="text-xs text-secondary mt-1">Bienne, Suisse · disponible dès maintenant</p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-primary">Langues</p>
+            <p class="text-xs text-secondary mt-1">Français (natif) · Anglais professionnel (TOEIC 790) · Allemand (notions)</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-xs text-secondary mt-4 italic">Références disponibles sur demande.</p>
+    </section>
+
+    <hr class="border-border mt-12" />
+    <div class="flex justify-between mt-8">
+      <a
+        href="/vision/"
+        class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
+      >
+        ← Vision
+      </a>
+      <a
+        href="/annexes/"
+        class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
+      >
+        Annexes →
+      </a>
+    </div>
   </div>
 </BaseLayout>
