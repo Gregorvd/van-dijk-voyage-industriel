@@ -35,7 +35,7 @@ function isActive(href: string): boolean {
 }
 ---
 
-<header class="sticky top-0 z-[1000] bg-surface border-b border-border">
+<header class="fixed top-0 left-0 right-0 z-[1000] bg-surface border-b border-border">
   <nav aria-label={locale === 'en' ? 'Main navigation' : 'Navigation principale'} class="flex items-center justify-between h-16 px-6 max-w-[1320px] mx-auto">
     <!-- Logo -->
     <a href={homeHref} class="font-semibold text-primary hover:text-accent transition-colors duration-150">
