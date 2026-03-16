@@ -547,6 +547,7 @@ function findStudy(slug: string) {
       }).addTo(map);
     } catch(e) {
       console.warn('Boundaries not loaded:', e);
+      el.innerHTML = '<p style="text-align:center;padding:2rem;color:#64748B">Map unavailable — check your connection.</p>';
     }
 
     // Fit bounds from zone coordinates

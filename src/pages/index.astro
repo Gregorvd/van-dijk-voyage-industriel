@@ -334,6 +334,7 @@ const zones = [
       }).addTo(map);
     } catch(e) {
       console.warn('Boundaries not loaded:', e);
+      el.innerHTML = '<p style="text-align:center;padding:2rem;color:#64748B">Carte indisponible — vérifiez votre connexion.</p>';
     }
 
     var bounds = zones.map(function(z) { return [z.lat, z.lng]; });

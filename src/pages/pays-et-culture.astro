@@ -560,6 +560,7 @@ function findStudy(slug: string) {
       }).addTo(map);
     } catch(e) {
       console.warn('Boundaries not loaded:', e);
+      el.innerHTML = '<p style="text-align:center;padding:2rem;color:#64748B">Carte indisponible — vérifiez votre connexion.</p>';
     }
 
     // Fit bounds from zone coordinates

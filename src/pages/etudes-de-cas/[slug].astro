@@ -26,9 +26,9 @@ const { titre, entreprise, pays, ville, taille, domaine, tags, image, imageAlt, 
 const studyConnexions = getConnexionsForStudy(etude.id);
 const connexionCards = studyConnexions.map(conn => {
   const otherId = conn.direction === 'outgoing' ? conn.cible : conn.source;
-  const otherStudy = allEtudes.find((e: any) => e.id === otherId);
+  const otherStudy = allEtudes.find((e) => e.id === otherId);
   return otherStudy ? { ...conn, otherStudy } : null;
-}).filter(Boolean);
+}).filter((card) => card !== null);
 ---
 
 <BaseLayout
@@ -98,7 +98,7 @@ const connexionCards = studyConnexions.map(conn => {
       <aside class="max-w-[1040px] mx-auto px-6 mt-12">
         <h2 class="text-lg font-semibold text-primary">Connexions supply chain</h2>
         <div class="mt-4 space-y-3">
-          {connexionCards.map((card: any) => {
+          {connexionCards.map((card) => {
             const isOutgoing = card.direction === 'outgoing';
             const label = card.type === 'fournisseur'
               ? (isOutgoing ? 'Fournisseur de' : 'Client de')
