@@ -20,7 +20,7 @@ longitude: -122.6784
 
 ## Contexte & positionnement
 
-CIRCA Cycles est un fabricant artisanal de Portland fondé en 2013 par Rich Fox, ingénieur-designer passé par Nike. La marque produit des **vélos aluminium entièrement personnalisés** (taille, composants, marquages) vendus autour de 6 000 €. Structure de **3 personnes** (Rich + 2 freelances), production en **flux tiré pur**.
+CIRCA Cycles est un fabricant artisanal de Portland fondé en 2013 par Rich Fox, ingénieur-designer passé par Nike. La marque produit des **vélos aluminium entièrement personnalisés** (taille, composants, marquages) vendus autour de 6&nbsp;000&nbsp;€. Structure de **3 personnes** (Rich + 2 freelances), production en **flux tiré pur**.
 
 **Flux de production**
 

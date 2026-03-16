@@ -4,6 +4,10 @@ import CardEtude from '../../components/CardEtude.astro';
 import { getCollection } from 'astro:content';
 import { url } from '../../i18n/utils';
 
+const birthDate = new Date(2001, 0, 15);
+const today = new Date();
+const age = today.getFullYear() - birthDate.getFullYear() - (today < new Date(today.getFullYear(), 0, 15) ? 1 : 0);
+
 const etudes = await getCollection('etudes-de-cas', ({ data }) => data.publie === true);
 const etudesVedettes = etudes.sort((a, b) => a.data.ordre - b.data.ordre).slice(0, 3);
 
@@ -24,12 +28,12 @@ const zones = [
 
 <BaseLayout
   title="Grégor Van Dijk | Industrial Exploration & Cycling"
-  description="Industrial engineer, 25. 8 months, 12 countries, 30+ facilities visited. Technical project manager, French-speaking Switzerland."
+  description={`Industrial engineer, ${age}. 8 months, 12 countries, 30+ facilities visited. Technical project manager, French-speaking Switzerland.`}
 >
   <!-- Hero section -->
   <section class="max-w-[1040px] mx-auto text-center px-6 pt-20 pb-12">
     <p class="text-sm text-secondary font-medium uppercase tracking-wide">
-      Industrial engineer · 25 years old
+      Industrial engineer · {age} years old
     </p>
 
     <h1 class="text-primary mt-4">Grégor Van Dijk</h1>

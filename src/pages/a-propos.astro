@@ -2,6 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { url } from '../i18n/utils';
 
+const birthDate = new Date(2001, 0, 15);
+const today = new Date();
+const age = today.getFullYear() - birthDate.getFullYear() - (today < new Date(today.getFullYear(), 0, 15) ? 1 : 0);
+
 const parcours = [
   {
     periode: 'Avril 2025 – Aujourd\'hui',
@@ -77,7 +81,7 @@ const parcours = [
   <div class="max-w-[1320px] mx-auto px-6 py-12">
     <div class="flex items-start gap-6">
       <div class="flex-1 min-w-0">
-        <p class="text-xs text-accent font-semibold uppercase tracking-wide">Ingénieur industriel · 25 ans</p>
+        <p class="text-xs text-accent font-semibold uppercase tracking-wide">Ingénieur industriel · {age} ans</p>
         <h1 class="text-primary mt-2">À propos</h1>
         <p class="text-secondary mt-4">
           Chef de projet technique en recherche active · Suisse romande
