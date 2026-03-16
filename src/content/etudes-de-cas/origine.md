@@ -28,15 +28,15 @@ Origine Cycles est une marque historiquement implantée dans le nord de la Franc
 
 <div class="photos-row photos-row-3">
   <figure>
-    <img src="/images/etudes/origine-assemblage.webp" alt="Vue d'ensemble de la chaîne d'assemblage Origine Cycles à Valenciennes" loading="lazy" />
+    <img src="/van-dijk-voyage-industriel/images/etudes/origine-assemblage.webp" alt="Vue d'ensemble de la chaîne d'assemblage Origine Cycles à Valenciennes" loading="lazy" />
     <figcaption>Chaîne d'assemblage : postes de travail aérés et lumineux, convoyeurs et chariots individuels par commande client</figcaption>
   </figure>
   <figure>
-    <img src="/images/etudes/origine-peinture.webp" alt="Cadres carbone suspendus en séchage après peinture personnalisée chez Origine Cycles" loading="lazy" />
+    <img src="/van-dijk-voyage-industriel/images/etudes/origine-peinture.webp" alt="Cadres carbone suspendus en séchage après peinture personnalisée chez Origine Cycles" loading="lazy" />
     <figcaption>Cadres carbone suspendus en séchage : chaque cadre reçoit une couleur unique choisie par le client</figcaption>
   </figure>
   <figure>
-    <img src="/images/etudes/origine-test-gravel.webp" alt="Test terrain du gravel Origine Graxx GTR sur route" loading="lazy" style="object-position: 55% center;" />
+    <img src="/van-dijk-voyage-industriel/images/etudes/origine-test-gravel.webp" alt="Test terrain du gravel Origine Graxx GTR sur route" loading="lazy" style="object-position: 55% center;" />
     <figcaption>Test terrain du gravel Graxx GTR</figcaption>
   </figure>
 </div>
