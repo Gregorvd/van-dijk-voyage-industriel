@@ -1,17 +1,26 @@
 ---
 titre: "Paragon Machine Works | Pièces pour cadreurs et validation 3D"
+titreEn: "Paragon Machine Works | Frame builder parts & 3D validation"
 entreprise: "Paragon Machine Works"
 pays: "États-Unis"
+paysEn: "United States"
 ville: "Richmond, Californie"
 taille: "~10 collaborateurs"
+tailleEn: "~10 employees"
 domaine: "Sous-traitance CNC pour cadreurs"
+domaineEn: "CNC subcontracting for frame builders"
 tags: ["Usinage CNC", "Validation 3D", "SMED"]
+tagsEn: ["CNC machining", "3D validation", "SMED"]
 image: "/images/logos/logo-paragon.webp"
 imageAlt: "Atelier d'usinage CNC, Paragon Machine Works, Richmond"
+imageAltEn: "CNC machining workshop, Paragon Machine Works, Richmond"
 duree: "1 jour"
+dureeEn: "1 day"
 dateVisite: "25 octobre 2024"
+dateVisiteEn: "October 25, 2024"
 contact: "Calvin Norstad"
 resume: "Sous-traitant spécialisé en pièces pour fabricants de cadres. Validation 3D systématique avant lancement série."
+resumeEn: "Specialized subcontractor for frame builder parts. Systematic 3D validation before production runs."
 ordre: 6
 publie: true
 latitude: 37.9358

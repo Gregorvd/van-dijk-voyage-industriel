@@ -1,17 +1,26 @@
 ---
 titre: "Origine Cycles | Personnalisation industrielle en flux tiré"
+titreEn: "Origine Cycles | Industrial customization in pull flow"
 entreprise: "Origine Cycles"
 pays: "France"
+paysEn: "France"
 ville: "Valenciennes"
 taille: "~40 collaborateurs"
+tailleEn: "~40 employees"
 domaine: "Conception, peinture et assemblage de vélos carbone"
+domaineEn: "Design, painting and assembly of carbon bicycles"
 tags: ["Flux tiré", "Sur-mesure", "Gestion visuelle", "Made in France"]
+tagsEn: ["Pull flow", "Custom-built", "Visual management", "Made in France"]
 image: "/images/logos/logo-origine.webp"
 imageAlt: "Logo Origine Cycles, fabricant de vélos carbone, Valenciennes"
+imageAltEn: "Logo Origine Cycles, carbon bicycle manufacturer, Valenciennes"
 duree: "1 jour"
+dureeEn: "1 day"
 dateVisite: "9 mars 2024"
+dateVisiteEn: "March 9, 2024"
 contact: ""
 resume: "Personnalisation industrielle en flux tiré : chaque vélo est configuré en ligne, peint individuellement et assemblé sur commande. 30-35 vélos/jour."
+resumeEn: "Industrial customization in pull flow: each bike is configured online, individually painted and assembled to order. 30-35 bikes/day."
 ordre: 8
 publie: true
 latitude: 50.3577

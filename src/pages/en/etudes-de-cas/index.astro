@@ -7,8 +7,8 @@ import { url } from '../../../i18n/utils';
 const etudes = await getCollection('etudes-de-cas', ({ data }) => data.publie === true);
 const etudesTriees = etudes.sort((a, b) => a.data.ordre - b.data.ordre);
 
-// Extract unique tags for filters
-const tousLesTags = [...new Set(etudesTriees.flatMap(e => e.data.tags))].sort();
+// Extract unique EN tags for filters
+const tousLesTags = [...new Set(etudesTriees.flatMap(e => e.data.tagsEn ?? e.data.tags))].sort();
 ---
 
 <BaseLayout
@@ -30,7 +30,7 @@ const tousLesTags = [...new Set(etudesTriees.flatMap(e => e.data.tags))].sort();
         All <span class="ml-1 opacity-75">({etudesTriees.length})</span>
       </button>
       {tousLesTags.map((tag) => {
-        const count = etudesTriees.filter(e => e.data.tags.includes(tag)).length;
+        const count = etudesTriees.filter(e => (e.data.tagsEn ?? e.data.tags).includes(tag)).length;
         return (
           <button
             class="filtre-btn text-xs px-3 py-1.5 rounded-full border border-border bg-white text-secondary font-medium hover:border-accent hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
@@ -46,17 +46,17 @@ const tousLesTags = [...new Set(etudesTriees.flatMap(e => e.data.tags))].sort();
     {etudesTriees.length > 0 ? (
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6" id="grille">
         {etudesTriees.map((etude) => (
-          <div data-tags={JSON.stringify(etude.data.tags)}>
+          <div data-tags={JSON.stringify(etude.data.tagsEn ?? etude.data.tags)}>
             <CardEtude
-              titre={etude.data.titre}
-              pays={etude.data.pays}
+              titre={etude.data.titreEn ?? etude.data.titre}
+              pays={etude.data.paysEn ?? etude.data.pays}
               ville={etude.data.ville}
-              taille={etude.data.taille}
-              duree={etude.data.duree}
+              taille={etude.data.tailleEn ?? etude.data.taille}
+              duree={etude.data.dureeEn ?? etude.data.duree}
               image={etude.data.image}
-              imageAlt={etude.data.imageAlt}
-              resume={etude.data.resume}
-              tags={etude.data.tags}
+              imageAlt={etude.data.imageAltEn ?? etude.data.imageAlt}
+              resume={etude.data.resumeEn ?? etude.data.resume}
+              tags={etude.data.tagsEn ?? etude.data.tags}
               slug={etude.id}
               contact={etude.data.contact}
               locale="en"

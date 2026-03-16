@@ -1,17 +1,26 @@
 ---
 titre: "CIRCA Cycles | Aluminium haut de gamme et collage structurel"
+titreEn: "CIRCA Cycles | High-end aluminum & structural bonding"
 entreprise: "CIRCA Cycles"
 pays: "États-Unis"
+paysEn: "United States"
 ville: "Portland, Oregon"
 taille: "3 personnes"
+tailleEn: "3 people"
 domaine: "Fabrication de vélos aluminium"
+domaineEn: "Aluminum bicycle manufacturing"
 tags: ["Flux tiré", "Usinage CNC", "Sur-mesure"]
+tagsEn: ["Pull flow", "CNC machining", "Custom-built"]
 image: "/images/logos/logo-circa.webp"
 imageAlt: "Atelier artisanal de fabrication de vélos, CIRCA Cycles, Portland"
+imageAltEn: "Artisan bicycle manufacturing workshop, CIRCA Cycles, Portland"
 duree: "1 jour"
+dureeEn: "1 day"
 dateVisite: "28 septembre 2024"
+dateVisiteEn: "September 28, 2024"
 contact: "Rich Fox"
 resume: "Fabricant artisanal de vélos aluminium personnalisés par collage structurel. Flux tiré pur, zéro stock produit fini."
+resumeEn: "Artisan manufacturer of custom aluminum bicycles using structural bonding. Pure pull flow, zero finished goods inventory."
 ordre: 1
 publie: true
 latitude: 45.5152

@@ -1,17 +1,26 @@
 ---
 titre: "Co-Motion Cycles | Intégration verticale et soudure TIG"
+titreEn: "Co-Motion Cycles | Vertical integration & TIG welding"
 entreprise: "Co-Motion Cycles"
 pays: "États-Unis"
+paysEn: "United States"
 ville: "Eugene, Oregon"
 taille: "~25 collaborateurs"
+tailleEn: "~25 employees"
 domaine: "Fabrication de vélos haut de gamme"
+domaineEn: "High-end bicycle manufacturing"
 tags: ["Intégration verticale", "Usinage CNC", "Sur-mesure"]
+tagsEn: ["Vertical integration", "CNC machining", "Custom-built"]
 image: "/images/logos/logo-co-motion.webp"
 imageAlt: "Soudure TIG en atelier, Co-Motion Cycles, Eugene"
+imageAltEn: "TIG welding in the workshop, Co-Motion Cycles, Eugene"
 duree: "1 jour"
+dureeEn: "1 day"
 dateVisite: "21 octobre 2024"
+dateVisiteEn: "October 21, 2024"
 contact: "Dawn Shepard"
 resume: "Intégration verticale rare : design, CNC, soudure TIG, peinture et assemblage sur un même site. 4-5 vélos/jour sur commande."
+resumeEn: "Rare vertical integration: design, CNC, TIG welding, painting and assembly on a single site. 4-5 bikes/day made to order."
 ordre: 2
 publie: true
 latitude: 44.052

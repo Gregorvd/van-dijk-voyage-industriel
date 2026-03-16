@@ -1,17 +1,26 @@
 ---
 titre: "Rolf Prima | Rodage et contrôle qualité systématique"
+titreEn: "Rolf Prima | Break-in process & systematic quality control"
 entreprise: "Rolf Prima"
 pays: "États-Unis"
+paysEn: "United States"
 ville: "Eugene, Oregon"
 taille: "~6 collaborateurs"
+tailleEn: "~6 employees"
 domaine: "Fabrication de roues haut de gamme"
+domaineEn: "High-end wheel manufacturing"
 tags: ["Contrôle qualité", "Flux tiré", "R&D"]
+tagsEn: ["Quality control", "Pull flow", "R&D"]
 image: "/images/logos/logo-rolf-prima.webp"
 imageAlt: "Fabrication de roues, Rolf Prima, Eugene"
+imageAltEn: "Wheel manufacturing, Rolf Prima, Eugene"
 duree: "1 jour"
+dureeEn: "1 day"
 dateVisite: "21 octobre 2024"
+dateVisiteEn: "October 21, 2024"
 contact: "Jimmy Krigbaum"
 resume: "Fabricant de roues haut de gamme. Process de rodage en 3 cycles et machines de test internes systématiques."
+resumeEn: "High-end wheel manufacturer. 3-cycle break-in process and systematic in-house testing machines."
 ordre: 3
 publie: true
 latitude: 44.045

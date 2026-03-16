@@ -1,17 +1,26 @@
 ---
 titre: "Bike Friday | Kanban par pochettes et peinture électrostatique"
+titreEn: "Bike Friday | Pouch kanban & electrostatic powder coating"
 entreprise: "Bike Friday"
 pays: "États-Unis"
+paysEn: "United States"
 ville: "Eugene, Oregon"
 taille: "~20 collaborateurs"
+tailleEn: "~20 employees"
 domaine: "Fabrication de vélos pliants sur mesure"
+domaineEn: "Custom folding bicycle manufacturing"
 tags: ["Kanban", "Flux tiré", "Gestion visuelle"]
+tagsEn: ["Kanban", "Pull flow", "Visual management"]
 image: "/images/logos/logo-bike-friday.webp"
 imageAlt: "Vélo pliant de voyage, Bike Friday, Eugene"
+imageAltEn: "Folding travel bicycle, Bike Friday, Eugene"
 duree: "1 jour"
+dureeEn: "1 day"
 dateVisite: "22 octobre 2024"
+dateVisiteEn: "October 22, 2024"
 contact: "Fraeda Scholz"
 resume: "Vélos pliants sur commande. Système kanban par pochettes, peinture poudre électrostatique en interne."
+resumeEn: "Made-to-order folding bikes. Pouch-based kanban system, in-house electrostatic powder coating."
 ordre: 4
 publie: true
 latitude: 44.058

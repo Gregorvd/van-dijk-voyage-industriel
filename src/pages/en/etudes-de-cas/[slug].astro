@@ -7,21 +7,32 @@ import { url } from '../../../i18n/utils';
 
 export async function getStaticPaths() {
   const etudes = await getCollection('etudes-de-cas', ({ data }) => data.publie === true);
+  const etudesEn = await getCollection('etudes-de-cas-en');
   const etudesTriees = etudes.sort((a, b) => a.data.ordre - b.data.ordre);
 
   return etudesTriees.map((etude, index) => ({
     params: { slug: etude.id },
     props: {
       etude,
+      etudeEn: etudesEn.find(e => e.id === etude.id) ?? null,
       etudeSuivante: etudesTriees[index + 1] ?? null,
       allEtudes: etudesTriees,
     },
   }));
 }
 
-const { etude, etudeSuivante, allEtudes } = Astro.props;
-const { Content } = await render(etude);
-const { titre, entreprise, pays, ville, taille, domaine, tags, image, imageAlt, dateVisite, contact } = etude.data;
+const { etude, etudeEn, etudeSuivante, allEtudes } = Astro.props;
+const { Content } = etudeEn ? await render(etudeEn) : await render(etude);
+const d = etude.data;
+const titre = d.titreEn ?? d.titre;
+const pays = d.paysEn ?? d.pays;
+const taille = d.tailleEn ?? d.taille;
+const domaine = d.domaineEn ?? d.domaine;
+const tags = d.tagsEn ?? d.tags;
+const imageAlt = d.imageAltEn ?? d.imageAlt;
+const dateVisite = d.dateVisiteEn ?? d.dateVisite;
+const resume = d.resumeEn ?? d.resume;
+const { entreprise, ville, image, contact } = d;
 
 // Supply chain connections
 const studyConnexions = getConnexionsForStudy(etude.id);
@@ -34,7 +45,7 @@ const connexionCards = studyConnexions.map(conn => {
 
 <BaseLayout
   title={`${titre} | Industrial Journey`}
-  description={etude.data.resume}
+  description={resume}
 >
   <article class="py-12" aria-labelledby="etude-titre">
     <!-- Breadcrumb -->
@@ -143,8 +154,8 @@ const connexionCards = studyConnexions.map(conn => {
           class="block mt-8 p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
         >
           <p class="text-xs text-secondary uppercase tracking-wide font-medium">Next study</p>
-          <p class="text-primary font-semibold mt-2">{etudeSuivante.data.titre}</p>
-          <p class="text-sm text-secondary mt-1 line-clamp-2">{etudeSuivante.data.resume}</p>
+          <p class="text-primary font-semibold mt-2">{etudeSuivante.data.titreEn ?? etudeSuivante.data.titre}</p>
+          <p class="text-sm text-secondary mt-1 line-clamp-2">{etudeSuivante.data.resumeEn ?? etudeSuivante.data.resume}</p>
         </a>
       )}
     </footer>

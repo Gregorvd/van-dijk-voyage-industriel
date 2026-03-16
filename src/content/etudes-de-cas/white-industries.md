@@ -1,17 +1,26 @@
 ---
 titre: "White Industries | CNC de précision et design-to-cost"
+titreEn: "White Industries | Precision CNC & design-to-cost"
 entreprise: "White Industries"
 pays: "États-Unis"
+paysEn: "United States"
 ville: "Petaluma, Californie"
 taille: "~15 collaborateurs"
+tailleEn: "~15 employees"
 domaine: "Usinage CNC de composants vélo"
+domaineEn: "CNC machining of bicycle components"
 tags: ["Usinage CNC", "Design-to-cost", "Automatisation"]
+tagsEn: ["CNC machining", "Design-to-cost", "Automation"]
 image: "/images/logos/logo-white-industries.webp"
 imageAlt: "Usinage CNC de précision, White Industries, Petaluma"
+imageAltEn: "Precision CNC machining, White Industries, Petaluma"
 duree: "1 jour"
+dureeEn: "1 day"
 dateVisite: "24 octobre 2024"
+dateVisiteEn: "October 24, 2024"
 contact: "Sean Walling"
 resume: "Usinage CNC de composants haut de gamme. Design-to-cost dès la conception, zéro marketing, 100% bouche à oreille."
+resumeEn: "High-end CNC-machined components. Design-to-cost from conception, zero marketing, 100% word of mouth."
 ordre: 5
 publie: true
 latitude: 38.2324

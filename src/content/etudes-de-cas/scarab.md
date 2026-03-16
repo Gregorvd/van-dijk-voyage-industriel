@@ -1,17 +1,26 @@
 ---
 titre: "Scarab Cycles | Fabrication artisanale acier sur mesure"
+titreEn: "Scarab Cycles | Artisan custom steel manufacturing"
 entreprise: "Scarab Cycles"
 pays: "Colombie"
+paysEn: "Colombia"
 ville: "El Retiro, Antioquia"
 taille: "Atelier artisanal"
+tailleEn: "Artisan workshop"
 domaine: "Fabrication de vélos acier sur mesure"
+domaineEn: "Custom steel bicycle manufacturing"
 tags: ["Soudure", "Acier", "Sur-mesure", "Artisanal"]
+tagsEn: ["Welding", "Steel", "Custom-built", "Artisan craft"]
 image: "/images/logos/logo-scarab.webp"
 imageAlt: "Logo Scarab Cycles, fabricant artisanal de vélos, El Retiro"
+imageAltEn: "Logo Scarab Cycles, artisan bicycle maker, El Retiro"
 duree: "1 jour"
+dureeEn: "1 day"
 dateVisite: "13 janvier 2025"
+dateVisiteEn: "January 13, 2025"
 contact: "Julian Ayala"
 resume: "Fabrication artisanale de vélos acier sur mesure dans les montagnes d'Antioquia. Quelques vélos par semaine, personnalisation totale, peintures par une artiste ou des tribus locales."
+resumeEn: "Artisan custom steel bicycle workshop in the Antioquia mountains. A few bikes per week, full customization, paintings by local tribal artists."
 ordre: 7
 publie: true
 latitude: 6.2442
