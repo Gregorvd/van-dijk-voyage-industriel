@@ -130,13 +130,13 @@ function findStudy(slug: string) {
                 <p class="text-sm font-semibold text-accent">{cluster.nom}</p>
                 <p class="text-xs text-secondary mt-1">{cluster.description}</p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+                <div class="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
                   {clusterStudies.map((etude) => etude && (
                     <a
                       href={url(`/etudes-de-cas/${etude.id}`)}
-                      class="p-3 rounded-lg border border-border bg-surface-dark hover:shadow hover:-translate-y-px transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none text-center"
+                      class="p-2 sm:p-3 rounded-lg border border-border bg-surface-dark hover:shadow hover:-translate-y-px transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none text-center"
                     >
-                      <p class="font-semibold text-primary text-sm">{etude.data.entreprise}</p>
+                      <p class="font-semibold text-primary text-xs sm:text-sm">{etude.data.entreprise}</p>
                     </a>
                   ))}
                 </div>
@@ -183,12 +183,12 @@ function findStudy(slug: string) {
             return (
               <div class="mt-6">
                 <p class="text-sm font-semibold text-accent">Autres structures visitées</p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+                <div class="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
                   <a
                     href={url(`/etudes-de-cas/${circa.id}`)}
-                    class="p-3 rounded-lg border border-border bg-surface-dark hover:shadow hover:-translate-y-px transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none text-center"
+                    class="p-2 sm:p-3 rounded-lg border border-border bg-surface-dark hover:shadow hover:-translate-y-px transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none text-center"
                   >
-                    <p class="font-semibold text-primary text-sm">{circa.data.entreprise}</p>
+                    <p class="font-semibold text-primary text-xs sm:text-sm">{circa.data.entreprise}</p>
                   </a>
                 </div>
                 <div class="mt-4 space-y-2">

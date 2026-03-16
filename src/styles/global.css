@@ -73,6 +73,12 @@ h3 {
   h1 { font-size: 2rem; }
   h2 { font-size: 1.5rem; }
   h3 { font-size: 1.125rem; }
+
+  /* Réduire le padding latéral sur mobile pour élargir le contenu */
+  .px-6 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 /* Justification des textes — aspect professionnel (desktop uniquement) */
