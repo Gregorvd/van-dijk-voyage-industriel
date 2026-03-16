@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CardEtude from '../../components/CardEtude.astro';
 import { getCollection } from 'astro:content';
+import { url } from '../../i18n/utils';
 
 const etudes = await getCollection('etudes-de-cas', ({ data }) => data.publie === true);
 const etudesVedettes = etudes.sort((a, b) => a.data.ordre - b.data.ordre).slice(0, 3);
@@ -71,19 +72,19 @@ const zones = [
   <section class="max-w-[1320px] mx-auto px-6 py-12 border-t border-border">
     <p class="text-xs text-accent font-semibold uppercase tracking-wide text-center">This site is for</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-      <a href="/en/etudes-de-cas/" class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
+      <a href={url('/en/etudes-de-cas/')} class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
         <p class="text-accent font-semibold text-sm">Industrial recruiter</p>
         <p class="text-primary font-semibold mt-2">Looking for a field profile?</p>
         <p class="text-secondary text-sm mt-2 leading-relaxed">Discover 8 case studies illustrating my ability to read a production system, identify improvement levers and structure actionable observations.</p>
         <span class="inline-flex items-center gap-1 text-accent text-sm font-medium mt-4 group-hover:gap-2 transition-all">View case studies →</span>
       </a>
-      <a href="/en/bilan/" class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
+      <a href={url('/en/bilan/')} class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
         <p class="text-accent font-semibold text-sm">Technical manager</p>
         <p class="text-primary font-semibold mt-2">What concrete skills?</p>
         <p class="text-secondary text-sm mt-2 leading-relaxed">6 skill domains developed in the field: continuous improvement, industrialization, production management, coordination, innovation and cross-functional.</p>
         <span class="inline-flex items-center gap-1 text-accent text-sm font-medium mt-4 group-hover:gap-2 transition-all">View skills →</span>
       </a>
-      <a href="/en/vision/" class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
+      <a href={url('/en/vision/')} class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
         <p class="text-accent font-semibold text-sm">Engineer / curious</p>
         <p class="text-primary font-semibold mt-2">What industrial vision?</p>
         <p class="text-secondary text-sm mt-2 leading-relaxed">What this journey taught me about the role of an industrial engineer, the limits of artisan structures and the improvement opportunities they contain.</p>
@@ -241,7 +242,7 @@ const zones = [
 
     <div class="text-center mt-8">
       <a
-        href="/en/etudes-de-cas/"
+        href={url('/en/etudes-de-cas/')}
         class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         View all 8 case studies →
@@ -253,7 +254,7 @@ const zones = [
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script is:inline src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
-<script is:inline define:vars={{ zones }}>
+<script is:inline define:vars={{ zones, baseUrl: import.meta.env.BASE_URL.replace(/\/$/, '') }}>
   document.addEventListener('DOMContentLoaded', async () => {
     var el = document.getElementById('carte-accueil');
     if (!el || !window.L) return;
@@ -285,7 +286,7 @@ const zones = [
     function makePopup(info) {
       var html = '<strong>' + info.nom + '</strong>';
       if (info.detail) html += '<br><span style="font-size:12px;color:#64748B">' + info.detail + '</span>';
-      html += '<br><a href="/en/pays-et-culture/#' + info.anchor + '" style="color:#2C5282;font-size:12px">View section →</a>';
+      html += '<br><a href="' + baseUrl + '/en/pays-et-culture/#' + info.anchor + '" style="color:#2C5282;font-size:12px">View section →</a>';
       return html;
     }
 

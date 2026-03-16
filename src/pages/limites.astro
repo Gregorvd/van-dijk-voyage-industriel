@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../i18n/utils';
 ---
 
 <BaseLayout
@@ -108,13 +109,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="flex justify-between mt-8">
       <a
-        href="/etudes-de-cas/"
+        href={url('/etudes-de-cas/')}
         class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         ← Études de cas
       </a>
       <a
-        href="/vision/"
+        href={url('/vision/')}
         class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         Vision →

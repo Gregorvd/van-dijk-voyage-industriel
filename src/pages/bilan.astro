@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../i18n/utils';
 ---
 
 <BaseLayout
@@ -40,7 +41,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li>Observation du design-to-cost : intégration du prix de revient dès la phase de conception</li>
       </ul>
       <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
-        <strong class="not-italic text-primary">Synthèse :</strong> L'industrialisation n'est pas binaire : elle se déploie le long d'un spectre, de l'atelier artisanal (outil principal = intuition) à l'usine semi-industrielle (<a href="/etudes-de-cas/co-motion" class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a>, CNC + TIG + peinture). Comprendre où se situe une structure sur ce spectre est le point de départ de tout plan d'amélioration.
+        <strong class="not-italic text-primary">Synthèse :</strong> L'industrialisation n'est pas binaire : elle se déploie le long d'un spectre, de l'atelier artisanal (outil principal = intuition) à l'usine semi-industrielle (<a href={url('/etudes-de-cas/co-motion')} class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a>, CNC + TIG + peinture). Comprendre où se situe une structure sur ce spectre est le point de départ de tout plan d'amélioration.
       </blockquote>
     </section>
 
@@ -48,11 +49,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="mt-8 p-6 rounded-xl border border-border bg-white">
       <h2 class="text-primary">C. Gestion de production</h2>
       <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
-        <li>Flux tiré pur : toutes les structures visitées produisent à la commande, zéro stock de produits finis (exception <a href="/etudes-de-cas/paragon" class="text-accent hover:text-accent-hover underline underline-offset-2">Paragon</a> : stock de pièces standardisées)</li>
-        <li>Kanban visuel : système de pochettes chez <a href="/etudes-de-cas/bike-friday" class="text-accent hover:text-accent-hover underline underline-offset-2">Bike Friday</a>, plans accrochés aux machines chez <a href="/etudes-de-cas/paragon" class="text-accent hover:text-accent-hover underline underline-offset-2">Paragon</a>, ordres de fabrication réglables chez <a href="/etudes-de-cas/co-motion" class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a></li>
+        <li>Flux tiré pur : toutes les structures visitées produisent à la commande, zéro stock de produits finis (exception <a href={url('/etudes-de-cas/paragon')} class="text-accent hover:text-accent-hover underline underline-offset-2">Paragon</a> : stock de pièces standardisées)</li>
+        <li>Kanban visuel : système de pochettes chez <a href={url('/etudes-de-cas/bike-friday')} class="text-accent hover:text-accent-hover underline underline-offset-2">Bike Friday</a>, plans accrochés aux machines chez <a href={url('/etudes-de-cas/paragon')} class="text-accent hover:text-accent-hover underline underline-offset-2">Paragon</a>, ordres de fabrication réglables chez <a href={url('/etudes-de-cas/co-motion')} class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a></li>
         <li>Gestion des ordres de fabrication (OF) et suivi physique à travers l'atelier</li>
         <li>Ordonnancement en petites séries : priorités, délais, gestion des aléas dans des structures de tailles différentes</li>
-        <li>Contrôle qualité intégré : boucles de vérification en cours de production (chef d'atelier <a href="/etudes-de-cas/co-motion" class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a>, contrôle fréquentiel <a href="/etudes-de-cas/white-industries" class="text-accent hover:text-accent-hover underline underline-offset-2">White Industries</a>)</li>
+        <li>Contrôle qualité intégré : boucles de vérification en cours de production (chef d'atelier <a href={url('/etudes-de-cas/co-motion')} class="text-accent hover:text-accent-hover underline underline-offset-2">Co-Motion</a>, contrôle fréquentiel <a href={url('/etudes-de-cas/white-industries')} class="text-accent hover:text-accent-hover underline underline-offset-2">White Industries</a>)</li>
       </ul>
       <blockquote class="mt-6 p-4 rounded-lg bg-accent/5 border-l-4 border-accent text-secondary italic">
         <strong class="not-italic text-primary">Synthèse :</strong> Le modèle de gestion de production le plus efficace observé n'est pas nécessairement le plus informatisé. La pochette suspendue de Bike Friday illustre qu'un système physique simple peut surpasser un ERP mal utilisé.
@@ -64,7 +65,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2 class="text-primary">D. Coordination technique</h2>
       <ul class="mt-4 space-y-2 text-secondary list-disc pl-5">
         <li>Cartographie des interfaces de sous-traitance : anodisation, peinture, usinage complexe, tests laboratoire. Chaque structure externalise différemment</li>
-        <li>Compréhension des risques de l'externalisation : délais, qualité de finition, dépendance géographique (ex. anodisation Sacramento pour <a href="/etudes-de-cas/white-industries" class="text-accent hover:text-accent-hover underline underline-offset-2">White Industries</a>)</li>
+        <li>Compréhension des risques de l'externalisation : délais, qualité de finition, dépendance géographique (ex. anodisation Sacramento pour <a href={url('/etudes-de-cas/white-industries')} class="text-accent hover:text-accent-hover underline underline-offset-2">White Industries</a>)</li>
         <li>Lecture des chaînes d'approvisionnement composants : réseaux de fournisseurs premium (Paul Component), matières premières (titane russe/chinois, rayons belges)</li>
         <li>Interface bureau–atelier : observation des transferts d'information entre conception (Fusion 360, plans papier) et production</li>
         <li>Coordination en contexte multilingue : visites techniques et échanges en anglais dans tous les ateliers</li>
@@ -108,13 +109,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="flex justify-between mt-8">
       <a
-        href="/pays-et-culture/"
+        href={url('/pays-et-culture/')}
         class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         ← Pays & Culture
       </a>
       <a
-        href="/vision/"
+        href={url('/vision/')}
         class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         Vision →

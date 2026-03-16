@@ -1,36 +1,36 @@
 ---
 import BoutonCTA from './BoutonCTA.astro';
-import { getLocaleFromPath, getAlternatePath } from '../i18n/utils';
+import { getLocaleFromPath, getAlternatePath, url } from '../i18n/utils';
 
 const currentPath = Astro.url.pathname;
 const locale = getLocaleFromPath(currentPath);
 const alternatePath = getAlternatePath(currentPath);
 
 const navLinksFr = [
-  { label: 'Accueil', href: '/' },
-  { label: 'Études de cas', href: '/etudes-de-cas/' },
-  { label: 'Pays & Culture', href: '/pays-et-culture/' },
-  { label: 'Apprentissages', href: '/bilan/' },
-  { label: 'Vision', href: '/vision/' },
-  { label: 'À propos', href: '/a-propos/' },
+  { label: 'Accueil', href: url('/') },
+  { label: 'Études de cas', href: url('/etudes-de-cas/') },
+  { label: 'Pays & Culture', href: url('/pays-et-culture/') },
+  { label: 'Apprentissages', href: url('/bilan/') },
+  { label: 'Vision', href: url('/vision/') },
+  { label: 'À propos', href: url('/a-propos/') },
 ];
 
 const navLinksEn = [
-  { label: 'Home', href: '/en/' },
-  { label: 'Case Studies', href: '/en/etudes-de-cas/' },
-  { label: 'Countries', href: '/en/pays-et-culture/' },
-  { label: 'Skills', href: '/en/bilan/' },
-  { label: 'Vision', href: '/en/vision/' },
-  { label: 'About', href: '/en/a-propos/' },
+  { label: 'Home', href: url('/en/') },
+  { label: 'Case Studies', href: url('/en/etudes-de-cas/') },
+  { label: 'Countries', href: url('/en/pays-et-culture/') },
+  { label: 'Skills', href: url('/en/bilan/') },
+  { label: 'Vision', href: url('/en/vision/') },
+  { label: 'About', href: url('/en/a-propos/') },
 ];
 
 const navLinks = locale === 'en' ? navLinksEn : navLinksFr;
 const ctaLabel = locale === 'en' ? 'Download CV' : 'Télécharger CV';
 const siteName = 'Grégor Van Dijk';
-const homeHref = locale === 'en' ? '/en/' : '/';
+const homeHref = locale === 'en' ? url('/en/') : url('/');
 
 function isActive(href: string): boolean {
-  if (href === '/' || href === '/en/') return currentPath === href;
+  if (href === url('/') || href === url('/en/')) return currentPath === href;
   return currentPath.startsWith(href);
 }
 ---
@@ -58,7 +58,7 @@ function isActive(href: string): boolean {
           {link.label}
         </a>
       ))}
-      <BoutonCTA label={ctaLabel} href="/cv-gregor-vandijk.pdf" variant="primary" />
+      <BoutonCTA label={ctaLabel} href={url('/cv-gregor-vandijk.pdf')} variant="primary" />
       <a
         href={alternatePath}
         class="text-xs font-semibold uppercase px-2.5 py-1 rounded border border-border text-secondary hover:text-accent hover:border-accent transition-colors duration-150"
@@ -93,7 +93,7 @@ function isActive(href: string): boolean {
             </a>
           ))}
           <div class="flex items-center gap-3 pt-2">
-            <BoutonCTA label={ctaLabel} href="/cv-gregor-vandijk.pdf" variant="primary" />
+            <BoutonCTA label={ctaLabel} href={url('/cv-gregor-vandijk.pdf')} variant="primary" />
             <a
               href={alternatePath}
               class="text-xs font-semibold uppercase px-2.5 py-1 rounded border border-border text-secondary hover:text-accent hover:border-accent transition-colors duration-150"

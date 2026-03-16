@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import TagCompetence from '../../components/TagCompetence.astro';
 import { getCollection } from 'astro:content';
 import { connexions, clusters } from '../../data/connexions';
+import { url } from '../../i18n/utils';
 
 const etudes = await getCollection('etudes-de-cas', ({ data }) => data.publie === true);
 const etudesTriees = etudes.sort((a, b) => a.data.ordre - b.data.ordre);
@@ -63,7 +64,7 @@ function findStudy(slug: string) {
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
               {clusterStudies.map((etude) => etude && (
                 <a
-                  href={`/en/etudes-de-cas/${etude.id}`}
+                  href={url(`/en/etudes-de-cas/${etude.id}`)}
                   class="p-4 rounded-lg border border-border bg-white hover:shadow hover:-translate-y-px transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none text-center"
                 >
                   <p class="font-semibold text-primary text-sm">{etude.data.entreprise}</p>
@@ -122,7 +123,7 @@ function findStudy(slug: string) {
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
               {independents.map((etude) => (
                 <a
-                  href={`/en/etudes-de-cas/${etude.id}`}
+                  href={url(`/en/etudes-de-cas/${etude.id}`)}
                   class="p-4 rounded-lg border border-border bg-white hover:shadow hover:-translate-y-px transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none text-center"
                 >
                   <p class="font-semibold text-primary text-sm">{etude.data.entreprise}</p>
@@ -450,10 +451,10 @@ function findStudy(slug: string) {
 
     <hr class="border-border mt-12" />
     <div class="flex justify-between mt-8">
-      <a href="/en/etudes-de-cas/" class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
+      <a href={url('/en/etudes-de-cas/')} class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
         ← Case Studies
       </a>
-      <a href="/en/bilan/" class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
+      <a href={url('/en/bilan/')} class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
         Skills & Learnings →
       </a>
     </div>

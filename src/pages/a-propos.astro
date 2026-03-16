@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../i18n/utils';
 
 const parcours = [
   {
@@ -195,13 +196,13 @@ const parcours = [
     <hr class="border-border mt-12" />
     <div class="flex justify-between mt-8">
       <a
-        href="/vision/"
+        href={url('/vision/')}
         class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         ← Vision
       </a>
       <a
-        href="/annexes/"
+        href={url('/annexes/')}
         class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         Annexes →

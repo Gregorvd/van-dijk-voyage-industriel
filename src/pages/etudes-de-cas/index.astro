@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CardEtude from '../../components/CardEtude.astro';
 import { getCollection } from 'astro:content';
+import { url } from '../../i18n/utils';
 
 const etudes = await getCollection('etudes-de-cas', ({ data }) => data.publie === true);
 const etudesTriees = etudes.sort((a, b) => a.data.ordre - b.data.ordre);
@@ -70,7 +71,7 @@ const tousLesTags = [...new Set(etudesTriees.flatMap(e => e.data.tags))].sort();
 
     <!-- Limites & Opportunités -->
     <a
-      href="/limites/"
+      href={url('/limites/')}
       class="group mt-12 block p-6 rounded-xl border border-accent/20 bg-accent/[0.03] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
     >
       <p class="text-xs text-accent font-semibold uppercase tracking-wide">Analyse transversale</p>
@@ -82,13 +83,13 @@ const tousLesTags = [...new Set(etudesTriees.flatMap(e => e.data.tags))].sort();
     <hr class="border-border mt-12" />
     <div class="flex justify-between mt-8">
       <a
-        href="/"
+        href={url('/')}
         class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         ← Accueil
       </a>
       <a
-        href="/pays-et-culture/"
+        href={url('/pays-et-culture/')}
         class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         Pays & Culture →

@@ -1,5 +1,5 @@
 ---
-import { getLocaleFromPath, getAlternatePath } from '../i18n/utils';
+import { getLocaleFromPath, getAlternatePath, url } from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -10,7 +10,7 @@ interface Props {
 const { title, description, ogImage = '/og-image.jpg' } = Astro.props;
 const canonicalURL = Astro.url;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') || '';
-const ogImageURL = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+const ogImageURL = ogImage.startsWith('http') ? ogImage : `${siteUrl}${url(ogImage)}`;
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const ogLocale = locale === 'en' ? 'en_US' : 'fr_FR';

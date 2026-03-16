@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../i18n/utils';
 
 const sections = [
   {
@@ -64,7 +65,7 @@ const sections = [
     <hr class="border-border mt-12" />
     <div class="flex justify-start mt-8">
       <a
-        href="/en/a-propos/"
+        href={url('/en/a-propos/')}
         class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         &larr; About
