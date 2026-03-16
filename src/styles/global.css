@@ -81,10 +81,12 @@ h3 {
   }
 }
 
-/* Justification des textes — aspect professionnel (toutes tailles) */
-p, li, blockquote {
-  text-align: justify;
-  text-justify: inter-word;
+/* Justification des textes — aspect professionnel (desktop uniquement) */
+@media (min-width: 768px) {
+  p, li, blockquote {
+    text-align: justify;
+    text-justify: inter-word;
+  }
 }
 
 /* Exceptions — ne pas justifier les éléments courts ou centrés */
