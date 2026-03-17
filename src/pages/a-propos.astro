@@ -6,6 +6,8 @@ const birthDate = new Date(2001, 0, 15);
 const today = new Date();
 const age = today.getFullYear() - birthDate.getFullYear() - (today < new Date(today.getFullYear(), 0, 15) ? 1 : 0);
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const parcours = [
   {
     periode: 'Avril 2025 – Aujourd\'hui',
@@ -149,6 +151,46 @@ const parcours = [
       </ol>
     </section>
 
+    <!-- Voyages à vélo -->
+    <section class="mt-16">
+      <p class="text-xs text-accent font-semibold uppercase tracking-wide">14 voyages · 3 287 km</p>
+      <h2 class="text-primary mt-2">Voyages à vélo</h2>
+      <p class="text-secondary mt-4">
+        Depuis 2021, j'ai développé une passion pour les voyages en itinérance. Cliquez sur un itinéraire pour voir les détails.
+      </p>
+
+      <div class="mt-8 rounded-lg overflow-hidden border border-border" style="height: 480px;" id="carte-velo" aria-label="Carte des voyages à vélo"></div>
+
+      <!-- Trip detail panel -->
+      <div id="trip-detail" class="mt-4 p-5 rounded-lg border border-border bg-white hidden">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-xs text-accent font-semibold uppercase tracking-wide" id="trip-period"></p>
+            <h3 class="text-primary font-semibold mt-1" id="trip-name"></h3>
+          </div>
+          <button id="trip-close" class="text-secondary hover:text-primary transition-colors text-lg leading-none" aria-label="Fermer">&times;</button>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
+          <div>
+            <p class="text-xs text-secondary uppercase tracking-wide">Distance</p>
+            <p class="text-primary font-semibold mt-1" id="trip-distance"></p>
+          </div>
+          <div>
+            <p class="text-xs text-secondary uppercase tracking-wide">Dénivelé</p>
+            <p class="text-primary font-semibold mt-1" id="trip-elev"></p>
+          </div>
+          <div>
+            <p class="text-xs text-secondary uppercase tracking-wide">Durée</p>
+            <p class="text-primary font-semibold mt-1" id="trip-days"></p>
+          </div>
+          <div>
+            <p class="text-xs text-secondary uppercase tracking-wide">Participants</p>
+            <p class="text-primary font-semibold mt-1" id="trip-people"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact -->
     <section class="mt-16">
       <h2 class="text-primary">Contact</h2>
@@ -213,4 +255,183 @@ const parcours = [
       </a>
     </div>
   </div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script is:inline define:vars={{ basePath }}>
+document.addEventListener('DOMContentLoaded', function() {
+  var el = document.getElementById('carte-velo');
+  if (!el || !window.L) return;
+
+  var trips = [
+    { id: 'ma-troyes-2021', nom: 'Maisons-Alfort → Troyes', periode: 'Juin 2021', jours: 2, participants: 3 },
+    { id: 'valenciennes-lille-2023', nom: 'Valenciennes → Lille', periode: 'Avril 2023', jours: 3, participants: 3 },
+    { id: 'dortmund-ouest-2023', nom: 'Boucle Dortmund Ouest', periode: 'Août 2023', jours: 2, participants: 1 },
+    { id: 'dortmund-est-2023', nom: 'Boucle Dortmund Est', periode: 'Août 2023', jours: 2, participants: 1 },
+    { id: 'charleville-belgique-2024', nom: 'Charleville → Belgique', periode: 'Mai 2024', jours: 3, participants: 3 },
+    { id: 'pays-bas-2024', nom: 'Tour des Pays-Bas', periode: 'Mai 2024', jours: 5, participants: 5 },
+    { id: 'nantes-saumur-2024', nom: 'Nantes → Saumur', periode: 'Juillet 2024', jours: 2, participants: 2 },
+    { id: 'vernon-lehavre-2024', nom: 'Vernon → Le Havre', periode: 'Juillet 2024', jours: 3, participants: 4 },
+    { id: 'marmande-biarritz-2024', nom: 'Marmande → Biarritz', periode: 'Août 2024', jours: 3, participants: 1 },
+    { id: 'nantes-turballe-2025', nom: 'Nantes → La Turballe', periode: 'Mai 2025', jours: 4, participants: 2 },
+    { id: 'yvette-lehavre-2025', nom: 'Yvette → Le Havre', periode: 'Mai 2025', jours: 3, participants: 2 },
+    { id: 'paris-nord-2025', nom: 'Boucle Paris Nord', periode: 'Août 2025', jours: 2, participants: 2 },
+    { id: 'tours-bretignolles-2025', nom: 'Tours → Bretignolles-sur-Mer', periode: 'Août 2025', jours: 4, participants: 2 },
+    { id: 'rennes-stmalo-2026', nom: 'Rennes → Saint-Malo', periode: 'Janvier 2026', jours: 2, participants: 5 },
+  ];
+
+  var map = L.map(el, { scrollWheelZoom: false }).setView([48.5, 3], 6);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &middot; &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 18,
+  }).addTo(map);
+
+  var colors = [
+    '#2C5282', '#16A34A', '#D97706', '#DC2626', '#7C3AED',
+    '#0891B2', '#BE185D', '#4338CA', '#059669', '#EA580C',
+    '#6D28D9', '#0284C7', '#B91C1C', '#15803D'
+  ];
+
+  var dataUrl = basePath + '/data/bike-trips.json';
+
+  fetch(dataUrl).then(function(r) { return r.json(); }).then(function(data) {
+    var layers = {};
+    var allBounds = [];
+
+    data.forEach(function(track, i) {
+      var trip = trips.find(function(t) { return t.id === track.id; });
+      if (!trip) return;
+
+      var color = colors[i % colors.length];
+      var latlngs = track.coords.map(function(c) { return [c[0], c[1]]; });
+      allBounds = allBounds.concat(latlngs);
+
+      var line = L.polyline(latlngs, {
+        color: color,
+        weight: 3,
+        opacity: 0.7,
+      }).addTo(map);
+
+      // Start marker: filled circle
+      var startMarker = L.circleMarker(latlngs[0], {
+        radius: 5,
+        color: color,
+        fillColor: color,
+        fillOpacity: 1,
+        weight: 2,
+        opacity: 0.7,
+      }).addTo(map);
+
+      // End marker: hollow circle
+      var endMarker = L.circleMarker(latlngs[latlngs.length - 1], {
+        radius: 5,
+        color: color,
+        fillColor: '#FFFFFF',
+        fillOpacity: 1,
+        weight: 2,
+        opacity: 0.7,
+      }).addTo(map);
+
+      line.bindTooltip(trip.nom, { sticky: true, className: 'trip-tooltip' });
+
+      function onTripClick() {
+        showTrip(trip, track, color);
+        highlightLine(track.id);
+      }
+
+      line.on('click', onTripClick);
+      startMarker.on('click', onTripClick);
+      endMarker.on('click', onTripClick);
+
+      line.on('mouseover', function() {
+        line.setStyle({ weight: 5, opacity: 1 });
+        startMarker.setStyle({ opacity: 1 });
+        endMarker.setStyle({ opacity: 1 });
+      });
+
+      line.on('mouseout', function() {
+        if (!line._highlighted) {
+          line.setStyle({ weight: 3, opacity: 0.7 });
+          startMarker.setStyle({ opacity: 0.7 });
+          endMarker.setStyle({ opacity: 0.7 });
+        }
+      });
+
+      layers[track.id] = { line: line, color: color, startMarker: startMarker, endMarker: endMarker };
+    });
+
+    if (allBounds.length > 0) {
+      map.fitBounds(allBounds, { padding: [30, 30] });
+    }
+
+    function highlightLine(activeId) {
+      Object.keys(layers).forEach(function(id) {
+        var l = layers[id];
+        if (id === activeId) {
+          l.line.setStyle({ weight: 5, opacity: 1 });
+          l.line._highlighted = true;
+          l.line.bringToFront();
+          l.startMarker.setStyle({ opacity: 1 });
+          l.endMarker.setStyle({ opacity: 1 });
+          l.startMarker.bringToFront();
+          l.endMarker.bringToFront();
+        } else {
+          l.line.setStyle({ weight: 3, opacity: 0.35 });
+          l.line._highlighted = false;
+          l.startMarker.setStyle({ opacity: 0.35 });
+          l.endMarker.setStyle({ opacity: 0.35 });
+        }
+      });
+    }
+
+    function resetLines() {
+      Object.keys(layers).forEach(function(id) {
+        var l = layers[id];
+        l.line.setStyle({ weight: 3, opacity: 0.7 });
+        l.line._highlighted = false;
+        l.startMarker.setStyle({ opacity: 0.7 });
+        l.endMarker.setStyle({ opacity: 0.7 });
+      });
+    }
+
+    function showTrip(trip, track, color) {
+      var panel = document.getElementById('trip-detail');
+      panel.classList.remove('hidden');
+      panel.style.borderLeftColor = color;
+      panel.style.borderLeftWidth = '4px';
+      document.getElementById('trip-period').textContent = trip.periode;
+      document.getElementById('trip-name').textContent = trip.nom;
+      document.getElementById('trip-distance').textContent = track.distance + ' km';
+      document.getElementById('trip-elev').textContent = '+ ' + track.elevGain + ' m';
+      document.getElementById('trip-days').textContent = trip.jours + (trip.jours > 1 ? ' jours' : ' jour');
+      document.getElementById('trip-people').textContent = trip.participants + (trip.participants > 1 ? ' personnes' : ' personne');
+    }
+
+    document.getElementById('trip-close').addEventListener('click', function() {
+      document.getElementById('trip-detail').classList.add('hidden');
+      resetLines();
+      if (allBounds.length > 0) {
+        map.fitBounds(allBounds, { padding: [30, 30] });
+      }
+    });
+  });
+});
+</script>
+
+<style>
+  .trip-tooltip {
+    background: #1A1A2E;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-family: 'Inter', system-ui, sans-serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  .trip-tooltip::before {
+    border-top-color: #1A1A2E !important;
+  }
+</style>
 </BaseLayout>
