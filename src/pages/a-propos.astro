@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     if (allBounds.length > 0) {
-      map.fitBounds(allBounds, { padding: [30, 30] });
+      map.fitBounds(allBounds, { padding: [10, 10] });
     }
 
     function highlightLine(activeId) {
@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('trip-detail').classList.add('hidden');
       resetLines();
       if (allBounds.length > 0) {
-        map.fitBounds(allBounds, { padding: [30, 30] });
+        map.fitBounds(allBounds, { padding: [10, 10] });
       }
     });
   });
