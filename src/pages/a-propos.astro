@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<style>
+<style is:global>
   .trip-tooltip {
     background: #1A1A2E;
     color: white;
@@ -432,6 +432,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   .trip-tooltip::before {
     border-top-color: #1A1A2E !important;
+  }
+  #carte-velo path.leaflet-interactive:focus,
+  #carte-velo .leaflet-interactive:focus {
+    outline: none !important;
   }
 </style>
 </BaseLayout>
