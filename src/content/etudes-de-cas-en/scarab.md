@@ -12,15 +12,15 @@ Scarab Cycles is an artisan custom steel bicycle workshop located in El Retiro, 
 
 <div class="photos-row photos-row-3">
   <figure>
-    <img src="/van-dijk-voyage-industriel/images/etudes/scarab-peinture-tribu.webp" alt="Scarab Cycles steel frame on shooting stand with artistic paint by a local Colombian artist" loading="lazy" style="object-position: left center;" />
+    <img src="/images/etudes/scarab-peinture-tribu.webp" alt="Scarab Cycles steel frame on shooting stand with artistic paint by a local Colombian artist" loading="lazy" style="object-position: left center;" />
     <figcaption>Artistic paint by a local tribe, each design tells a regional story</figcaption>
   </figure>
   <figure>
-    <img src="/van-dijk-voyage-industriel/images/etudes/scarab-showroom.webp" alt="Scarab Cycles showroom with finished bikes featuring custom paint and design office" loading="lazy" />
+    <img src="/images/etudes/scarab-showroom.webp" alt="Scarab Cycles showroom with finished bikes featuring custom paint and design office" loading="lazy" />
     <figcaption>Showroom: finished bikes with custom paint, design office and client area</figcaption>
   </figure>
   <figure>
-    <img src="/van-dijk-voyage-industriel/images/photos/scarab-velo-fini.webp" alt="Finished Scarab Cycles gravel bike with artistic paint by a local Colombian artist" loading="lazy" />
+    <img src="/images/photos/scarab-velo-fini.webp" alt="Finished Scarab Cycles gravel bike with artistic paint by a local Colombian artist" loading="lazy" />
     <figcaption>Finished gravel: unique artistic mountain landscape paint, ready for client delivery</figcaption>
   </figure>
 </div>
