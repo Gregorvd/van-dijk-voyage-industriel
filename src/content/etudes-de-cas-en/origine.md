@@ -12,15 +12,15 @@ Origine Cycles is a brand historically established in northern France, founded i
 
 <div class="photos-row photos-row-3">
   <figure>
-    <img src="/images/etudes/origine-assemblage.webp" alt="Overview of the Origine Cycles assembly line in Valenciennes" loading="lazy" />
+    <img src="/van-dijk-voyage-industriel/images/etudes/origine-assemblage.webp" alt="Overview of the Origine Cycles assembly line in Valenciennes" loading="lazy" />
     <figcaption>Assembly line: spacious and well-lit workstations, conveyors and individual carts per customer order</figcaption>
   </figure>
   <figure>
-    <img src="/images/etudes/origine-peinture.webp" alt="Carbon frames hanging to dry after custom painting at Origine Cycles" loading="lazy" />
+    <img src="/van-dijk-voyage-industriel/images/etudes/origine-peinture.webp" alt="Carbon frames hanging to dry after custom painting at Origine Cycles" loading="lazy" />
     <figcaption>Carbon frames hanging to dry: each frame receives a unique color chosen by the customer</figcaption>
   </figure>
   <figure>
-    <img src="/images/etudes/origine-test-gravel.webp" alt="Field test of the Origine Graxx GTR gravel bike on the road" loading="lazy" style="object-position: 55% center;" />
+    <img src="/van-dijk-voyage-industriel/images/etudes/origine-test-gravel.webp" alt="Field test of the Origine Graxx GTR gravel bike on the road" loading="lazy" style="object-position: 55% center;" />
     <figcaption>Field test of the Graxx GTR gravel</figcaption>
   </figure>
 </div>

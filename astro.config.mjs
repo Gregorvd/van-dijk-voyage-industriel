@@ -5,8 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://gregor-vandijk.ch',
-  base: '/',
+  site: 'https://gregorvd.github.io',
+  base: '/van-dijk-voyage-industriel',
   integrations: [sitemap()],
   i18n: {
     defaultLocale: 'fr',

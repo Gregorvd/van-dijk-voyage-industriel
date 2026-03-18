@@ -11,7 +11,7 @@ domaine: "Fabrication de vélos aluminium"
 domaineEn: "Aluminum bicycle manufacturing"
 tags: ["Flux tiré", "Usinage CNC", "Sur-mesure"]
 tagsEn: ["Pull flow", "CNC machining", "Custom-built"]
-image: "/images/logos/logo-circa.webp"
+image: "/van-dijk-voyage-industriel/images/logos/logo-circa.webp"
 imageAlt: "Atelier artisanal de fabrication de vélos, CIRCA Cycles, Portland"
 imageAltEn: "Artisan bicycle manufacturing workshop, CIRCA Cycles, Portland"
 duree: "1 jour"
@@ -37,11 +37,11 @@ CIRCA Cycles est un fabricant artisanal de Portland fondé en 2013 par Rich Fox,
 
 <div class="photos-row">
   <figure>
-    <img src="/images/etudes/circa-velo.webp" alt="Premier prototype fonctionnel CIRCA Cycles : cadre aluminium anodisé avec gravures laser personnalisées sur les tubes" loading="lazy" />
+    <img src="/van-dijk-voyage-industriel/images/etudes/circa-velo.webp" alt="Premier prototype fonctionnel CIRCA Cycles : cadre aluminium anodisé avec gravures laser personnalisées sur les tubes" loading="lazy" />
     <figcaption>Premier prototype fonctionnel : cadre aluminium anodisé, gravures laser personnalisées, assemblé par collage structurel</figcaption>
   </figure>
   <figure>
-    <img src="/images/photos/circa-guidon-detail.webp" alt="Poste de pilotage du prototype CIRCA Cycles avec guidon gravel et gravure laser sur le tube supérieur" loading="lazy" style="object-position: center 30%;" />
+    <img src="/van-dijk-voyage-industriel/images/photos/circa-guidon-detail.webp" alt="Poste de pilotage du prototype CIRCA Cycles avec guidon gravel et gravure laser sur le tube supérieur" loading="lazy" style="object-position: center 30%;" />
     <figcaption>Poste de pilotage du prototype CIRCA : guidon gravel et gravure laser visible sur le tube supérieur</figcaption>
   </figure>
 </div>
