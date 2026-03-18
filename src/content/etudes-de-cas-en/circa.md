@@ -12,11 +12,11 @@ CIRCA Cycles is an artisan manufacturer based in Portland, founded in 2013 by Ri
 
 <div class="photos-row">
   <figure>
-    <img src="/van-dijk-voyage-industriel/images/etudes/circa-velo.webp" alt="First functional CIRCA Cycles prototype: anodized aluminum frame with custom laser engravings on the tubes" loading="lazy" />
+    <img src="/images/etudes/circa-velo.webp" alt="First functional CIRCA Cycles prototype: anodized aluminum frame with custom laser engravings on the tubes" loading="lazy" />
     <figcaption>First functional prototype: anodized aluminum frame, custom laser engravings, assembled by structural bonding</figcaption>
   </figure>
   <figure>
-    <img src="/van-dijk-voyage-industriel/images/photos/circa-guidon-detail.webp" alt="CIRCA Cycles prototype cockpit with gravel handlebar and laser engraving on the top tube" loading="lazy" style="object-position: center 30%;" />
+    <img src="/images/photos/circa-guidon-detail.webp" alt="CIRCA Cycles prototype cockpit with gravel handlebar and laser engraving on the top tube" loading="lazy" style="object-position: center 30%;" />
     <figcaption>Prototype cockpit: gravel handlebar and laser engraving visible on the top tube</figcaption>
   </figure>
 </div>

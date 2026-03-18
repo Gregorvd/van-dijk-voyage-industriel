@@ -37,15 +37,15 @@ Scarab Cycles est un atelier artisanal de fabrication de vélos en acier sur mes
 
 <div class="photos-row photos-row-3">
   <figure>
-    <img src="/van-dijk-voyage-industriel/images/etudes/scarab-peinture-tribu.webp" alt="Cadre acier Scarab Cycles sur pied de shooting avec peinture artistique réalisée par un artiste local colombien" loading="lazy" style="object-position: left center;" />
+    <img src="/images/etudes/scarab-peinture-tribu.webp" alt="Cadre acier Scarab Cycles sur pied de shooting avec peinture artistique réalisée par un artiste local colombien" loading="lazy" style="object-position: left center;" />
     <figcaption>Peinture artistique réalisée par une tribu locale, chaque graphisme raconte une histoire régionale</figcaption>
   </figure>
   <figure>
-    <img src="/van-dijk-voyage-industriel/images/etudes/scarab-showroom.webp" alt="Showroom Scarab Cycles avec vélos terminés aux peintures personnalisées et bureau de design" loading="lazy" />
+    <img src="/images/etudes/scarab-showroom.webp" alt="Showroom Scarab Cycles avec vélos terminés aux peintures personnalisées et bureau de design" loading="lazy" />
     <figcaption>Showroom : vélos terminés avec peintures personnalisées, bureau de design et espace client</figcaption>
   </figure>
   <figure>
-    <img src="/van-dijk-voyage-industriel/images/photos/scarab-velo-fini.webp" alt="Gravel Scarab Cycles terminé avec peinture artistique réalisée par un artiste local colombien" loading="lazy" />
+    <img src="/images/photos/scarab-velo-fini.webp" alt="Gravel Scarab Cycles terminé avec peinture artistique réalisée par un artiste local colombien" loading="lazy" />
     <figcaption>Gravel terminé : peinture artistique unique des montagnes du pays, prêt pour livraison au client</figcaption>
   </figure>
 </div>
