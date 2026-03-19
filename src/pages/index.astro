@@ -48,7 +48,6 @@ const zones = [
 
     <!-- Bandeau recherche -->
     <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium">
-      <span aria-hidden="true">→</span>
       Recherche : Chef de projet technique · Suisse romande
     </div>
 
@@ -86,7 +85,7 @@ const zones = [
       <a href={url('/bilan/')} class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
         <p class="text-accent font-semibold text-sm">Responsable technique</p>
         <p class="text-primary font-semibold mt-2">Quelles compétences concrètes ?</p>
-        <p class="text-secondary text-sm mt-2 leading-relaxed">6 domaines de compétences développés sur le terrain : amélioration continue, industrialisation, gestion de production, coordination, innovation et transversal.</p>
+        <p class="text-secondary text-sm mt-2 leading-relaxed">6 domaines de compétences développés sur le terrain : amélioration continue, industrialisation, gestion de production, coordination, innovation et transversalité.</p>
         <span class="inline-flex items-center gap-1 text-accent text-sm font-medium mt-4 group-hover:gap-2 transition-all">Voir les compétences →</span>
       </a>
       <a href={url('/vision/')} class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
@@ -99,9 +98,9 @@ const zones = [
   </section>
 
   <!-- Section La démarche -->
-  <section class="max-w-[1320px] mx-auto px-6 py-16">
-    <p class="text-xs text-accent font-semibold uppercase tracking-wide">Méthode</p>
-    <h2 class="text-primary mt-2">Une observation industrielle structurée, pas un simple carnet de voyage.</h2>
+  <section class="max-w-[1320px] mx-auto px-6 py-12">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide text-center">Méthode</p>
+    <h2 class="text-primary mt-2 text-center">Une observation industrielle structurée, pas un simple carnet de voyage.</h2>
 
     <!-- Frise desktop (horizontale avec ligne) -->
     <div class="hidden md:block mt-12">
@@ -177,9 +176,9 @@ const zones = [
   </section>
 
   <!-- Section « Compétences illustrées » -->
-  <section class="max-w-[1320px] mx-auto px-6 py-16 border-t border-border">
-    <p class="text-xs text-accent font-semibold uppercase tracking-wide">Compétences illustrées</p>
-    <h2 class="text-primary mt-2">Ce que cette démarche démontre</h2>
+  <section class="max-w-[1320px] mx-auto px-6 py-12 border-t border-border">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide text-center">Compétences illustrées</p>
+    <h2 class="text-primary mt-2 text-center">Ce que cette démarche démontre</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
       <div class="p-6 rounded-lg border border-border bg-white">
@@ -210,19 +209,19 @@ const zones = [
   </section>
 
   <!-- Section Carte -->
-  <section class="max-w-[1320px] mx-auto px-6 py-16 border-t border-border">
+  <section class="max-w-[1320px] mx-auto px-6 py-12 border-t border-border">
     <p class="text-xs text-accent font-semibold uppercase tracking-wide">Géographie</p>
     <h2 class="text-primary mt-2">Pays visités</h2>
     <p class="text-secondary mt-2">
       Amérique du Nord · Amérique Centrale · Amérique du Sud · Afrique · Asie
     </p>
 
-    <div class="mt-8 rounded-lg overflow-hidden border border-border" style="height: 400px;" id="carte-accueil" aria-label="Carte des structures industrielles visitées">
+    <div class="mt-8 rounded-lg overflow-hidden border border-border h-[300px] sm:h-[400px] lg:h-[500px]" id="carte-accueil" aria-label="Carte des structures industrielles visitées">
     </div>
   </section>
 
   <!-- Section études de cas -->
-  <section class="max-w-[1320px] mx-auto px-6 py-16 border-t border-border">
+  <section class="max-w-[1320px] mx-auto px-6 py-12 border-t border-border">
     <h2 class="text-primary text-center">Études de cas</h2>
     <p class="text-secondary text-center mt-2">Analyse détaillée des ateliers visités : flux de production, organisation, points forts, axes d'amélioration et enseignement principal.</p>
 
@@ -253,7 +252,6 @@ const zones = [
       </a>
     </div>
   </section>
-</BaseLayout>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -348,3 +346,4 @@ const zones = [
     }
   });
 </script>
+</BaseLayout>

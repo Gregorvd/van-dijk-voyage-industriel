@@ -1,92 +1,91 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { url } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { url } from '../../i18n/utils';
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 const birthDate = new Date(2001, 0, 15);
 const today = new Date();
 const age = today.getFullYear() - birthDate.getFullYear() - (today < new Date(today.getFullYear(), 0, 15) ? 1 : 0);
 
-const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
-
 const parcours = [
   {
-    periode: 'Avril 2025 – Aujourd\'hui',
+    periode: 'April 2025 – Present',
     titre: 'Synitier / Repair and Run, Paris',
-    description: 'Chargé de développement services et vélo. Conception et déploiement de formations techniques, création du site internet, réparation et vente de vélos. Développement de partenariats auprès des marques.',
+    description: 'Bicycle services and development manager. Design and deployment of technical training programs, website creation, bicycle repair and sales. Development of brand partnerships.',
     chiffre: '→',
-    chiffreLabel: 'poste actuel',
+    chiffreLabel: 'current position',
     actif: true,
   },
   {
-    periode: 'Sept. 2024 – Avril 2025',
-    titre: 'Voyage d\'exploration industrielle',
-    description: '8 mois · 12 pays · USA, Colombie, Brésil, Afrique du Sud, Botswana, Asie du Sud-Est. 30+ structures visitées.',
+    periode: 'Sept. 2024 – April 2025',
+    titre: 'Industrial exploration journey',
+    description: '8 months · 12 countries · USA, Colombia, Brazil, South Africa, Botswana, Southeast Asia. 30+ facilities visited.',
     chiffre: '30+',
-    chiffreLabel: 'structures visitées',
+    chiffreLabel: 'facilities visited',
     actif: false,
   },
   {
     periode: '2021 – 2024',
     titre: 'Toyota TMMF, Onnaing',
-    description: 'Gestion de production emboutissage. Pilotage des flux, amélioration continue et coordination des équipes en suivant le Toyota Production System (TPS). Usine de 5 000 collaborateurs.',
-    chiffre: '3 ans',
-    chiffreLabel: 'industrie auto',
+    description: 'Stamping production management. Flow management, continuous improvement and team coordination following the Toyota Production System (TPS). Plant of 5,000 employees.',
+    chiffre: '3 yrs',
+    chiffreLabel: 'automotive industry',
     actif: false,
   },
   {
-    periode: 'Juil. – Sept. 2023',
+    periode: 'Jul. – Sept. 2023',
     titre: 'Decathlon Deutschland, Dortmund',
-    description: 'Stage amélioration entrepôt. Optimisation des flux logistiques et de la gestion de stock.',
+    description: 'Warehouse improvement internship. Optimization of logistics flows and inventory management.',
     chiffre: '',
     chiffreLabel: '',
     actif: false,
   },
   {
     periode: '2021 – 2024',
-    titre: 'IMT Nord Europe (ex-Mines de Douai)',
-    description: 'Diplôme d\'ingénieur, Génie Industriel. Spécialisation en gestion de production, amélioration continue et logistique industrielle.',
+    titre: 'IMT Nord Europe (formerly Mines de Douai)',
+    description: 'Engineering degree, Industrial Engineering. Specialization in production management, continuous improvement and industrial logistics.',
     chiffre: '🎓',
-    chiffreLabel: 'ingénieur',
+    chiffreLabel: 'engineer',
     actif: false,
   },
   {
-    periode: 'Avril – Juil. 2021',
+    periode: 'April – Jul. 2021',
     titre: 'S.A.M.R, Pont-Sainte-Marie',
-    description: 'Stage technicien productique. Programmation et réglage de machines-outils (fraisage, tournage). Découverte terrain de la gestion d\'atelier.',
+    description: 'Production engineering internship. Programming and setting up machine tools (milling, turning). Hands-on discovery of workshop management.',
     chiffre: 'CNC',
-    chiffreLabel: 'usinage CNC',
+    chiffreLabel: 'CNC machining',
     actif: false,
   },
   {
     periode: '2019 – 2021',
     titre: 'IUT de Troyes',
-    description: 'DUT Génie Mécanique et Productique. Bases solides en conception mécanique, fabrication et métrologie.',
+    description: 'DUT in Mechanical and Production Engineering. Strong foundations in mechanical design, manufacturing and metrology.',
     chiffre: '🎓',
     chiffreLabel: 'DUT GMP',
     actif: false,
   },
   {
     periode: '2017 – 2020',
-    titre: 'PCMA Tennis, Enseignant',
-    description: 'Enseignement du tennis. Pédagogie, gestion de groupes, transmission de compétences techniques — des aptitudes directement transposables à la coordination d\'équipes en environnement industriel.',
-    chiffre: '3 ans',
-    chiffreLabel: 'enseignement',
+    titre: 'PCMA Tennis, Instructor',
+    description: 'Tennis instruction. Pedagogy, group management, technical skills transmission — abilities directly transferable to team coordination in industrial environments.',
+    chiffre: '3 yrs',
+    chiffreLabel: 'teaching',
     actif: false,
   },
 ];
 ---
 
 <BaseLayout
-  title="À propos | Grégor Van Dijk"
-  description="Ingénieur industriel diplômé IMT Nord Europe. Parcours : Toyota, Decathlon, voyage d'exploration industrielle (12 pays). Basé à Bienne, Suisse."
+  title="About | Grégor Van Dijk"
+  description="Industrial engineer graduated from IMT Nord Europe. Background: Toyota, Decathlon, industrial exploration journey (12 countries). Based in Bienne, Switzerland."
 >
   <div class="max-w-[1320px] mx-auto px-6 py-12">
     <div class="flex items-start gap-6">
       <div class="flex-1 min-w-0">
-        <p class="text-xs text-accent font-semibold uppercase tracking-wide">Ingénieur industriel · {age} ans</p>
-        <h1 class="text-primary mt-2">À propos</h1>
+        <p class="text-xs text-accent font-semibold uppercase tracking-wide">Industrial engineer · {age} years old</p>
+        <h1 class="text-primary mt-2">About</h1>
         <p class="text-secondary mt-4">
-          Chef de projet technique en recherche active · Suisse romande
+          Technical project manager actively seeking · French-speaking Switzerland
         </p>
       </div>
       <div class="flex-shrink-0">
@@ -101,30 +100,30 @@ const parcours = [
       </div>
     </div>
 
-    <!-- Parcours -->
+    <!-- Background -->
     <section class="mt-12">
-      <p class="text-xs text-accent font-semibold uppercase tracking-wide">Qui suis-je</p>
-      <h2 class="text-primary mt-2">Parcours</h2>
+      <p class="text-xs text-accent font-semibold uppercase tracking-wide">Who am I</p>
+      <h2 class="text-primary mt-2">Background</h2>
 
       <div class="mt-6">
         <div class="flex-1 min-w-0">
           <p class="text-secondary">
-            Ingénieur industriel diplômé de l'IMT Nord Europe (ex-Mines de Douai), spécialisé en génie industriel. Après 3 ans chez Toyota (gestion de production emboutissage) et des expériences chez Decathlon et en PME industrielle, j'ai consacré 8 mois à un voyage d'observation industrielle à travers 12 pays (USA, Colombie, Brésil, Afrique du Sud, Botswana, Asie du Sud-Est), avec plus de 30 structures visitées.
+            Industrial engineer graduated from IMT Nord Europe (formerly Mines de Douai), specializing in industrial engineering. After 3 years at Toyota (stamping production management) and experiences at Decathlon and in an industrial SME, I dedicated 8 months to an industrial observation journey across 12 countries (USA, Colombia, Brazil, South Africa, Botswana, Southeast Asia), with over 30 facilities visited.
           </p>
           <p class="text-secondary mt-4">
-            Ce voyage n'était pas un simple tour du monde. C'était une démarche méthodique : visiter des ateliers artisanaux et des usines de précision, analyser leurs flux de production, identifier leurs forces et leurs limites, et en tirer des enseignements applicables à d'autres contextes industriels. Passionné de vélo depuis toujours, c'est naturellement dans cette industrie que j'ai orienté mon voyage d'observation.
+            This journey was not a simple world tour. It was a methodical approach: visiting artisan workshops and precision factories, analyzing their production flows, identifying their strengths and limitations, and drawing lessons applicable to other industrial contexts. A lifelong cycling enthusiast, I naturally oriented my observation journey around this industry.
           </p>
           <p class="text-secondary mt-4">
-            Basé à Bienne, j'occupe actuellement un poste de chargé de développement chez Synitier, centré uniquement sur la partie formation (développement de site internet, établissement d'une nouvelle certification, création de contenu pédagogique), tout en restant ouvert aux opportunités en industrie de précision, microtechnique, horlogerie, mobilité ou médical en Suisse romande.
+            Based in Bienne, I am currently working as a development manager focusing solely on the training side at Synitier (website development, establishment of a new certification, creation of educational content), while remaining open to opportunities in precision industry, microtechnology, watchmaking, mobility or medical in French-speaking Switzerland.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Chronologie  -->
+    <!-- Timeline -->
     <section class="mt-12">
-      <p class="text-xs text-accent font-semibold uppercase tracking-wide">Chronologie</p>
-      <h2 class="text-primary mt-2">Expériences clés</h2>
+      <p class="text-xs text-accent font-semibold uppercase tracking-wide">Timeline</p>
+      <h2 class="text-primary mt-2">Key experiences</h2>
 
       <ol class="mt-8 space-y-0">
         {parcours.map((etape, i) => (
@@ -151,15 +150,15 @@ const parcours = [
       </ol>
     </section>
 
-    <!-- Voyages à vélo -->
+    <!-- Bike trips -->
     <section class="mt-16">
-      <p class="text-xs text-accent font-semibold uppercase tracking-wide">14 voyages · 3 287 km</p>
-      <h2 class="text-primary mt-2">Voyages à vélo</h2>
+      <p class="text-xs text-accent font-semibold uppercase tracking-wide">14 trips · 3 287 km</p>
+      <h2 class="text-primary mt-2">Bike trips</h2>
       <p class="text-secondary mt-4">
-        Depuis 2021, j'ai développé une passion pour les voyages en itinérance. Cliquez sur un itinéraire pour voir les détails.
+        Since 2021, I have developed a passion for multi-day cycling journeys. Click on a route to see the details.
       </p>
 
-      <div class="mt-8 rounded-lg overflow-hidden border border-border" style="height: 480px;" id="carte-velo" aria-label="Carte des voyages à vélo"></div>
+      <div class="mt-8 rounded-lg overflow-hidden border border-border" style="height: 480px;" id="carte-velo" aria-label="Map of bike trips"></div>
 
       <!-- Trip detail panel -->
       <div id="trip-detail" class="mt-4 p-5 rounded-lg border border-border bg-white hidden">
@@ -168,7 +167,7 @@ const parcours = [
             <p class="text-xs text-accent font-semibold uppercase tracking-wide" id="trip-period"></p>
             <h3 class="text-primary font-semibold mt-1" id="trip-name"></h3>
           </div>
-          <button id="trip-close" class="text-secondary hover:text-primary transition-colors text-lg leading-none" aria-label="Fermer">&times;</button>
+          <button id="trip-close" class="text-secondary hover:text-primary transition-colors text-lg leading-none" aria-label="Close">&times;</button>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
           <div>
@@ -176,11 +175,11 @@ const parcours = [
             <p class="text-primary font-semibold mt-1" id="trip-distance"></p>
           </div>
           <div>
-            <p class="text-xs text-secondary uppercase tracking-wide">Dénivelé</p>
+            <p class="text-xs text-secondary uppercase tracking-wide">Elevation</p>
             <p class="text-primary font-semibold mt-1" id="trip-elev"></p>
           </div>
           <div>
-            <p class="text-xs text-secondary uppercase tracking-wide">Durée</p>
+            <p class="text-xs text-secondary uppercase tracking-wide">Duration</p>
             <p class="text-primary font-semibold mt-1" id="trip-days"></p>
           </div>
           <div>
@@ -226,32 +225,26 @@ const parcours = [
       <div class="mt-6 p-4 rounded-lg bg-surface-dark">
         <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:divide-x sm:divide-border">
           <div>
-            <p class="text-sm font-semibold text-primary">Localisation</p>
-            <p class="text-xs text-secondary mt-1">Bienne, Suisse · disponible dès maintenant</p>
+            <p class="text-sm font-semibold text-primary">Location</p>
+            <p class="text-xs text-secondary mt-1">Bienne, Switzerland · available now</p>
           </div>
           <div class="sm:pl-4">
-            <p class="text-sm font-semibold text-primary">Langues</p>
-            <p class="text-xs text-secondary mt-1">Français (natif) · Anglais professionnel (TOEIC 790) · Allemand (notions)</p>
+            <p class="text-sm font-semibold text-primary">Languages</p>
+            <p class="text-xs text-secondary mt-1">French (native) · Professional English (TOEIC 790) · German (basic)</p>
           </div>
         </div>
       </div>
 
-      <p class="text-xs text-secondary mt-4 italic">Références disponibles sur demande.</p>
+      <p class="text-xs text-secondary mt-4 italic">References available upon request.</p>
     </section>
 
     <hr class="border-border mt-12" />
     <div class="flex justify-between mt-8">
-      <a
-        href={url('/vision/')}
-        class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
-      >
+      <a href={url('/en/vision/')} class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
         ← Vision
       </a>
-      <a
-        href={url('/annexes/')}
-        class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
-      >
-        Annexes →
+      <a href={url('/en/appendices/')} class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
+        Appendices →
       </a>
     </div>
   </div>
@@ -264,20 +257,20 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!el || !window.L) return;
 
   var trips = [
-    { id: 'ma-troyes-2021', nom: 'Maisons-Alfort → Troyes', periode: 'Juin 2021', jours: 2, participants: 3 },
-    { id: 'valenciennes-lille-2023', nom: 'Valenciennes → Lille', periode: 'Avril 2023', jours: 3, participants: 3 },
-    { id: 'dortmund-ouest-2023', nom: 'Boucle Dortmund Ouest', periode: 'Août 2023', jours: 2, participants: 1 },
-    { id: 'dortmund-est-2023', nom: 'Boucle Dortmund Est', periode: 'Août 2023', jours: 2, participants: 1 },
-    { id: 'charleville-belgique-2024', nom: 'Charleville → Belgique', periode: 'Mai 2024', jours: 3, participants: 3 },
-    { id: 'pays-bas-2024', nom: 'Tour des Pays-Bas', periode: 'Mai 2024', jours: 5, participants: 5 },
-    { id: 'nantes-saumur-2024', nom: 'Nantes → Saumur', periode: 'Juillet 2024', jours: 2, participants: 2 },
-    { id: 'vernon-lehavre-2024', nom: 'Vernon → Le Havre', periode: 'Juillet 2024', jours: 3, participants: 4 },
-    { id: 'marmande-biarritz-2024', nom: 'Marmande → Biarritz', periode: 'Août 2024', jours: 3, participants: 1 },
-    { id: 'nantes-turballe-2025', nom: 'Nantes → La Turballe', periode: 'Mai 2025', jours: 4, participants: 2 },
-    { id: 'yvette-lehavre-2025', nom: 'Yvette → Le Havre', periode: 'Mai 2025', jours: 3, participants: 2 },
-    { id: 'paris-nord-2025', nom: 'Boucle Paris Nord', periode: 'Août 2025', jours: 2, participants: 2 },
-    { id: 'tours-bretignolles-2025', nom: 'Tours → Bretignolles-sur-Mer', periode: 'Août 2025', jours: 4, participants: 2 },
-    { id: 'rennes-stmalo-2026', nom: 'Rennes → Saint-Malo', periode: 'Janvier 2026', jours: 2, participants: 5 },
+    { id: 'ma-troyes-2021', nom: 'Maisons-Alfort → Troyes', periode: 'June 2021', jours: 2, participants: 3 },
+    { id: 'valenciennes-lille-2023', nom: 'Valenciennes → Lille', periode: 'April 2023', jours: 3, participants: 3 },
+    { id: 'dortmund-ouest-2023', nom: 'Dortmund West Loop', periode: 'August 2023', jours: 2, participants: 1 },
+    { id: 'dortmund-est-2023', nom: 'Dortmund East Loop', periode: 'August 2023', jours: 2, participants: 1 },
+    { id: 'charleville-belgique-2024', nom: 'Charleville → Belgium', periode: 'May 2024', jours: 3, participants: 3 },
+    { id: 'pays-bas-2024', nom: 'Netherlands Tour', periode: 'May 2024', jours: 5, participants: 5 },
+    { id: 'nantes-saumur-2024', nom: 'Nantes → Saumur', periode: 'July 2024', jours: 2, participants: 2 },
+    { id: 'vernon-lehavre-2024', nom: 'Vernon → Le Havre', periode: 'July 2024', jours: 3, participants: 4 },
+    { id: 'marmande-biarritz-2024', nom: 'Marmande → Biarritz', periode: 'August 2024', jours: 3, participants: 1 },
+    { id: 'nantes-turballe-2025', nom: 'Nantes → La Turballe', periode: 'May 2025', jours: 4, participants: 2 },
+    { id: 'yvette-lehavre-2025', nom: 'Yvette → Le Havre', periode: 'May 2025', jours: 3, participants: 2 },
+    { id: 'paris-nord-2025', nom: 'Paris North Loop', periode: 'August 2025', jours: 2, participants: 2 },
+    { id: 'tours-bretignolles-2025', nom: 'Tours → Bretignolles-sur-Mer', periode: 'August 2025', jours: 4, participants: 2 },
+    { id: 'rennes-stmalo-2026', nom: 'Rennes → Saint-Malo', periode: 'January 2026', jours: 2, participants: 5 },
   ];
 
   var map = L.map(el, { scrollWheelZoom: false }).setView([48.5, 3], 6);
@@ -307,7 +300,6 @@ document.addEventListener('DOMContentLoaded', function() {
       var latlngs = track.coords.map(function(c) { return [c[0], c[1]]; });
       allBounds = allBounds.concat(latlngs);
 
-      // Invisible wide hit area for easier clicking (especially on mobile)
       var hitLine = L.polyline(latlngs, {
         color: 'transparent',
         weight: 20,
@@ -320,7 +312,6 @@ document.addEventListener('DOMContentLoaded', function() {
         opacity: 0.7,
       }).addTo(map);
 
-      // Start marker: filled circle
       var startMarker = L.circleMarker(latlngs[0], {
         radius: 7,
         color: color,
@@ -330,7 +321,6 @@ document.addEventListener('DOMContentLoaded', function() {
         opacity: 0.7,
       }).addTo(map);
 
-      // End marker: hollow circle
       var endMarker = L.circleMarker(latlngs[latlngs.length - 1], {
         radius: 7,
         color: color,
@@ -370,7 +360,6 @@ document.addEventListener('DOMContentLoaded', function() {
         startMarker.setStyle({ opacity: 1 });
         endMarker.setStyle({ opacity: 1 });
       });
-
       line.on('mouseout', function() {
         if (!line._highlighted) {
           line.setStyle({ weight: 3, opacity: 0.7 });
@@ -425,8 +414,8 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('trip-name').textContent = trip.nom;
       document.getElementById('trip-distance').textContent = track.distance + ' km';
       document.getElementById('trip-elev').textContent = '+ ' + track.elevGain + ' m';
-      document.getElementById('trip-days').textContent = trip.jours + (trip.jours > 1 ? ' jours' : ' jour');
-      document.getElementById('trip-people').textContent = trip.participants + (trip.participants > 1 ? ' personnes' : ' personne');
+      document.getElementById('trip-days').textContent = trip.jours + (trip.jours > 1 ? ' days' : ' day');
+      document.getElementById('trip-people').textContent = trip.participants + (trip.participants > 1 ? ' people' : ' person');
     }
 
     document.getElementById('trip-close').addEventListener('click', function() {

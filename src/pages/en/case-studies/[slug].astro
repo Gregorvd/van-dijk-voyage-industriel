@@ -52,7 +52,7 @@ const connexionCards = studyConnexions.map(conn => {
     <nav aria-label="Breadcrumb" class="max-w-[1040px] mx-auto px-6 mb-8">
       <ol class="flex items-center gap-1.5 text-xs text-secondary">
         <li>
-          <a href={url('/en/etudes-de-cas/')} class="hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
+          <a href={url('/en/case-studies/')} class="hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded">
             Case Studies
           </a>
         </li>
@@ -117,7 +117,7 @@ const connexionCards = studyConnexions.map(conn => {
               : 'Partner';
             return (
               <a
-                href={url(`/en/etudes-de-cas/${card.otherStudy.id}`)}
+                href={url(`/en/case-studies/${card.otherStudy.id}`)}
                 class="flex items-center gap-3 p-3 rounded-lg border border-border bg-white hover:shadow hover:-translate-y-px transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
               >
                 <div class="flex-1 min-w-0">
@@ -142,7 +142,7 @@ const connexionCards = studyConnexions.map(conn => {
       <hr class="border-border mb-8" />
 
       <a
-        href={url('/en/etudes-de-cas/')}
+        href={url('/en/case-studies/')}
         class="inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         &larr; Back to case studies
@@ -150,7 +150,7 @@ const connexionCards = studyConnexions.map(conn => {
 
       {etudeSuivante && (
         <a
-          href={url(`/en/etudes-de-cas/${etudeSuivante.id}`)}
+          href={url(`/en/case-studies/${etudeSuivante.id}`)}
           class="block mt-8 p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
         >
           <p class="text-xs text-secondary uppercase tracking-wide font-medium">Next study</p>
@@ -269,7 +269,7 @@ const connexionCards = studyConnexions.map(conn => {
   /* Étapes — texte avec retour à la ligne */
   .etude-content :global(blockquote strong) {
     font-family: var(--font-sans);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -332,7 +332,7 @@ const connexionCards = studyConnexions.map(conn => {
   }
 
   /* Callout Enseignement — texte seul dans le bloc bleu */
-  .etude-content :global(h2:last-of-type ~ *) {
+  .etude-content :global(h2:last-of-type ~ p) {
     background-color: color-mix(in srgb, var(--color-accent) 5%, transparent);
     border-left: 4px solid var(--color-accent);
     padding-left: 1.5rem;

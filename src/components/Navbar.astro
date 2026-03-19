@@ -11,17 +11,19 @@ const navLinksFr = [
   { label: 'Études de cas', href: url('/etudes-de-cas/') },
   { label: 'Pays & Culture', href: url('/pays-et-culture/') },
   { label: 'Apprentissages', href: url('/bilan/') },
+  { label: 'Limites', href: url('/limites/') },
   { label: 'Vision', href: url('/vision/') },
   { label: 'À propos', href: url('/a-propos/') },
 ];
 
 const navLinksEn = [
   { label: 'Home', href: url('/en/') },
-  { label: 'Case Studies', href: url('/en/etudes-de-cas/') },
-  { label: 'Countries', href: url('/en/pays-et-culture/') },
-  { label: 'Skills', href: url('/en/bilan/') },
+  { label: 'Case Studies', href: url('/en/case-studies/') },
+  { label: 'Countries', href: url('/en/countries/') },
+  { label: 'Skills', href: url('/en/skills/') },
+  { label: 'Limits', href: url('/en/limits/') },
   { label: 'Vision', href: url('/en/vision/') },
-  { label: 'About', href: url('/en/a-propos/') },
+  { label: 'About', href: url('/en/about/') },
 ];
 
 const navLinks = locale === 'en' ? navLinksEn : navLinksFr;
@@ -116,3 +118,20 @@ function isActive(href: string): boolean {
     display: none;
   }
 </style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const details = document.querySelector('header details');
+    if (!details) return;
+    // Close menu when a link inside is clicked
+    details.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => { details.removeAttribute('open'); });
+    });
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (details.open && !details.contains(e.target as Node)) {
+        details.removeAttribute('open');
+      }
+    });
+  });
+</script>

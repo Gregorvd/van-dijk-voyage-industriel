@@ -28,7 +28,7 @@ Clear sequential flow, with each zone corresponding to a production step. **Adju
 **Areas for improvement**
 
 - Underdeveloped visual production management (POs not visible on the shop floor)
-- Limited throughput (4-5 bikes/day): scaling difficult without heavy investment
+- Limited throughput (4-5 bikes/day): scaling difficulty without heavy investment
 - Strong individual know-how (TIG, settings) = person dependency risk
 
 ## Key takeaway

@@ -95,19 +95,19 @@ function findStudy(slug: string) {
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
             <figure class="m-0 min-w-0 flex flex-col items-center">
               <img src={url('/images/pays/usa-piste-cyclable-seattle.webp')} alt="Piste cyclable dédiée avec marquage au sol et bandes podotactiles à Seattle" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
-              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Piste cyclable dédiée avec marquage au sol, Seattle</figcaption>
+              <figcaption class="text-xs text-secondary mt-1.5 text-center leading-relaxed">Piste cyclable dédiée avec marquage au sol, Seattle</figcaption>
             </figure>
             <figure class="m-0 min-w-0 flex flex-col items-center">
               <img src={url('/images/photos/portland-breakfast-bridges.webp')} alt="Événement communautaire Breakfast on the Bridges à Portland" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
-              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Événement mensuel « Breakfast on the Bridges » : café et viennoiseries offerts aux cyclistes sur les ponts de la ville, Portland</figcaption>
+              <figcaption class="text-xs text-secondary mt-1.5 text-center leading-relaxed">Événement mensuel « Breakfast on the Bridges » : café et viennoiseries offerts aux cyclistes sur les ponts de la ville, Portland</figcaption>
             </figure>
             <figure class="m-0 min-w-0 flex flex-col items-center">
               <img src={url('/images/pays/usa-rack-velo-bus.webp')} alt="Rack à vélos de bus fixé au mur dans la gare pour s'exercer au chargement, Seattle" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
-              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Rack à vélos de bus fixé au mur dans la gare pour s'exercer au chargement: Seattle mais visible dans toute la côte ouest</figcaption>
+              <figcaption class="text-xs text-secondary mt-1.5 text-center leading-relaxed">Rack à vélos de bus fixé au mur dans la gare pour s'exercer au chargement: Seattle mais visible dans toute la côte ouest</figcaption>
             </figure>
             <figure class="m-0 min-w-0 flex flex-col items-center">
               <img src={url('/images/pays/usa-velo-train.webp')} alt="Wagon entier spécialement réservé aux vélos dans le train de banlieue à San Francisco" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
-              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Wagon entier spécialement réservé aux vélos dans le train de banlieue, San Fransisco</figcaption>
+              <figcaption class="text-xs text-secondary mt-1.5 text-center leading-relaxed">Wagon entier spécialement réservé aux vélos dans le train de banlieue, San Fransisco</figcaption>
             </figure>
           </div>
         </div>
@@ -130,7 +130,7 @@ function findStudy(slug: string) {
                 <p class="text-sm font-semibold text-accent">{cluster.nom}</p>
                 <p class="text-xs text-secondary mt-1">{cluster.description}</p>
 
-                <div class="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 mt-4">
                   {clusterStudies.map((etude) => etude && (
                     <a
                       href={url(`/etudes-de-cas/${etude.id}`)}
@@ -183,7 +183,7 @@ function findStudy(slug: string) {
             return (
               <div class="mt-6">
                 <p class="text-sm font-semibold text-accent">Autres structures visitées</p>
-                <div class="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 mt-4">
                   <a
                     href={url(`/etudes-de-cas/${circa.id}`)}
                     class="p-2 sm:p-3 rounded-lg border border-border bg-surface-dark hover:shadow hover:-translate-y-px transition-all duration-150 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none text-center"
@@ -302,7 +302,7 @@ function findStudy(slug: string) {
 
           <figure class="mt-4 m-0 flex flex-col items-center">
             <img src={url('/images/pays/bresil-piste-cyclable.webp')} alt="Piste cyclable au centre de la chaussée à São Paulo, modèle inversé par rapport à l'Europe" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
-            <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Piste cyclable au centre de la chaussée, modèle inversé par rapport à l'Europe, São Paulo</figcaption>
+            <figcaption class="text-xs text-secondary mt-1.5 text-center leading-relaxed">Piste cyclable au centre de la chaussée, modèle inversé par rapport à l'Europe, São Paulo</figcaption>
           </figure>
         </div>
       </section>
@@ -326,11 +326,11 @@ function findStudy(slug: string) {
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
             <figure class="m-0 min-w-0 flex flex-col items-center">
               <img src={url('/images/pays/costa-rica-velos-plage.webp')} alt="Vélos garés sur la plage de la côte caraïbe du Costa Rica, principal mode de déplacement local" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
-              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Vélos garés sur la plage : principal mode de déplacement sur la côte caribéenne</figcaption>
+              <figcaption class="text-xs text-secondary mt-1.5 text-center leading-relaxed">Vélos garés sur la plage : principal mode de déplacement sur la côte caribéenne</figcaption>
             </figure>
             <figure class="m-0 min-w-0 flex flex-col items-center">
               <img src={url('/images/photos/costa-rica-velos-plage-2.webp')} alt="Vélos garés le long de la plage sur la côte caraïbe du Costa Rica" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
-              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Autre vue des vélos garés sur la côte caribéenne : usage quotidien sans infrastructure dédiée</figcaption>
+              <figcaption class="text-xs text-secondary mt-1.5 text-center leading-relaxed">Autre vue des vélos garés sur la côte caribéenne : usage quotidien sans infrastructure dédiée</figcaption>
             </figure>
           </div>
         </div>
@@ -354,7 +354,7 @@ function findStudy(slug: string) {
 
           <figure class="mt-4 m-0 flex flex-col items-center">
             <img src={url('/images/pays/panama-velo-commerce.webp')} alt="Vélo utilisé comme outil de commerce ambulant dans les rues de Panama City" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
-            <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Vélo utilisé comme outil de commerce ambulant dans les rues, Panama City</figcaption>
+            <figcaption class="text-xs text-secondary mt-1.5 text-center leading-relaxed">Vélo utilisé comme outil de commerce ambulant dans les rues, Panama City</figcaption>
           </figure>
         </div>
       </section>
@@ -419,18 +419,18 @@ function findStudy(slug: string) {
             <strong class="not-italic text-primary">Enseignement clé :</strong> La Thaïlande illustre un paradoxe : le pays est un acteur majeur de la production mondiale de vélos, mais l'accès aux usines est quasi impossible pour un observateur extérieur. La culture cycliste sportive existe, portée par des cafés vélo et des circuits dédiés, mais le vélo quotidien reste marginal face au scooter.
           </blockquote>
 
-          <div class="grid grid-cols-3 gap-3 mt-4">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
             <figure class="m-0 min-w-0 flex flex-col items-center">
               <img src={url('/images/pays/thailande-cafe-velo.webp')} alt="Vélo de piste haut de gamme exposé dans un café vélo spécialisé à Bangkok" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
-              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Café vélo spécialisé, Bangkok</figcaption>
+              <figcaption class="text-xs text-secondary mt-1.5 text-center leading-relaxed">Café vélo spécialisé, Bangkok</figcaption>
             </figure>
             <figure class="m-0 min-w-0 flex flex-col items-center">
               <img src={url('/images/photos/thailande-cafe-velo-piste.webp')} alt="Vélo de piste haut de gamme exposé dans un café vélo à Bangkok" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
-              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Vélo de piste haut de gamme, composants US en vitrine d'atelier visité en Oregon et en Californie</figcaption>
+              <figcaption class="text-xs text-secondary mt-1.5 text-center leading-relaxed">Vélo de piste haut de gamme, composants US en vitrine d'atelier visité en Oregon et en Californie, Bangkok</figcaption>
             </figure>
             <figure class="m-0 min-w-0 flex flex-col items-center">
               <img src={url('/images/pays/thailande-libre-service.webp')} alt="Station de vélos en libre-service en état dégradé à Bangkok" class="max-h-[400px] max-w-full rounded-lg border border-border" loading="lazy" />
-              <figcaption class="text-[11px] text-secondary mt-1.5 text-center leading-relaxed">Station de vélos en libre-service, Bangkok</figcaption>
+              <figcaption class="text-xs text-secondary mt-1.5 text-center leading-relaxed">Station de vélos en libre-service, Bangkok</figcaption>
             </figure>
           </div>
         </div>
@@ -471,7 +471,6 @@ function findStudy(slug: string) {
       </a>
     </div>
   </div>
-</BaseLayout>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -571,3 +570,4 @@ function findStudy(slug: string) {
     }
   });
 </script>
+</BaseLayout>

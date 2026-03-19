@@ -27,7 +27,7 @@ Origine Cycles is a brand historically established in northern France, founded i
 
 ## Workshop organization
 
-The workshop is recent, organized with wide and well-lit work areas allowing operators to work in good conditions. A **conveyor system** transports bikes between the different production stages, particularly between the paint booth and assembly stations. Each bike is individually painted in **independent paint booths**, as each customer can choose a custom color. Components are prepared in **organized carts** with dedicated boxes and a customer sheet, enabling structured and error-free assembly.
+The workshop is recent, organized with wide and well-lit work areas allowing operators to work in good conditions. A **conveyor system** transports bikes between the different production stages, particularly between the paint booth and assembly stations. Each bike is individually painted in **independent paint cabins**, as each customer can choose a custom color. Components are prepared in **organized carts** with dedicated boxes and a customer sheet, enabling structured and error-free assembly.
 
 ## Production management analysis
 
@@ -37,7 +37,7 @@ Production is based on a **pull flow** triggered by the customer order: the onli
 
 - Pure pull flow triggered by online customer configuration
 - Full customization (geometry, components, color) without sacrificing throughput
-- Conveyor system and individual paint booths: controlled industrial flow
+- Conveyor system and individual paint cabins: controlled industrial flow
 - Visual management with dedicated carts and customer sheets
 - Solid partnerships with major equipment manufacturers (Shimano, SRAM, DT Swiss)
 

@@ -48,7 +48,6 @@ const zones = [
 
     <!-- Job search banner -->
     <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium">
-      <span aria-hidden="true">→</span>
       Seeking: Technical project manager · French-speaking Switzerland
     </div>
 
@@ -76,13 +75,13 @@ const zones = [
   <section class="max-w-[1320px] mx-auto px-6 py-12 border-t border-border">
     <p class="text-xs text-accent font-semibold uppercase tracking-wide text-center">This site is for</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-      <a href={url('/en/etudes-de-cas/')} class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
+      <a href={url('/en/case-studies/')} class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
         <p class="text-accent font-semibold text-sm">Industrial recruiter</p>
         <p class="text-primary font-semibold mt-2">Looking for a field profile?</p>
         <p class="text-secondary text-sm mt-2 leading-relaxed">Discover 8 case studies illustrating my ability to read a production system, identify improvement levers and structure actionable observations.</p>
         <span class="inline-flex items-center gap-1 text-accent text-sm font-medium mt-4 group-hover:gap-2 transition-all">View case studies →</span>
       </a>
-      <a href={url('/en/bilan/')} class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
+      <a href={url('/en/skills/')} class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
         <p class="text-accent font-semibold text-sm">Technical manager</p>
         <p class="text-primary font-semibold mt-2">What concrete skills?</p>
         <p class="text-secondary text-sm mt-2 leading-relaxed">6 skill domains developed in the field: continuous improvement, industrialization, production management, coordination, innovation and cross-functional.</p>
@@ -90,17 +89,17 @@ const zones = [
       </a>
       <a href={url('/en/vision/')} class="group p-6 rounded-lg border border-border bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 ease-out focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none">
         <p class="text-accent font-semibold text-sm">Engineer / curious</p>
-        <p class="text-primary font-semibold mt-2">What industrial vision?</p>
-        <p class="text-secondary text-sm mt-2 leading-relaxed">What this journey taught me about the role of an industrial engineer, the limits of artisan structures and the improvement opportunities they contain.</p>
+        <p class="text-primary font-semibold mt-2">Which industrial vision?</p>
+        <p class="text-secondary text-sm mt-2 leading-relaxed">This journey taught me about the role of an industrial engineer, the limits of artisan structures and the improvement opportunities they contain.</p>
         <span class="inline-flex items-center gap-1 text-accent text-sm font-medium mt-4 group-hover:gap-2 transition-all">Read my vision →</span>
       </a>
     </div>
   </section>
 
   <!-- Method section -->
-  <section class="max-w-[1320px] mx-auto px-6 py-16">
-    <p class="text-xs text-accent font-semibold uppercase tracking-wide">Method</p>
-    <h2 class="text-primary mt-2">A structured industrial observation, not a simple travel journal.</h2>
+  <section class="max-w-[1320px] mx-auto px-6 py-12">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide text-center">Method</p>
+    <h2 class="text-primary mt-2 text-center">A structured industrial observation, not a simple travel journal.</h2>
 
     <!-- Desktop timeline (horizontal with line) -->
     <div class="hidden md:block mt-12">
@@ -176,9 +175,9 @@ const zones = [
   </section>
 
   <!-- Skills section -->
-  <section class="max-w-[1320px] mx-auto px-6 py-16 border-t border-border">
-    <p class="text-xs text-accent font-semibold uppercase tracking-wide">Demonstrated skills</p>
-    <h2 class="text-primary mt-2">What this approach demonstrates</h2>
+  <section class="max-w-[1320px] mx-auto px-6 py-12 border-t border-border">
+    <p class="text-xs text-accent font-semibold uppercase tracking-wide text-center">Demonstrated skills</p>
+    <h2 class="text-primary mt-2 text-center">What this approach demonstrates</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
       <div class="p-6 rounded-lg border border-border bg-white">
@@ -209,19 +208,19 @@ const zones = [
   </section>
 
   <!-- Map section -->
-  <section class="max-w-[1320px] mx-auto px-6 py-16 border-t border-border">
+  <section class="max-w-[1320px] mx-auto px-6 py-12 border-t border-border">
     <p class="text-xs text-accent font-semibold uppercase tracking-wide">Geography</p>
     <h2 class="text-primary mt-2">Countries visited</h2>
     <p class="text-secondary mt-2">
       North America · Central America · South America · Africa · Asia
     </p>
 
-    <div class="mt-8 rounded-lg overflow-hidden border border-border" style="height: 400px;" id="carte-accueil" aria-label="Map of visited industrial facilities">
+    <div class="mt-8 rounded-lg overflow-hidden border border-border h-[300px] sm:h-[400px] lg:h-[500px]" id="carte-accueil" aria-label="Map of visited industrial facilities">
     </div>
   </section>
 
   <!-- Case studies section -->
-  <section class="max-w-[1320px] mx-auto px-6 py-16 border-t border-border">
+  <section class="max-w-[1320px] mx-auto px-6 py-12 border-t border-border">
     <h2 class="text-primary text-center">Case Studies</h2>
     <p class="text-secondary text-center mt-2">Detailed analysis of visited workshops: production flow, organization, strengths, areas for improvement and key takeaway.</p>
 
@@ -246,14 +245,13 @@ const zones = [
 
     <div class="text-center mt-8">
       <a
-        href={url('/en/etudes-de-cas/')}
+        href={url('/en/case-studies/')}
         class="inline-flex items-center gap-1 text-accent hover:text-accent-hover font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none rounded"
       >
         View all 8 case studies →
       </a>
     </div>
   </section>
-</BaseLayout>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -290,7 +288,7 @@ const zones = [
     function makePopup(info) {
       var html = '<strong>' + info.nom + '</strong>';
       if (info.detail) html += '<br><span style="font-size:12px;color:#64748B">' + info.detail + '</span>';
-      html += '<br><a href="' + baseUrl + '/en/pays-et-culture/#' + info.anchor + '" style="color:#2C5282;font-size:12px">View section →</a>';
+      html += '<br><a href="' + baseUrl + '/en/countries/#' + info.anchor + '" style="color:#2C5282;font-size:12px">View section →</a>';
       return html;
     }
 
@@ -348,3 +346,4 @@ const zones = [
     }
   });
 </script>
+</BaseLayout>

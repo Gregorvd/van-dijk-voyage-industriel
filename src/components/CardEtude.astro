@@ -19,7 +19,7 @@ interface Props {
 }
 
 const { titre, pays, ville, taille, duree, image, imageAlt, resume, tags, slug, contact, locale = 'fr' } = Astro.props;
-const basePath = locale === 'en' ? url('/en/etudes-de-cas') : url('/etudes-de-cas');
+const basePath = locale === 'en' ? url('/en/case-studies') : url('/etudes-de-cas');
 ---
 
 <a

@@ -17,10 +17,35 @@ export function getLocaleFromPath(path: string): Locale {
   return p.startsWith('/en/') || p === '/en' ? 'en' : 'fr';
 }
 
+const slugMap: Record<string, string> = {
+  'etudes-de-cas': 'case-studies',
+  'pays-et-culture': 'countries',
+  'a-propos': 'about',
+  'bilan': 'skills',
+  'limites': 'limits',
+  'annexes': 'appendices',
+};
+
+const slugMapReverse: Record<string, string> = Object.fromEntries(
+  Object.entries(slugMap).map(([k, v]) => [v, k])
+);
+
 export function getAlternatePath(path: string): string {
   const p = stripBase(path);
   if (p.startsWith('/en/') || p === '/en') {
-    return url(p.replace(/^\/en/, '') || '/');
+    // EN → FR: replace English slugs with French ones
+    let frPath = p.replace(/^\/en/, '') || '/';
+    for (const [en, fr] of Object.entries(slugMapReverse)) {
+      frPath = frPath.replace(`/${en}/`, `/${fr}/`);
+      frPath = frPath.replace(`/${en}`, `/${fr}`);
+    }
+    return url(frPath);
   }
-  return url(`/en${p}`);
+  // FR → EN: replace French slugs with English ones
+  let enPath = p;
+  for (const [fr, en] of Object.entries(slugMap)) {
+    enPath = enPath.replace(`/${fr}/`, `/${en}/`);
+    enPath = enPath.replace(`/${fr}`, `/${en}`);
+  }
+  return url(`/en${enPath}`);
 }
