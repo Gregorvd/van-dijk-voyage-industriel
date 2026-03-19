@@ -59,4 +59,4 @@ Coût de revient connu dès la conception = pricing maîtrisé dès l'origine. C
 
 ## Enseignement principal
 
-Intégrer le coût de revient dès la phase de conception (Fusion 360 + pricing simultané) est une pratique clé qui permet à une PME de rester rentable sans distribution ni remise commerciale. C'est une application concrète du design-to-cost. De plus, la réputation et le bouche-à-oreille peuvent suffire à faire vivre une entreprise industrielle haut de gamme.
+Intégrer le coût de revient dès la phase de conception (Fusion 360 + pricing simultané) est une pratique clé qui permet à une PME de rester rentable sans distribution ni remise commerciale. C'est une application concrète du design-to-cost. La réputation et le bouche-à-oreille peuvent suffire à faire vivre une entreprise industrielle haut de gamme.

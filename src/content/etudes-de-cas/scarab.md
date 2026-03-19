@@ -29,7 +29,7 @@ longitude: -75.5812
 
 ## Contexte & positionnement
 
-Scarab Cycles est un atelier artisanal de fabrication de vélos en acier sur mesure, situé à El Retiro dans les montagnes près de Medellín. L'entreprise est née d'un projet de fin d'études de Santiago Toro, ingénieur passionné de cyclisme, qui avait étudié les géométries de cadres de vélo et a commencé à fabriquer ses premiers cadres dans son garage. La marque s'inspire fortement de la culture cycliste colombienne et des routes exigeantes des Andes. Chaque vélo est conçu en collaboration directe avec le client afin d'obtenir une géométrie parfaitement adaptée à son usage et un design qui lui plait. L'atelier produit seulement **quelques vélos par semaine**, chacun étant entièrement personnalisé. Scarab se positionne sur un segment très haut de gamme orienté performance.
+Scarab Cycles est un atelier artisanal de fabrication de vélos en acier sur mesure, situé à El Retiro dans les montagnes près de Medellín. L'entreprise est née d'un projet de fin d'études de Santiago Toro, ingénieur passionné de cyclisme, qui avait étudié les géométries de cadres de vélo et a commencé à fabriquer ses premiers cadres dans son garage. La marque s'inspire fortement de la culture cycliste colombienne et des routes exigeantes des Andes. Chaque vélo est conçu en collaboration directe avec le client afin d'obtenir une géométrie parfaitement adaptée à son usage et un design qui lui plaît. L'atelier produit seulement **quelques vélos par semaine**, chacun étant entièrement personnalisé. Scarab se positionne sur un segment très haut de gamme orienté performance.
 
 **Flux de production**
 
@@ -74,4 +74,4 @@ Le modèle de production est entièrement artisanal et sur commande. L'équipe e
 
 ## Enseignement principal
 
-Scarab illustre un modèle de fabrication où le vélo devient presque une œuvre d'art racontant une histoire. La dimension artistique et culturelle peut constituer un avantage concurrentiel puissant sur le segment haut de gamme, mais elle repose sur un modèle difficilement industrialisable. C'est l'opposé du modèle Origine : là où Origine industrialise la personnalisation, Scarab l'artisanalise. Cela est notamment possible grâce à un coût de main d'oeuvre assez bas.
+Scarab illustre un modèle de fabrication où le vélo devient presque une œuvre d'art racontant une histoire. La dimension artistique et culturelle peut constituer un avantage concurrentiel puissant sur le segment haut de gamme, mais elle repose sur un modèle difficilement industrialisable. C'est l'opposé du modèle Origine : là où Origine industrialise la personnalisation, Scarab l'artisanalise. Cela est notamment possible grâce à un coût de main-d'œuvre relativement bas.

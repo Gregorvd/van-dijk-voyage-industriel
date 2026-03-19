@@ -49,4 +49,4 @@ The production model is entirely artisan and made-to-order. The team consists of
 
 ## Key takeaway
 
-Scarab illustrates a manufacturing model where the bicycle becomes almost a work of art telling a story. The artistic and cultural dimension can be a powerful competitive advantage in the high-end segment, but it relies on a model that is difficult to industrialize. It is the opposite of the Origine model: where Origine industrializes customization, Scarab artisanizes it. This is notably made possible by a relatively low labor cost.
+Scarab illustrates a manufacturing model where the bicycle becomes almost a work of art telling a story. The artistic and cultural dimension can be a powerful competitive advantage in the high-end segment, but it relies on a model that is difficult to industrialize. It is the opposite of the Origine model: where Origine industrializes customization, Scarab artisanizes it. Made possible by relatively low labor costs.

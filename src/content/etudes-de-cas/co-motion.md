@@ -53,7 +53,7 @@ Production 100% sur commande, stock réduit au strict minimum. **Contrôle en do
 **Axes d'amélioration**
 
 - Gestion visuelle de production peu développée (OF non visibles en atelier)
-- Cadence limitée (4-5 vélos/jour) : scaling difficile sans investissement lourd
+- Cadence limitée (4-5 vélos/jour) : croissance difficile sans investissement lourd
 - Fort savoir-faire individuel (TIG, réglages) = risque de dépendance aux personnes
 
 ## Enseignement principal

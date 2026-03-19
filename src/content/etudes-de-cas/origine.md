@@ -74,4 +74,4 @@ La production repose sur un **flux tiré** déclenché par la commande client : 
 
 ## Enseignement principal
 
-Il est possible de produire des vélos hautement personnalisables à une cadence industrielle, mais cela implique une gestion très rigoureuse des pièces, une logistique complexe et un flux tiré parfaitement orchestré. Le modèle d'Origine montre qu'un configurateur en ligne peut piloter l'ensemble de la chaîne de production, du choix client jusqu'à l'assemblage final s'il est correctement mis à jour.
+Il est possible de produire des vélos hautement personnalisables à une cadence industrielle, mais cela implique une gestion très rigoureuse des pièces, une logistique complexe et un flux tiré parfaitement orchestré. Le modèle d'Origine montre qu'un configurateur en ligne peut piloter l'ensemble de la chaîne de production, du choix client jusqu'à l'assemblage final à condition d'être correctement maintenu.

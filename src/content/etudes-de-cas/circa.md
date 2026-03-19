@@ -70,4 +70,4 @@ Modèle en flux tiré pur : **zéro production sans commande, zéro stock produi
 
 ## Enseignement principal
 
-La personnalisation totale est un avantage compétitif puissant, mais elle doit s'appuyer sur une standardisation partielle (composants, gabarits) pour rester économiquement viable à petite échelle. L'artisanat de précision est capable de coexister avec une rigueur industrielle.
+La personnalisation totale est un avantage compétitif puissant, mais elle doit s'appuyer sur une standardisation partielle (composants, gabarits) pour rester économiquement viable à petite échelle. L'artisanat de précision peut coexister avec une rigueur industrielle.
