@@ -1,0 +1,80 @@
+---
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const label = locale === 'en' ? 'Contact me' : 'Me contacter';
+const ariaLabel = locale === 'en' ? 'Show my contact details' : 'Afficher mes coordonnées';
+---
+
+<details class="contact-cta relative inline-block">
+  <summary
+    class="list-none cursor-pointer select-none inline-flex items-center font-semibold text-sm rounded-md px-6 py-3 transition-colors duration-200 bg-accent text-white hover:bg-accent-hover focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 outline-none"
+    aria-haspopup="true"
+    aria-label={ariaLabel}
+  >
+    {label}
+  </summary>
+  <div class="absolute right-0 mt-2 w-60 z-[1100] rounded-lg border border-border bg-white shadow-lg p-2">
+    <a
+      href="#"
+      data-u="vdijk.gregor" data-d="gmail.com"
+      class="obf-email flex items-center justify-between gap-3 px-3 py-2.5 rounded-md hover:bg-surface-dark transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-accent outline-none"
+    >
+      <span class="text-sm font-medium text-primary">Email</span>
+      <span class="obf-email-text text-xs text-secondary"></span>
+    </a>
+    <a
+      href="#"
+      data-p="33768232063"
+      class="obf-phone flex items-center justify-between gap-3 px-3 py-2.5 rounded-md hover:bg-surface-dark transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-accent outline-none"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span class="text-sm font-medium text-primary">WhatsApp</span>
+      <span class="obf-phone-text text-xs text-secondary"></span>
+    </a>
+    <a
+      href="https://linkedin.com/in/gregor-vandijk"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center justify-between gap-3 px-3 py-2.5 rounded-md hover:bg-surface-dark transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-accent outline-none"
+    >
+      <span class="text-sm font-medium text-primary">LinkedIn</span>
+      <span class="text-xs text-secondary">in/gregor-vandijk</span>
+    </a>
+  </div>
+</details>
+
+<style>
+  details.contact-cta > summary::-webkit-details-marker { display: none; }
+  details.contact-cta > summary::marker { display: none; }
+</style>
+
+<script>
+  function initContactCTA() {
+    const all = document.querySelectorAll<HTMLDetailsElement>('details.contact-cta');
+    all.forEach((d) => {
+      // Close the popover after a contact link is clicked
+      d.querySelectorAll('a').forEach((a) => {
+        a.addEventListener('click', () => d.removeAttribute('open'));
+      });
+    });
+    // Close any open popover when clicking outside of it
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll<HTMLDetailsElement>('details.contact-cta[open]').forEach((d) => {
+        if (!d.contains(e.target as Node)) d.removeAttribute('open');
+      });
+    });
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll<HTMLDetailsElement>('details.contact-cta[open]').forEach((d) => {
+          d.removeAttribute('open');
+        });
+      }
+    });
+  }
+  initContactCTA();
+</script>

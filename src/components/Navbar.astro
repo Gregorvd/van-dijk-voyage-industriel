@@ -1,5 +1,5 @@
 ---
-import BoutonCTA from './BoutonCTA.astro';
+import ContactCTA from './ContactCTA.astro';
 import { getLocaleFromPath, getAlternatePath, url } from '../i18n/utils';
 
 const currentPath = Astro.url.pathname;
@@ -27,7 +27,6 @@ const navLinksEn = [
 ];
 
 const navLinks = locale === 'en' ? navLinksEn : navLinksFr;
-const ctaLabel = locale === 'en' ? 'Download CV' : 'Télécharger CV';
 const siteName = 'Grégor Van Dijk';
 const homeHref = locale === 'en' ? url('/en/') : url('/');
 
@@ -60,7 +59,7 @@ function isActive(href: string): boolean {
           {link.label}
         </a>
       ))}
-      <BoutonCTA label={ctaLabel} href={url('/cv-gregor-vandijk.pdf')} variant="primary" />
+      <ContactCTA locale={locale} />
       <a
         href={alternatePath}
         class="text-xs font-semibold uppercase px-2.5 py-1 rounded border border-border text-secondary hover:text-accent hover:border-accent transition-colors duration-150"
@@ -95,7 +94,7 @@ function isActive(href: string): boolean {
             </a>
           ))}
           <div class="flex items-center gap-3 pt-2">
-            <BoutonCTA label={ctaLabel} href={url('/cv-gregor-vandijk.pdf')} variant="primary" />
+            <ContactCTA locale={locale} />
             <a
               href={alternatePath}
               class="text-xs font-semibold uppercase px-2.5 py-1 rounded border border-border text-secondary hover:text-accent hover:border-accent transition-colors duration-150"

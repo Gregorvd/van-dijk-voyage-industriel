@@ -152,7 +152,7 @@ const parcours = [
 
     <!-- Bike trips -->
     <section class="mt-16">
-      <p class="text-xs text-accent font-semibold uppercase tracking-wide">14 trips · 3 287 km</p>
+      <p class="text-xs text-accent font-semibold uppercase tracking-wide">15 trips · 3 818 km</p>
       <h2 class="text-primary mt-2">Bike trips</h2>
       <p class="text-secondary mt-4">
         Since 2021, I have developed a passion for multi-day cycling journeys. Click on a route to see the details.
@@ -273,6 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
     { id: 'paris-nord-2025', nom: 'Paris North Loop', periode: 'August 2025', jours: 2, participants: 2 },
     { id: 'tours-bretignolles-2025', nom: 'Tours → Bretignolles-sur-Mer', periode: 'August 2025', jours: 4, participants: 2 },
     { id: 'rennes-stmalo-2026', nom: 'Rennes → Saint-Malo', periode: 'January 2026', jours: 2, participants: 5 },
+    { id: 'pays-bas-2026', nom: 'Netherlands Tour 2026', periode: 'April 2026', jours: 7, participants: 2 },
   ];
 
   var map = L.map(el, { scrollWheelZoom: false }).setView([48.5, 3], 6);
@@ -285,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var colors = [
     '#2C5282', '#16A34A', '#D97706', '#DC2626', '#7C3AED',
     '#0891B2', '#BE185D', '#4338CA', '#059669', '#EA580C',
-    '#6D28D9', '#0284C7', '#B91C1C', '#15803D'
+    '#6D28D9', '#0284C7', '#B91C1C', '#15803D', '#CA8A04'
   ];
 
   var dataUrl = basePath + '/data/bike-trips.json';
