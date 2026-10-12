@@ -275,14 +275,14 @@ document.addEventListener('DOMContentLoaded', function() {
     { id: 'rennes-stmalo-2026', nom: 'Rennes → Saint-Malo', periode: 'January 2026', jours: 2, participants: 5 },
     { id: 'pays-bas-2026', nom: 'Netherlands Tour 2026', periode: 'April 2026', jours: 7, participants: 2 },
     { id: 'suisse-est-ouest-2026', nom: 'St. Margrethen → Neuchâtel', periode: 'August 2026', jours: 7, participants: 2 },
-    { id: 'strasbourg-stuttgart-2026', nom: 'Alsace – Black Forest Loop', periode: 'October 2026', jours: 3, participants: 2 },
+    { id: 'strasbourg-stuttgart-2026', nom: 'Alsace → Black Forest Loop', periode: 'October 2026', jours: 3, participants: 2 },
   ];
 
   var map = L.map(el, { scrollWheelZoom: false, zoomSnap: 0 }).setView([48.5, 3], 6);
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &middot; &copy; <a href="https://carto.com/">CARTO</a>',
-    maxZoom: 18,
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19,
   }).addTo(map);
 
   var colors = [
